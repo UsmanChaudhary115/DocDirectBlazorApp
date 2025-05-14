@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{F9EB0882-B166-4421-A3DF-67189933F58C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{65FDC569-6E0D-43B4-9C16-0DC296741ABE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\Appointment.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\Appointment.cs
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\AppointmentDTO.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\AppointmentDTO.cs
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\Doctor.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\Doctor.cs
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\ErrorViewModel.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\ErrorViewModel.cs
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\HospitalDbContext.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\HospitalDbContext.cs
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\IndexViewModel.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\IndexViewModel.cs
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\Patient.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\Patient.cs
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\PatientIndexViewModel.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\PatientIndexViewModel.cs
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\ProfileViewModel.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\ProfileViewModel.cs
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\RegisterViewModel.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\RegisterViewModel.cs
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\SignInViewModel.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\SignInViewModel.cs
+		D:\HospitalManagementSystem\HospitalManagementSystem\Models\Testimonials.cs = D:\HospitalManagementSystem\HospitalManagementSystem\Models\Testimonials.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9EB0882-B166-4421-A3DF-67189933F58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9EB0882-B166-4421-A3DF-67189933F58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9EB0882-B166-4421-A3DF-67189933F58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9EB0882-B166-4421-A3DF-67189933F58C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65FDC569-6E0D-43B4-9C16-0DC296741ABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65FDC569-6E0D-43B4-9C16-0DC296741ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65FDC569-6E0D-43B4-9C16-0DC296741ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65FDC569-6E0D-43B4-9C16-0DC296741ABE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2AF67EE-AAD4-4B37-8AB5-45BCE3F66632}
+	EndGlobalSection
+EndGlobal
