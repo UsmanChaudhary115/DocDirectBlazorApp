@@ -1084,6 +1084,7 @@ C:\Users\Usman\Desktop\DocDirectAPP\Client\obj\Debug\net8.0\compressed\b81854taz
 C:\Users\Usman\Desktop\DocDirectAPP\Client\obj\Debug\net8.0\compressed\imldzubl4r-3maxef8uib.gz
 C:\Users\Usman\Desktop\DocDirectAPP\Client\obj\Debug\net8.0\compressed\op0bkgrs8x-qgx1kpccwc.gz
 C:\Users\Usman\Desktop\DocDirectAPP\Client\obj\Debug\net8.0\compressed\nnuz7rjdbr-sybv2hxg92.gz
-C:\Users\Usman\Desktop\DocDirectAPP\Client\obj\Debug\net8.0\compressed\kb90l4x90i-wzujild1fm.gz
-C:\Users\Usman\Desktop\DocDirectAPP\Client\obj\Debug\net8.0\compressed\nrce2f7bjz-xp9if2tf3s.gz
-C:\Users\Usman\Desktop\DocDirectAPP\Client\obj\Debug\net8.0\compressed\0kih5qk3hm-dvd3u5xb0n.gz
+C:\Users\Usman\Desktop\DocDirectAPP\Client\obj\Debug\net8.0\scopedcss\Pages\SignInComponent.razor.rz.scp.css
+C:\Users\Usman\Desktop\DocDirectAPP\Client\obj\Debug\net8.0\compressed\kb90l4x90i-azip7nuxlc.gz
+C:\Users\Usman\Desktop\DocDirectAPP\Client\obj\Debug\net8.0\compressed\nrce2f7bjz-xavaj2d1bo.gz
+C:\Users\Usman\Desktop\DocDirectAPP\Client\obj\Debug\net8.0\compressed\0kih5qk3hm-t4ld3sb1sy.gz

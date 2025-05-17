@@ -1,10 +1,17 @@
-﻿window.initializeSwiper = () => {
-    const swipers = document.querySelectorAll('.init-swiper');
-    swipers.forEach(el => {
-        const configElement = el.querySelector('.swiper-config');
-        if (configElement) {
-            const config = JSON.parse(configElement.textContent);
-            new Swiper(el, config);
-        }
+﻿window.initializeSwiper = function () {
+    document.querySelectorAll('.init-swiper').forEach(swiperElement => {
+        new Swiper(swiperElement, {
+            loop: true,
+            speed: 400, // reduced transition speed (milliseconds)
+            autoplay: {
+                delay: 3000 // reduced delay between slides (milliseconds)
+            },
+            slidesPerView: 'auto',
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+                clickable: true
+            }
+        });
     });
 };

@@ -1,0 +1,28 @@
+﻿@inject NavigationManager Navigation
+<section id="hero" class="hero section light-background">
+    <img src="img/hero-bg.jpg" alt="" data-aos="fade-in">
+    <div class="container position-relative">
+        <div class="welcome position-relative" data-aos="fade-down" data-aos-delay="100">
+            <h2>WELCOME TO DocDirect</h2>
+        </div>
+        <div class="content row gy-4">
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="why-box" data-aos="zoom-out" data-aos-delay="200">
+                    <h3>Why Choose DocDirect?</h3>
+                    <p>
+                        DocDirect is your one-stop solution for managing healthcare appointments with ease, efficiency, and trust. Check more details why people prefer <strong>DocDirect</strong>.
+                    </p>
+                    <div class="text-center">
+                        <button @onclick="GoToSignIN" class="more-btn border-0"><span>Get Started</span> <i class="bi bi-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@code {
+    void GoToSignIN()
+    {
+        Navigation.NavigateTo("/signin");
+    }   
+}

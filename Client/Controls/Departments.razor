@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNetCore.Components
+@using Core.Entities
+
+<section id="departments" class="departments section light-background">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Departments</h2>
+        <p>We offer a wide range of specialized care in various medical fields, ensuring the highest quality of treatment and expertise for all patients.</p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row">
+            <!-- Tabs -->
+            <div class="col-lg-3">
+                <ul class="nav nav-tabs flex-column">
+                    @foreach (var department in DepartmentsList)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link @(SelectedDepartment == department.Id ? "active show" : "")"
+                               @onclick="() => SelectDepartment(department.Id)">
+                                @department.Name
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="col-lg-9 mt-4 mt-lg-0">
+                @if (ActiveDepartment != null)
+                {
+                    <div class="tab-content show active">
+                        <div class="tab-pane fade show active">
+                            <div class="row">
+                                <div class="col-lg-8 details">
+                                    <h3>@ActiveDepartment.Name</h3>
+                                    <p class="fst-italic">@ActiveDepartment.ShortDescription</p>
+                                    <p>@ActiveDepartment.FullDescription</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    .nav-link:hover{
+        cursor:pointer;
+    }
+</style>
+@code {
+    private int SelectedDepartment = 1;
+
+    private List<Department> DepartmentsList = new()
+    {
+        new Department
+        {
+            Id = 1,
+            Name = "Cardiology",
+            ShortDescription = "We provide expert care for heart-related conditions.",
+            FullDescription = "Our cardiology department specializes in prevention, diagnosis, and treatment of heart diseases. From ECG to complex heart surgeries, our cardiologists ensure top care."
+        },
+        new Department
+        {
+            Id = 2,
+            Name = "Neurology",
+            ShortDescription = "Expert care for a range of neurological disorders.",
+            FullDescription = "We diagnose and treat brain, spinal cord, and nerve conditions. From migraines to Alzheimer's, our neurologists provide cutting-edge treatment."
+        },
+        new Department
+        {
+            Id = 3,
+            Name = "Hepatology",
+            ShortDescription = "Focused on liver disease diagnosis and treatment.",
+            FullDescription = "We treat hepatitis, cirrhosis, and liver cancer using advanced diagnostics and personalized care plans."
+        },
+        new Department
+        {
+            Id = 4,
+            Name = "Pediatrics",
+            ShortDescription = "Comprehensive care for children and adolescents.",
+            FullDescription = "From newborn care to adolescent health, our pediatricians ensure healthy development through all stages of life."
+        },
+        new Department
+        {
+            Id = 5,
+            Name = "Eye Care",
+            ShortDescription = "Wide range of eye treatments to ensure clear vision.",
+            FullDescription = "We provide expert diagnosis and treatment of cataracts, glaucoma, and vision correction, using modern ophthalmic tools."
+        }
+    };
+
+    private Department? ActiveDepartment => DepartmentsList.FirstOrDefault(d => d.Id == SelectedDepartment);
+
+    private void SelectDepartment(int id)
+    {
+        SelectedDepartment = id;
+    }
+}

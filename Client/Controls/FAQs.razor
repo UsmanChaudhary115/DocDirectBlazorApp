@@ -1,0 +1,101 @@
+﻿@using Core.Entities;
+<section id="faq" class="faq section light-background">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Frequently Asked Questions</h2>
+        <p>Get quick answers about how DocDirect works and how it can help you manage hospital operations efficiently.</p>
+    </div>
+    <div class="container" data-aos="fade-up">
+        <div class="accordion" id="faqAccordion">
+            @for (int i = 0; i < FAQsList.Count; i++)
+            {
+                var faq = FAQsList[i];
+                string headingId = $"heading{i}";
+                string collapseId = $"collapse{i}";
+
+                <div class="accordion-item" data-aos="fade-up">
+                    <h2 class="accordion-header" id="@headingId">
+                        <button class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#@collapseId"
+                                aria-expanded="false" aria-controls="@collapseId">
+                            @faq.Question
+                        </button>
+                    </h2>
+                    <div id="@collapseId" class="faq-content accordion-collapse collapse"
+                         aria-labelledby="@headingId" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body bg-dark text-light py-4">
+                            @faq.Answer
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+@code {
+    private List<FAQ> FAQsList = new()
+{
+    new FAQ
+    {
+        Id = 1,
+        Question = "What is DocDirect?",
+        Answer = "DocDirect is a digital Hospital Management System that streamlines tasks such as doctor management, patient scheduling, and medical appointments through an easy-to-use web interface."
+    },
+    new FAQ
+    {
+        Id = 2,
+        Question = "Can patients book appointments through DocDirect?",
+        Answer = "Yes, patients can search for available doctors by specialization and book appointments directly through DocDirect."
+    },
+    new FAQ
+    {
+        Id = 3,
+        Question = "How are doctors managed in DocDirect?",
+        Answer = "Doctors are added and managed via the admin dashboard. Each profile includes the doctor's name, specialization, and availability schedule."
+    },
+    new FAQ
+    {
+        Id = 4,
+        Question = "Does DocDirect support appointment rescheduling?",
+        Answer = "Yes, both patients and doctors can reschedule or cancel appointments, based on hospital policy and availability."
+    },
+    new FAQ
+    {
+        Id = 5,
+        Question = "Is DocDirect mobile-friendly?",
+        Answer = "Yes, DocDirect is fully responsive and works seamlessly across smartphones, tablets, and desktops."
+    },
+    new FAQ
+    {
+        Id = 6,
+        Question = "Does DocDirect provide notifications or reminders?",
+        Answer = "Yes, automated email or SMS notifications can be sent to remind users about upcoming appointments or system updates."
+    },
+    new FAQ
+    {
+        Id = 7,
+        Question = "Can administrators manage hospital departments through DocDirect?",
+        Answer = "Yes, administrators can add, update, or remove hospital departments and assign doctors accordingly."
+    },
+    new FAQ
+    {
+        Id = 8,
+        Question = "Is there a reporting dashboard available in DocDirect?",
+        Answer = "Yes, DocDirect includes an analytics dashboard for viewing key metrics like appointments, doctor availability, and patient flow."
+    },
+    new FAQ
+    {
+        Id = 9,
+        Question = "Can user roles be customized in DocDirect?",
+        Answer = "Absolutely. DocDirect supports role-based access control for administrators, doctors, and patients."
+    },
+    new FAQ
+    {
+        Id = 10,
+        Question = "Is patient data secure in DocDirect?",
+        Answer = "Yes, DocDirect uses modern authentication, encryption, and security best practices to ensure patient data privacy and protection."
+    }
+};
+
+}

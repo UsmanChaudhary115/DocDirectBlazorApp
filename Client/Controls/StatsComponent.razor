@@ -1,0 +1,55 @@
+﻿@inject IJSRuntime JS
+<section id="stats" class="stats section light-background">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-3">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center">
+                <i class="fa-solid fa-user-doctor"></i>
+                <div class="stats-item">
+                    <span class="purecounter"
+                    data-purecounter-start="0"
+                    data-purecounter-end="@DoctorCount"
+                    data-purecounter-duration="1"></span>
+                    <p>Doctors</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center">
+                <i class="fa-regular fa-hospital"></i>
+                <div class="stats-item">
+                    <span class="purecounter"
+                    data-purecounter-start="0"
+                    data-purecounter-end="18"
+                    data-purecounter-duration="1"></span>
+                    <p>Registered Patients</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center">
+                <i class="fas fa-award"></i>
+                <div class="stats-item">
+                    <span class="purecounter"
+                    data-purecounter-start="0"
+                    data-purecounter-end="150"
+                    data-purecounter-duration="1"></span>
+                    <p>Successful Dealings</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@code {
+    private int DoctorCount { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        DoctorCount = 10;
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            await JS.InvokeVoidAsync("initializePureCounter");
+        }
+    } 
+}

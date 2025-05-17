@@ -1,0 +1,70 @@
+.container1[b-elv1s38xx7] {
+    background: linear-gradient(135deg, black, red);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    color: #fff;
+    animation: fadeIn 1s ease-out;
+}
+
+h2[b-elv1s38xx7] {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.message[b-elv1s38xx7] {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+.form-control[b-elv1s38xx7] {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+    .form-control:focus[b-elv1s38xx7] {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+    }
+
+.btn[b-elv1s38xx7] {
+    width: 200px;
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary[b-elv1s38xx7] {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+    .btn-primary:hover[b-elv1s38xx7] {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+.btn:hover[b-elv1s38xx7] {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.text-center a[b-elv1s38xx7] {
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #007bff;
+}
+
+    .text-center a:hover[b-elv1s38xx7] {
+        text-decoration: underline;
+    }

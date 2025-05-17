@@ -1,0 +1,63 @@
+﻿@using Core.Entities
+@inject IJSRuntime JS
+
+<section id="testimonials" class="testimonials section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 info" data-aos="fade-up" data-aos-delay="100">
+                <h3>Testimonials</h3>
+                <p>See what our users have to say about our Hospital Management System.</p>
+            </div>
+            <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
+                @if (TestimonialsList != null && TestimonialsList.Any())
+                {
+                    <div class="swiper init-swiper">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in TestimonialsList)
+                            {
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <h3>@item.Name</h3>
+                                        <p>
+                                            <i class="bi bi-quote quote-icon-left"></i>
+                                            <span>@item.Testimonial</span>
+                                            <i class="bi bi-quote quote-icon-right"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                }
+                else
+                {
+                    <p>No testimonials available at the moment.</p>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    private List<Testimonials> TestimonialsList = new()
+    {
+        new Testimonials { Id = 1, Name = "Ali Raza", Testimonial = "Excellent service and professional staff!" },
+        new Testimonials { Id = 2, Name = "Fatima Ahmed", Testimonial = "Doctors here truly care about their patients." },
+        new Testimonials { Id = 3, Name = "Imran Khan", Testimonial = "Clean environment and quick appointment booking." },
+        new Testimonials { Id = 4, Name = "Sana Tariq", Testimonial = "Highly recommended for families." },
+        new Testimonials { Id = 5, Name = "Bilal Hussain", Testimonial = "Modern facilities and great doctors." },
+        new Testimonials { Id = 6, Name = "Ayesha Malik", Testimonial = "They made me feel comfortable and safe." },
+        new Testimonials { Id = 7, Name = "Zain Ali", Testimonial = "Very organized and helpful staff." },
+        new Testimonials { Id = 8, Name = "Mehwish Bukhari", Testimonial = "Affordable treatment and quality care." },
+        new Testimonials { Id = 9, Name = "Osama Javed", Testimonial = "Quick response and caring doctors." },
+        new Testimonials { Id = 10, Name = "Nimra Shahid", Testimonial = "I got the right diagnosis and treatment here." }
+    };
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initializeSwiper");
+        }
+    }
+}

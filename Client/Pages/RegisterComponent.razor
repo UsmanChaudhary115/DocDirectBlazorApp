@@ -1,0 +1,144 @@
+﻿@page "/signup"
+@using Core.Entities
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+@layout PatientLayout
+
+<EditForm Model="registerModel" OnValidSubmit="HandleRegister">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="row w-100 align-items-center">
+            <!-- Left side: Welcome Message -->
+            <div class="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0 px-4">
+                <div class="welcome-message-container text-dark">
+                    <h2 class="welcome-heading">Welcome to Our Service!</h2>
+                    <p class="welcome-description">Sign up to get started with your account.</p>
+                </div>
+            </div>
+
+            <!-- Right side: Signup Form -->
+            <div class="col-12 col-md-6 px-4">
+                <div class="container1">
+                    <h3 class="text-center mb-4 text-white">Create Your Account</h3>
+
+                    <div class="info-message text-center">
+                        <p>By signing up, you agree to our <span>Terms of Service</span> and <span>Privacy Policy</span>.</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Full Name</label>
+                        <InputText @bind-Value="registerModel.Name" class="form-control" placeholder="Enter full name" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Email address</label>
+                        <InputText @bind-Value="registerModel.Email" class="form-control" placeholder="Enter email" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Password</label>
+                        <InputText @bind-Value="registerModel.Password" class="form-control" placeholder="Create password" type="password" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Confirm Password</label>
+                        <InputText @bind-Value="registerModel.ConfirmPassword" class="form-control" placeholder="Confirm password" type="password" />
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-dark w-100">Sign Up</button>
+                    </div>
+                    <div class="text-center mt-3">
+                        Already have an account?
+                        <a href="/signin" class="text-primary">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</EditForm>
+<style>
+    /* General styling for the page */
+    .container-fluid {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
+
+    /* Left side welcome message container */
+    .welcome-message-container {
+        text-align: center;
+    }
+
+    .welcome-heading {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .welcome-description {
+        font-size: 1.1rem;
+    }
+
+    /* Right side Signup Form container */
+    .container1 {
+        background: linear-gradient(135deg, red, black);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        color: #fff;
+        animation: fadeIn 1s ease-out;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .info-message {
+        font-size: 1rem;
+        color: #ddd;
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        width: 200px;
+        padding: 12px;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+</style>
+
+@code {
+    private RegisterViewModel registerModel = new RegisterViewModel();
+
+    private async Task HandleRegister()
+    {
+        // Show SweetAlert
+        await JS.InvokeVoidAsync("showRegisterMessage");
+
+        // Simulate API call (replace with real auth logic)
+        await Task.Delay(4000);
+
+        // After animation, continue logic
+        Navigation.NavigateTo("/dashboard");
+    }
+}

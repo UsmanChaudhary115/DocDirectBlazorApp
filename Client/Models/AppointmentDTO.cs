@@ -8,7 +8,7 @@
         public string Description { get; set; }
         public string DoctorName { get; set; }
         public string Doctor_Specialization { get; set; }
-        public bool? isApproved { get; set; }
+        public bool isApproved { get; set; }
     }
 
 }

@@ -1,0 +1,91 @@
+﻿@inject IJSRuntime JSRuntime
+
+<style>
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.2); /* semi-transparent white */
+        backdrop-filter: blur(12px); /* main glass effect */
+        -webkit-backdrop-filter: blur(12px); /* Safari support */
+        border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* soft shadow */
+        border-radius: 1rem;
+    }
+
+</style>
+
+<div class="position-relative min-vh-100 overflow-hidden">
+    <div id="welcomeCarousel" class="carousel slide carousel-fade position-absolute w-100 h-100" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="false" style="z-index: 1;">
+        <div class="carousel-inner w-100 h-100">
+            <div class="carousel-item active h-100">
+                <div class="w-100 h-100">
+                    <img src="img/gallery/gallery-1.jpg" class="d-block w-100 h-100" style="object-fit: cover; filter: brightness(65%);" alt="Gallery image 1" />
+                </div>
+            </div>
+            <div class="carousel-item h-100">
+                <div class="w-100 h-100">
+                    <img src="img/gallery/gallery-2.jpg" class="d-block w-100 h-100" style="object-fit: cover; filter: brightness(65%);" alt="Gallery image 2" />
+                </div>
+            </div>
+            <div class="carousel-item h-100">
+                <div class="w-100 h-100">
+                    <img src="img/gallery/gallery-3.jpg" class="d-block w-100 h-100" style="object-fit: cover; filter: brightness(65%);" alt="Gallery image 3" />
+                </div>
+            </div>
+            <div class="carousel-item h-100">
+                <div class="w-100 h-100">
+                    <img src="img/gallery/gallery-4.jpg" class="d-block w-100 h-100" style="object-fit: cover; filter: brightness(65%);" alt="Gallery image 4" />
+                </div>
+            </div>
+            <div class="carousel-item h-100">
+                <div class="w-100 h-100">
+                    <img src="img/gallery/gallery-5.jpg" class="d-block w-100 h-100" style="object-fit: cover; filter: brightness(65%);" alt="Gallery image 5" />
+                </div>
+            </div>
+            <div class="carousel-item h-100">
+                <div class="w-100 h-100">
+                    <img src="img/gallery/gallery-6.jpg" class="d-block w-100 h-100" style="object-fit: cover; filter: brightness(65%);" alt="Gallery image 6" />
+                </div>
+            </div>
+            <div class="carousel-item h-100">
+                <div class="w-100 h-100">
+                    <img src="img/gallery/gallery-7.jpg" class="d-block w-100 h-100" style="object-fit: cover; filter: brightness(65%);" alt="Gallery image 7" />
+                </div>
+            </div>
+            <div class="carousel-item h-100">
+                <div class="w-100 h-100">
+                    <img src="img/gallery/gallery-8.jpg" class="d-block w-100 h-100" style="object-fit: cover; filter: brightness(65%);" alt="Gallery image 8" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlayed Welcome Card -->
+    <div class="position-relative d-flex flex-column align-items-center justify-content-center min-vh-100 text-center" style="z-index: 10;">
+        <div class="card" style="max-width: 700px; background: transparent; border: none;">
+            <div class="card-body glass-effect p-5 rounded shadow-lg">
+                <h1 class="card-title text-danger-emphasis fw-bold">
+                    <i class="bi bi-hand-thumbs-up-fill me-3 fs-1 align-middle"></i>
+                    @WelcomeMessage
+                </h1>
+                <h4 class="text-muted mt-3 mb-3">
+                    We're thrilled to have you here!
+                </h4>
+                <p class="text-muted mb-4">
+                    Explore our platform to find expert doctors, schedule appointments easily, and get personalized care right at your fingertips.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string WelcomeMessage { get; set; } = "Welcome to Our Platform";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initializeCarousel", "#welcomeCarousel");
+        }
+    }
+}

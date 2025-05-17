@@ -1,0 +1,148 @@
+﻿@page "/appointment/{AppointmentId:int}"
+@inject HttpClient Http
+
+@using Core.Entities
+
+<h3 class="text-danger mb-4 fw-bold">Appointment Details</h3>
+
+@if (IsLoading)
+{
+    <div class="text-muted fst-italic text-center py-3">
+        <i class="bi bi-hourglass-split me-2"></i>Loading appointment...
+    </div>
+}
+else if (appointment == null)
+{
+    <div class="alert alert-danger text-center shadow-sm" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>Appointment not found.
+    </div>
+}
+else
+{
+    <div class="card shadow-lg border-0 rounded-4 bg-white" style="max-width: 600px; margin: auto;">
+        <div class="card-header bg-danger text-white rounded-top-4 d-flex align-items-center gap-2">
+            <i class="bi bi-person-badge-fill fs-3"></i>
+            <h5 class="card-title mb-0 fw-bold">@appointment.Doctor?.Name ?? "Doctor Info Missing"</h5>
+        </div>
+        <div class="card-body">
+            <p class="card-text mb-2">
+                <i class="bi bi-briefcase-medical-fill text-danger me-2"></i>
+                <strong>Specialization:</strong> @appointment.Doctor?.Specialization ?? "N/A"
+            </p>
+            <p class="card-text mb-2">
+                <i class="bi bi-calendar-event-fill text-danger me-2"></i>
+                <strong>Date:</strong> @appointment.AppointmentDate.ToString("f")
+            </p>
+            <p class="card-text mb-3">
+                <i class="bi bi-card-text text-danger me-2"></i>
+                <strong>Description:</strong> @appointment.Description ?? "No description provided."
+            </p>
+            <p class="card-text mb-0">
+                <strong>Status:</strong>
+                @if (appointment.isApproved == true)
+                {
+                    <span class="badge bg-gradient rounded-pill text-white px-3 py-2 fs-6">
+                        <i class="bi bi-check-circle-fill me-1"></i> Approved
+                    </span>
+                }
+                else if (appointment.isApproved == false)
+                {
+                    <span class="badge bg-gradient bg-warning text-dark rounded-pill px-3 py-2 fs-6">
+                        <i class="bi bi-hourglass-split me-1"></i> Pending
+                    </span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary rounded-pill px-3 py-2 fs-6">
+                        <i class="bi bi-question-circle-fill me-1"></i> Unknown
+                    </span>
+                }
+            </p>
+        </div>
+    </div>
+}
+
+
+@code {
+    [Parameter] 
+    public int? AppointmentId { get; set; }
+
+    private Appointment? appointment { get; set; }
+
+    List<Appointment> appointments = new List<Appointment>
+{
+    new Appointment
+    {
+        AppointmentId = 1001,
+        AppointmentDate = new DateTime(2025, 5, 20, 10, 0, 0),
+        Description = "Routine checkup",
+        isApproved = true,
+        Doctor = new Doctor
+        {
+            Name = "Dr. Sarah Khan",
+            Specialization = "General Physician"
+        }
+    },
+    new Appointment
+    {
+        AppointmentId = 1002,
+        AppointmentDate = new DateTime(2025, 5, 21, 14, 30, 0),
+        Description = "Follow-up after surgery",
+        isApproved = false,
+        Doctor = new Doctor
+        {
+            Name = "Dr. Ahmed Raza",
+            Specialization = "Orthopedic Surgeon"
+        }
+    },
+    new Appointment
+    {
+        AppointmentId = 1003,
+        AppointmentDate = new DateTime(2025, 5, 22, 9, 0, 0),
+        Description = "Dental cleaning",
+        isApproved = true,
+        Doctor = new Doctor
+        {
+            Name = "Dr. Ayesha Malik",
+            Specialization = "Dentist"
+        }
+    },
+    new Appointment
+    {
+        AppointmentId = 1004,
+        AppointmentDate = new DateTime(2025, 5, 23, 11, 15, 0),
+        Description = "Skin allergy consultation",
+        isApproved = false,
+        Doctor = new Doctor
+        {
+            Name = "Dr. Imran Sheikh",
+            Specialization = "Dermatologist"
+        }
+    },
+    new Appointment
+    {
+        AppointmentId = 1005,
+        AppointmentDate = new DateTime(2025, 5, 24, 16, 45, 0),
+        Description = "Eye checkup",
+        isApproved = true,
+        Doctor = new Doctor
+        {
+            Name = "Dr. Nadia Hussain",
+            Specialization = "Ophthalmologist"
+        }
+    }
+};
+    private bool IsLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+		IsLoading = false;
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+            appointment = appointments.FirstOrDefault(a => a.AppointmentId == AppointmentId);
+		}
+	}
+}

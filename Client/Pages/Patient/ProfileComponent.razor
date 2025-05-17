@@ -1,0 +1,195 @@
+﻿@page "/profile"
+@inject HttpClient Http
+@using Core.Entities
+@layout PatientLayout
+
+<div class="container py-5">
+    <h2 class="text-center mb-5 display-4 fw-bold text-danger">Your Profile</h2>
+
+    @if (!string.IsNullOrEmpty(SuccessMessage))
+    {
+        <div class="alert alert-success shadow-sm rounded-3 mb-4" role="alert">
+            @SuccessMessage
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(ErrorMessage))
+    {
+        <div class="alert alert-danger shadow-sm rounded-3 mb-4" role="alert">
+            @ErrorMessage
+        </div>
+    }
+
+    <div class="card shadow-sm border-0 mb-5">
+        <div class="card-body p-4">
+            <EditForm Model="@profileModel" OnValidSubmit="UpdateProfile">
+                <DataAnnotationsValidator />
+                <ValidationSummary class="text-danger mb-4" />
+                <!-- Profile Details Section -->
+                <section class="mb-4">
+                    <h5 class="fw-semibold text-danger mb-3">Profile Details</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-medium text-dark">Full Name</label>
+                            <InputText @bind-Value="profileModel.Name" class="form-control custom-input" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-medium text-dark">Email</label>
+                            <InputText @bind-Value="profileModel.Email" class="form-control custom-input" />
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label fw-medium text-dark">Disease</label>
+                            <InputText @bind-Value="profileModel.Disease" class="form-control custom-input" />
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-light my-4" />
+
+                <!-- Change Password Section -->
+                <section>
+                    <h5 class="fw-semibold text-danger mb-3">Change Password</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-medium text-dark">New Password</label>
+                            <InputText @bind-Value="profileModel.NewPassword" class="form-control custom-input" type="password" placeholder="Enter new password" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-medium text-dark">Confirm New Password</label>
+                            <InputText @bind-Value="profileModel.ConfirmPassword" class="form-control custom-input" type="password" placeholder="Confirm new password" />
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label fw-medium text-dark">Old Password</label>
+                            <InputText @bind-Value="profileModel.OldPassword" class="form-control custom-input" type="password" placeholder="Old password" />
+                        </div>
+                    </div>
+                </section>
+
+                <button type="submit" class="btn btn-danger w-100 mt-4 rounded-3">Update Profile</button>
+            </EditForm>
+        </div>
+    </div>
+
+    @if (profileModel.Appointments != null && profileModel.Appointments.Any())
+    {
+        <h3 class="mb-4 fw-bold text-danger">Your Appointments</h3>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            @foreach (var appointment in profileModel.Appointments)
+            {
+                <div class="col">
+                    <div class="card h-100 appointment-card text-light border-0 shadow-lg">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">@appointment.DoctorName</h5>
+                            <p class="card-text"><strong>Specialization:</strong> @appointment.Doctor_Specialization</p>
+                            <p class="card-text"><strong>Date:</strong> @appointment.AppointmentDate.ToString("yyyy-MM-dd HH:mm")</p>
+                            <p class="card-text"><strong>Description:</strong> @appointment.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <h3 class="mb-4 fw-bold text-danger">No Appointments Found</h3>
+    }
+</div>
+
+
+@code {
+    private ProfileViewModel profileModel = new ProfileViewModel();
+    private string? SuccessMessage;
+    private string? ErrorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Load profile data from API
+        try
+        {
+            //profileModel = await Http.GetFromJsonAsync<ProfileViewModel>("api/profile") ?? new ProfileViewModel();
+            var dummyProfile = new ProfileViewModel
+                {
+                    Name = "John Doe",
+                    Email = "john.doe@example.com",
+                    Disease = "Hypertension",
+                    OldPassword = null,
+                    NewPassword = null,
+                    ConfirmPassword = null,
+                    Appointments = new List<AppointmentDTO>
+                {
+                    new AppointmentDTO
+                    {
+                        DoctorName = "Dr. Ayesha Khan",
+                        Doctor_Specialization = "Cardiologist",
+                        AppointmentDate = new DateTime(2025, 6, 10, 10, 30, 0),
+                        Description = "Routine heart checkup"
+                    },
+                    new AppointmentDTO
+                    {
+                        DoctorName = "Dr. Usman Saeed",
+                        Doctor_Specialization = "Dermatologist",
+                        AppointmentDate = new DateTime(2025, 6, 15, 14, 0, 0),
+                        Description = "Skin allergy consultation"
+                    },
+                    new AppointmentDTO
+                    {
+                        DoctorName = "Dr. Sana Tariq",
+                        Doctor_Specialization = "Pediatrician",
+                        AppointmentDate = new DateTime(2025, 6, 20, 9, 0, 0),
+                        Description = "Child vaccination follow-up"
+                    }
+                }
+                };
+            profileModel = dummyProfile;
+        }
+        catch
+        {
+            ErrorMessage = "Failed to load profile data.";
+        }
+    }
+
+    private async Task UpdateProfile()
+    {
+        ErrorMessage = null;
+        SuccessMessage = null;
+
+        // Basic password validation
+        if (!string.IsNullOrEmpty(profileModel.NewPassword) || !string.IsNullOrEmpty(profileModel.ConfirmPassword))
+        {
+            if (profileModel.NewPassword != profileModel.ConfirmPassword)
+            {
+                ErrorMessage = "New password and confirmation do not match.";
+                return;
+            }
+            if (string.IsNullOrEmpty(profileModel.OldPassword))
+            {
+                ErrorMessage = "Old password is required to change password.";
+                return;
+            }
+        }
+
+        try
+        {
+            //var response = await Http.PutAsJsonAsync("api/profile/update", profileModel);
+            //if (response.IsSuccessStatusCode)
+            {
+                SuccessMessage = "Profile updated successfully!";
+                // Clear password fields after success
+                profileModel.OldPassword = null;
+                profileModel.NewPassword = null;
+                profileModel.ConfirmPassword = null;
+            }
+            // else
+            // {
+            //     var error = await response.Content.ReadAsStringAsync();
+            //     ErrorMessage = $"Update failed: {error}";
+            // }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+}
+ 
+
+ 

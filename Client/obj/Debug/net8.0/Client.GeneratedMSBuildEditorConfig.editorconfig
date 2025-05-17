@@ -28,16 +28,72 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usman/Desktop/DocDirectAPP/Client/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/AboutComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQWJvdXRDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/AppointmentDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQXBwb2ludG1lbnREZXRhaWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/ContactComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQ29udGFjdENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/Departments.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRGVwYXJ0bWVudHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/Doctors.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRG9jdG9ycy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/FAQs.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRkFRcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/HeroComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcSGVyb0NvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/Services.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcU2VydmljZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/StatsComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcU3RhdHNDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/TestimonialsComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcVGVzdGltb25pYWxzQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/WelcomeCarousel.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcV2VsY29tZUNhcm91c2VsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Layout/PatientLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFBhdGllbnRMYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Usman/Desktop/DocDirectAPP/Client/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usman/Desktop/DocDirectAPP/Client/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Pages/Patient/PatientHomeComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudFxQYXRpZW50SG9tZUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Pages/Patient/ProfileComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudFxQcm9maWxlQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Pages/Patient/SignoutComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudFxTaWdub3V0Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Pages/RegisterComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXJDb21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Usman/Desktop/DocDirectAPP/Client/_Imports.razor]
@@ -51,3 +107,7 @@ build_metadata.AdditionalFiles.CssScope = b-tmopy668it
 [C:/Users/Usman/Desktop/DocDirectAPP/Client/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-9qkkwgv1yd
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Pages/SignInComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2lnbkluQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-elv1s38xx7

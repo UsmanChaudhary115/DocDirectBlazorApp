@@ -1,0 +1,51 @@
+﻿@using Core.Entities
+<section id="doctors" class="doctors section">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Doctors</h2>
+        <p>Meet our team of highly skilled doctors</p>
+    </div>
+    <div class="container">
+        <div class="row gy-4">
+            @if (doctors != null && doctors.Any())
+            {
+                @foreach (var doctor in doctors)
+                {
+                    <div class="col-lg-6" data-aos="fade-up">
+                        <div class="team-member d-flex align-items-start">
+                            <div class="member-info">
+                                <h4>@doctor.Name</h4>
+                                <span>@doctor.Specialization</span>
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No doctors available at the moment.</p>
+            }
+        </div>
+    </div>
+</section>
+
+@code {
+    private List<Doctor> doctors = new()
+    {
+        new Doctor { DoctorId = 1, Name = "Dr. Ayesha Khan", Specialization = "Cardiologist" },
+        new Doctor { DoctorId = 2, Name = "Dr. Usman Saeed", Specialization = "Dermatologist" },
+        new Doctor { DoctorId = 3, Name = "Dr. Sana Tariq", Specialization = "Pediatrician" },
+        new Doctor { DoctorId = 4, Name = "Dr. Ali Raza", Specialization = "ENT Specialist" },
+        new Doctor { DoctorId = 5, Name = "Dr. Hira Zubair", Specialization = "Neurologist" },
+        new Doctor { DoctorId = 6, Name = "Dr. Waqar Ahmed", Specialization = "Orthopedic Surgeon" },
+        new Doctor { DoctorId = 7, Name = "Dr. Zara Shah", Specialization = "Gynecologist" },
+        new Doctor { DoctorId = 8, Name = "Dr. Imran Farooq", Specialization = "Psychiatrist" },
+        new Doctor { DoctorId = 9, Name = "Dr. Mahnoor Aslam", Specialization = "Dentist" },
+        new Doctor { DoctorId = 10, Name = "Dr. Bilal Qureshi", Specialization = "General Surgeon" }
+    };
+}

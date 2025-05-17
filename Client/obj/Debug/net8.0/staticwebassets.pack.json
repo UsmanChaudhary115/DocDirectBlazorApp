@@ -493,8 +493,16 @@
       "PackagePath": "staticwebassets\\img\\hero-bg.jpg"
     },
     {
+      "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\img\\index.html",
+      "PackagePath": "staticwebassets\\img\\index.html"
+    },
+    {
       "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\img\\logo.png",
       "PackagePath": "staticwebassets\\img\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\img\\team-young-specialist-doctors-standing-corridor-hospital.jpg",
+      "PackagePath": "staticwebassets\\img\\team-young-specialist-doctors-standing-corridor-hospital.jpg"
     },
     {
       "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\img\\testimonials\\testimonials-1.jpg",
@@ -521,6 +529,10 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\js\\carousel.js",
+      "PackagePath": "staticwebassets\\js\\carousel.js"
+    },
+    {
       "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
     },
@@ -531,6 +543,10 @@
     {
       "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\js\\swiper-init.js",
       "PackagePath": "staticwebassets\\js\\swiper-init.js"
+    },
+    {
+      "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\js\\toasts.js",
+      "PackagePath": "staticwebassets\\js\\toasts.js"
     },
     {
       "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\lib\\bootstrap\\LICENSE",
