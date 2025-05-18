@@ -51,18 +51,18 @@
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <div>
                                     <h5 class="card-title fw-bolder">@appointment.DoctorName</h5>
-                                    <h6 class="card-subtitle mb-2">@appointment.Doctor_Specialization</h6>
-                                    <p class="card-text"><strong>Date:</strong> @appointment.AppointmentDate.ToString("dd MMM yyyy")</p>
+                                    @* <h6 class="card-subtitle mb-2">@appointment.Doctor_Specialization</h6> *@
+                                    @* <p class="card-text"><strong>Date:</strong> @appointment.AppointmentDate.ToString("dd MMM yyyy")</p> *@
                                     <p class="card-text">
                                         <strong>Status:</strong>
                                         <span class="@(appointment.isApproved ? "text-success" : "text-warning") fw-bolder">
                                             @(appointment.isApproved ? "Approved" : "Pending")
                                         </span>
                                     </p>
-                                    <p class="card-text"><strong>Description:</strong> @appointment.Description</p>
+                                    @* <p class="card-text"><strong>Description:</strong> @appointment.Description</p> *@
                                 </div>
                                 <div class="d-flex flex-column gap-2 mt-3">
-                                    <button @onclick="@(() => ViewAppointment(appointment.AppointmentId))" class="btn btn-secondary btn-sm">View</button>
+                                    <a href="#appointmentDetails" @onclick="@(() => ViewAppointment(appointment.AppointmentId))" class="btn btn-secondary btn-sm">View</a>
                                     <button @onclick="@(() => CancelAppointment(appointment.AppointmentId))" class="btn btn-danger btn-sm">Cancel</button>
                                     <button @onclick="@(() => EditAppointment(appointment.AppointmentId))" class="btn btn-warning btn-sm">Update</button>
                                 </div>
