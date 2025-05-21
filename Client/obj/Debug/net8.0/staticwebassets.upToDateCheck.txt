@@ -118,6 +118,7 @@ wwwroot\img\gallery\gallery-5.jpg
 wwwroot\img\gallery\gallery-6.jpg
 wwwroot\img\gallery\gallery-7.jpg
 wwwroot\img\gallery\gallery-8.jpg
+wwwroot\img\gallery\gallery-9.jpg
 wwwroot\img\hero-bg.jpg
 wwwroot\img\index.html
 wwwroot\img\logo.png
@@ -129,7 +130,11 @@ wwwroot\img\testimonials\testimonials-4.jpg
 wwwroot\img\testimonials\testimonials-5.jpg
 wwwroot\index.html
 wwwroot\js\carousel.js
+wwwroot\js\chat-scroll.js
+wwwroot\js\form.js
 wwwroot\js\main.js
+wwwroot\js\navbar.js
+wwwroot\js\scrollTop.js
 wwwroot\js\site.js
 wwwroot\js\swiper-init.js
 wwwroot\js\toasts.js

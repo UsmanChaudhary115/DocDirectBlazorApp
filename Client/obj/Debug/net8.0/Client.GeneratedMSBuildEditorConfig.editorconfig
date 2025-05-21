@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQXBwb2ludG1lbnREZXRhaWxzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/ChatComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQ2hhdENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/ContactComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQ29udGFjdENvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -66,6 +70,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/TestimonialsComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcVGVzdGltb25pYWxzQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/UpdateAppoinmentComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcVXBkYXRlQXBwb2lubWVudENvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Usman/Desktop/DocDirectAPP/Client/Controls/WelcomeCarousel.razor]

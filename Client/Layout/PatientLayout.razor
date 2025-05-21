@@ -40,6 +40,7 @@
 
 <main role="main" class="pb-3" style="overflow-x: hidden;">
     @Body
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 </main>
 
 <footer id="footer" class="light-background footer">
@@ -97,3 +98,15 @@
         <p>© <span>Copyright</span> <strong class="px-1 sitename">DocDirect</strong> <span>All Rights Reserved</span></p>
     </div>
 </footer>
+@inject IJSRuntime JS
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initNavbar");
+            await JS.InvokeVoidAsync("initScrollTop");
+        }
+    }
+}

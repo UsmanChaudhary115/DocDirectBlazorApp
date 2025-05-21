@@ -1,0 +1,144 @@
+﻿@inject NavigationManager NavigationManager
+@using Core.Entities
+<section id="updateAppointment">
+    <h3 class="text-primary mb-4 fw-bold text-center">Edit Appointment</h3>
+    @if (appointment == null)
+    {
+        <div class="alert alert-danger text-center" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i> Appointment not found.
+        </div>
+    }
+    else
+    {
+        <EditForm Model="appointment" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="card shadow-lg border-0 rounded-4 bg-white" style="max-width: 600px; margin: auto;">
+                <div class="card-header bg-primary text-white rounded-top-4">
+                    <h5 class="mb-0"><i class="bi bi-pencil-square me-2"></i>Edit Appointment</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="doctor" class="form-label">Doctor Name</label>
+                        <InputText id="doctor" class="form-control" @bind-Value="appointment.Doctor.Name" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="specialization" class="form-label">Specialization</label>
+                        <InputText id="specialization" class="form-control" @bind-Value="appointment.Doctor.Specialization" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Appointment Date</label>
+                        <InputDate id="date" class="form-control" @bind-Value="appointment.AppointmentDate" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <InputTextArea id="description" class="form-control" @bind-Value="appointment.Description" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Approval Status</label>
+                        <InputSelect class="form-select" @bind-Value="appointment.isApproved">
+                            <option value="">Select...</option>
+                            <option value="true">Approved</option>
+                            <option value="false">Pending</option>
+                        </InputSelect>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100">
+                        <i class="bi bi-check-circle me-2"></i>Save Changes
+                    </button>
+                </div>
+            </div>
+        </EditForm>
+    }
+</section>
+
+@code {
+    [Parameter]
+    public int? AppointmentId { get; set; }
+
+    private Appointment? appointment;
+
+    // Sample data - replace this with actual API or DB call
+    List<Appointment> appointments = new List<Appointment>
+    {
+        new Appointment
+        {
+            AppointmentId = 1001,
+            AppointmentDate = new DateTime(2025, 5, 20, 10, 0, 0),
+            Description = "Routine checkup",
+            isApproved = true,
+            Doctor = new Doctor
+            {
+                Name = "Dr. Sarah Khan",
+                Specialization = "General Physician"
+            }
+        },
+        new Appointment
+        {
+            AppointmentId = 1002,
+            AppointmentDate = new DateTime(2025, 5, 21, 14, 30, 0),
+            Description = "Follow-up after surgery",
+            isApproved = false,
+            Doctor = new Doctor
+            {
+                Name = "Dr. Ahmed Raza",
+                Specialization = "Orthopedic Surgeon"
+            }
+        },
+        new Appointment
+        {
+            AppointmentId = 1003,
+            AppointmentDate = new DateTime(2025, 5, 22, 9, 0, 0),
+            Description = "Dental cleaning",
+            isApproved = true,
+            Doctor = new Doctor
+            {
+                Name = "Dr. Ayesha Malik",
+                Specialization = "Dentist"
+            }
+        },
+        new Appointment
+        {
+            AppointmentId = 1004,
+            AppointmentDate = new DateTime(2025, 5, 23, 11, 15, 0),
+            Description = "Skin allergy consultation",
+            isApproved = false,
+            Doctor = new Doctor
+            {
+                Name = "Dr. Imran Sheikh",
+                Specialization = "Dermatologist"
+            }
+        },
+        new Appointment
+        {
+            AppointmentId = 1005,
+            AppointmentDate = new DateTime(2025, 5, 24, 16, 45, 0),
+            Description = "Eye checkup",
+            isApproved = true,
+            Doctor = new Doctor
+            {
+                Name = "Dr. Nadia Hussain",
+                Specialization = "Ophthalmologist"
+            }
+        }
+    };
+
+    protected override void OnParametersSet()
+    {
+        appointment = appointments.FirstOrDefault(a => a.AppointmentId == AppointmentId);
+    }
+
+    private void HandleValidSubmit()
+    { 
+
+        Console.WriteLine("Appointment updated successfully!");
+
+        // Optionally navigate to detail or list page
+        NavigationManager.NavigateTo("/patient-dashboard");
+    }
+}

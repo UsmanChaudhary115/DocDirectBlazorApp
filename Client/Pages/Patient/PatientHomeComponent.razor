@@ -5,8 +5,13 @@
 @using Core.Entities
 @layout PatientLayout
 @using System.ComponentModel.DataAnnotations
-<WelcomeCarousel></WelcomeCarousel>
 
+<WelcomeCarousel></WelcomeCarousel>
+<a href="#chatSection" @onclick="openChat" class="btn btn-danger m-3">Chat</a>
+@if(isChatOpen)
+{
+    <ChatComponent></ChatComponent>
+}
 <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
     @if (!string.IsNullOrWhiteSpace(SuccessMessage))
     {
@@ -50,21 +55,24 @@
                         <div class="card h-100 shadow-sm border-0 appointment-card" data-aos="fade-up" data-aos-delay="@((i + 1) * 100)">
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <div>
-                                    <h5 class="card-title fw-bolder">@appointment.DoctorName</h5>
-                                    @* <h6 class="card-subtitle mb-2">@appointment.Doctor_Specialization</h6> *@
-                                    @* <p class="card-text"><strong>Date:</strong> @appointment.AppointmentDate.ToString("dd MMM yyyy")</p> *@
+                                    <h5 class="card-title fw-bolder">@appointment.DoctorName</h5> 
+                                    <p>@appointment.Description</p>
                                     <p class="card-text">
                                         <strong>Status:</strong>
                                         <span class="@(appointment.isApproved ? "text-success" : "text-warning") fw-bolder">
                                             @(appointment.isApproved ? "Approved" : "Pending")
                                         </span>
-                                    </p>
-                                    @* <p class="card-text"><strong>Description:</strong> @appointment.Description</p> *@
+                                    </p> 
                                 </div>
                                 <div class="d-flex flex-column gap-2 mt-3">
                                     <a href="#appointmentDetails" @onclick="@(() => ViewAppointment(appointment.AppointmentId))" class="btn btn-secondary btn-sm">View</a>
                                     <button @onclick="@(() => CancelAppointment(appointment.AppointmentId))" class="btn btn-danger btn-sm">Cancel</button>
-                                    <button @onclick="@(() => EditAppointment(appointment.AppointmentId))" class="btn btn-warning btn-sm">Update</button>
+                                    <a href="#appointment" class="btn btn-sm btn-warning"
+                                    @onclick="() => EditAppointment(appointment.AppointmentId)"
+                                    disabled="@IsPast(appointment.AppointmentDate)">
+                                        Edit
+                                    </a>
+
                                 </div>
                             </div>
                         </div>
@@ -91,12 +99,14 @@
     <AppointmentDetails AppointmentId="@idToShow"></AppointmentDetails>
 }
 
+
 <!-- Appointments Booking-->
 <section id="appointment" class="appointment section-bg py-5 light-background">
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-        <h2>Appointment</h2>
-        <p>Fill out the details below to make an appointment</p>
+        <h2>@(idToEdit == null ? "Appointment" : "Update Appointment")</h2>
+        <p>@(idToEdit == null ? "Fill out the details below to make an appointment" : "Modify your appointment details below")</p>
+
     </div>
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -145,14 +155,15 @@
                 <button type="submit"
                 class="btn btn-danger px-4 py-2 shadow"
                 disabled="@(!IsDateSelected || appointmentForm.DoctorId < 0)">
-                    <i class="bi bi-calendar-check-fill me-2"></i>Make an Appointment
+                    <i class="bi bi-calendar-check-fill me-2"></i>
+                    @(idToEdit == null ? "Make an Appointment" : "Update Appointment")
                 </button>
             </div>
         </EditForm>
     </div>
 </section>
 
-    
+
 <!-- Doctor -->
 <section class="py-5" id="doctor-department">
     <section id="doctors" class="doctors section">
@@ -220,60 +231,19 @@
     private string? ErrorMessage { get; set; }
     private int? idToEdit { get; set; }
     private int? idToShow { get; set; }
-
-
-    private async Task ViewAppointment(int id)
-    {
-        SuccessMessage = $"Viewing appointment {id}.";
-        ErrorMessage = null;
-        idToShow = id;
-        //Navigation.NavigateTo($"/appointment/{id}");
-        await JS.InvokeVoidAsync("initializeToasts");
-    }
-
-    private async Task CancelAppointment(int id)
-    {
-        appointments.RemoveAll(a => a.AppointmentId == id);
-        ErrorMessage = $"Appointment {id} canceled successfully.";
-        //ErrorMessage = null;
-        await JS.InvokeVoidAsync("initializeToasts");
-    }
-
-    private async Task EditAppointment(int id)
-    {
-        SuccessMessage = $"Editing appointment {id}.";
-        ErrorMessage = null;
-        //Navigation.NavigateTo($"/edit-appointment/{id}");
-        await JS.InvokeVoidAsync("initializeToasts");
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (!string.IsNullOrWhiteSpace(SuccessMessage) || !string.IsNullOrWhiteSpace(ErrorMessage))
-        {
-            await JS.InvokeVoidAsync("initializeToasts");
-            // Optionally clear the message after showing the toast
-            SuccessMessage = null;
-            ErrorMessage = null;
-        }
-        idToEdit = null;
-        idToShow = null;
-    }
-
-
     private List<Doctor> doctors = new()
-        {
-            new Doctor { DoctorId = 1, Name = "Dr. Ayesha Khan", Specialization = "Cardiologist" },
-            new Doctor { DoctorId = 2, Name = "Dr. Usman Saeed", Specialization = "Dermatologist" },
-            new Doctor { DoctorId = 3, Name = "Dr. Sana Tariq", Specialization = "Pediatrician" },
-            new Doctor { DoctorId = 4, Name = "Dr. Ali Raza", Specialization = "ENT Specialist" },
-            new Doctor { DoctorId = 5, Name = "Dr. Hira Zubair", Specialization = "Neurologist" },
-            new Doctor { DoctorId = 6, Name = "Dr. Waqar Ahmed", Specialization = "Orthopedic Surgeon" },
-            new Doctor { DoctorId = 7, Name = "Dr. Zara Shah", Specialization = "Gynecologist" },
-            new Doctor { DoctorId = 8, Name = "Dr. Imran Farooq", Specialization = "Psychiatrist" },
-            new Doctor { DoctorId = 9, Name = "Dr. Mahnoor Aslam", Specialization = "Dentist" },
-            new Doctor { DoctorId = 10, Name = "Dr. Bilal Qureshi", Specialization = "General Surgeon" }
-        };
+    {
+        new Doctor { DoctorId = 1, Name = "Dr. Ayesha Khan", Specialization = "Cardiologist" },
+        new Doctor { DoctorId = 2, Name = "Dr. Usman Saeed", Specialization = "Dermatologist" },
+        new Doctor { DoctorId = 3, Name = "Dr. Sana Tariq", Specialization = "Pediatrician" },
+        new Doctor { DoctorId = 4, Name = "Dr. Ali Raza", Specialization = "ENT Specialist" },
+        new Doctor { DoctorId = 5, Name = "Dr. Hira Zubair", Specialization = "Neurologist" },
+        new Doctor { DoctorId = 6, Name = "Dr. Waqar Ahmed", Specialization = "Orthopedic Surgeon" },
+        new Doctor { DoctorId = 7, Name = "Dr. Zara Shah", Specialization = "Gynecologist" },
+        new Doctor { DoctorId = 8, Name = "Dr. Imran Farooq", Specialization = "Psychiatrist" },
+        new Doctor { DoctorId = 9, Name = "Dr. Mahnoor Aslam", Specialization = "Dentist" },
+        new Doctor { DoctorId = 10, Name = "Dr. Bilal Qureshi", Specialization = "General Surgeon" }
+    };
     List<AppointmentDTO> appointments = new List<AppointmentDTO>
         {
             new AppointmentDTO
@@ -328,16 +298,73 @@
             }
         };
 
-    private string searchQuery = "";
+    private async Task ViewAppointment(int id)
+    {
+        SuccessMessage = $"Viewing appointment {id}.";
+        ErrorMessage = null;
+        idToShow = id;
+        //Navigation.NavigateTo($"/appointment/{id}");
+        await JS.InvokeVoidAsync("initializeToasts");
+    }
 
-    private AppointmentFormModel appointmentForm = new();
+    private async Task CancelAppointment(int id)
+    {
+        appointments.RemoveAll(a => a.AppointmentId == id);
+        ErrorMessage = $"Appointment {id} canceled successfully.";
+        //ErrorMessage = null;
+        await JS.InvokeVoidAsync("initializeToasts");
+    }
+
+    private async Task EditAppointment(int id)
+    {
+        var appt = appointments.FirstOrDefault(a => a.AppointmentId == id);
+        if (appt != null)
+        {
+            if (IsPast(appt.AppointmentDate))
+            {
+                ErrorMessage = "You cannot edit past appointments.";
+                await JS.InvokeVoidAsync("initializeToasts");
+                return;
+            }
+
+            appointmentForm = new AppointmentFormModel
+            {
+                AppointmentId = appt.AppointmentId,
+                AppointmentDate = appt.AppointmentDate, 
+                Description = appt.Description,
+                DoctorId = doctors.FindIndex(d => d.Name == appt.DoctorName)
+            };
+
+            idToEdit = id;
+            SuccessMessage = $"Editing appointment #{id}";
+            await JS.InvokeVoidAsync("initializeToasts");
+        }
+    }
 
     protected override async Task OnInitializedAsync()
     {
         // fetch appointments and doctors from API
         WelcomeMessage = "Welcome, Patient!";
         await JS.InvokeVoidAsync("initializeToasts");
+    }  
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!string.IsNullOrWhiteSpace(SuccessMessage) || !string.IsNullOrWhiteSpace(ErrorMessage))
+        {
+            await JS.InvokeVoidAsync("initializeToasts");
+            // Optionally clear the message after showing the toast
+            SuccessMessage = null;
+            ErrorMessage = null;
+        } 
+        idToShow = null;
     }
+
+
+
+    private string searchQuery = "";
+
+    private AppointmentFormModel appointmentForm = new();
 
     private List<Doctor> FilterDoctors() =>
         doctors.Where(d => d.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
@@ -345,20 +372,44 @@
 
     private async Task SubmitAppointment()
     { 
+        if (appointmentForm.AppointmentId == 0)
+        {
+            // Creating new appointment
+            appointments.Add(new AppointmentDTO { AppointmentId = appointments.Max(a => a.AppointmentId) + 1, AppointmentDate = appointmentForm.AppointmentDate, DoctorName = doctors[appointmentForm.DoctorId].Name, Doctor_Specialization = doctors[appointmentForm.DoctorId].Specialization, Description = appointmentForm.Description, isApproved = false });
+            SuccessMessage = "Appointment created!";
+        }
+        else
+        {
+            // Updating existing appointment
+            var existing = appointments.FirstOrDefault(a => a.AppointmentId == appointmentForm.AppointmentId);
+            if (existing != null)
+            {
+                existing.AppointmentDate = appointmentForm.AppointmentDate;
+                existing.DoctorName = doctors[appointmentForm.DoctorId - 1].Name;
+                existing.Doctor_Specialization = doctors[appointmentForm.DoctorId - 1].Specialization;
+                existing.Description = appointmentForm.Description;
+                existing.isApproved = false; // mark as pending after update
+                SuccessMessage = "Appointment updated successfully!";
+            }
+        }
 
-        appointments.Add(new AppointmentDTO { AppointmentDate = appointmentForm.AppointmentDate, DoctorName = doctors[appointmentForm.DoctorId].Name, Doctor_Specialization = doctors[appointmentForm.DoctorId].Specialization, Description = appointmentForm.Description, isApproved = false });
-        SuccessMessage = "Appointment created!";
         await JS.InvokeVoidAsync("initializeToasts");
-        Nav.NavigateTo("/patient-dashboard"); 
+        appointmentForm = new(); // reset form
+        idToEdit = null; // clear edit state
+        Nav.NavigateTo("/patient-dashboard");
     }
+
 
     public class AppointmentFormModel
     {
+        public int AppointmentId { get; set; }  // NEW: To support editing
         public DateTime AppointmentDate { get; set; }
         public int DoctorId { get; set; }
+
         [Required(ErrorMessage = "Description is required.")]
         public string Description { get; set; } = string.Empty;
     }
+
 
 
 
@@ -390,4 +441,15 @@
             appointmentForm.DoctorId = 0; // Reset doctor selection
         }
     }
+
+    bool isChatOpen = false;
+    void openChat()
+    {
+        isChatOpen = true;
+    }
+    private bool IsPast(DateTime date)
+    {
+        return date.Date < DateTime.Today;
+    }
+
 }

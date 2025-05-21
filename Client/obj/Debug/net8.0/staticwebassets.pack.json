@@ -489,6 +489,10 @@
       "PackagePath": "staticwebassets\\img\\gallery\\gallery-8.jpg"
     },
     {
+      "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\img\\gallery\\gallery-9.jpg",
+      "PackagePath": "staticwebassets\\img\\gallery\\gallery-9.jpg"
+    },
+    {
       "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\img\\hero-bg.jpg",
       "PackagePath": "staticwebassets\\img\\hero-bg.jpg"
     },
@@ -533,8 +537,24 @@
       "PackagePath": "staticwebassets\\js\\carousel.js"
     },
     {
+      "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\js\\chat-scroll.js",
+      "PackagePath": "staticwebassets\\js\\chat-scroll.js"
+    },
+    {
+      "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\js\\form.js",
+      "PackagePath": "staticwebassets\\js\\form.js"
+    },
+    {
       "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\js\\navbar.js",
+      "PackagePath": "staticwebassets\\js\\navbar.js"
+    },
+    {
+      "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\js\\scrollTop.js",
+      "PackagePath": "staticwebassets\\js\\scrollTop.js"
     },
     {
       "Id": "C:\\Users\\Usman\\Desktop\\DocDirectAPP\\Client\\wwwroot\\js\\site.js",

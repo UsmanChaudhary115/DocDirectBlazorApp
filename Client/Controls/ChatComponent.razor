@@ -1,0 +1,74 @@
+﻿@using System.ComponentModel.DataAnnotations
+@inject IJSRuntime JS
+
+<section id="chatSection" data-aos="fade-up">
+
+    <div class="d-flex justify-content-center">
+        <header class="chat-header p-3" style="min-width: 70%;">
+            <h2 class="text-white fw-bolder">@otherPartnerName</h2>
+        </header>
+    </div>
+    <div id="chatContainer" class="chat-container">
+        @foreach (var msg in messages)
+        {
+            <div class="message-wrapper @(msg.SenderId == currentUserId ? "sent" : "received")">
+                <div class="message-bubble">
+                    <p class="message-content">@msg.Content</p>
+                    <span class="message-time">@msg.Timestamp.ToLocalTime().ToString("hh:mm tt")</span>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+
+<style>
+    .chat-header {
+        background: linear-gradient(90deg, #ff0000, #000000);
+        border-radius: 10px 10px 0 0; 
+        font-size: 1.5rem;
+        text-align: start; 
+    }
+</style>
+
+@code {
+    string currentUserId = "patient1";
+    string otherPartnerName = "Dr. John Doe";
+
+    List<Message> messages = new List<Message>
+    {
+        new Message { Id = 1, SenderId = "patient1", ReceiverId = "doctor1", Content = "Hello doctor, I have a headache.", Timestamp = DateTime.UtcNow.AddMinutes(-30) },
+        new Message { Id = 2, SenderId = "doctor1", ReceiverId = "patient1", Content = "Hi! Since when have you had it?", Timestamp = DateTime.UtcNow.AddMinutes(-29) },
+        new Message { Id = 3, SenderId = "patient1", ReceiverId = "doctor1", Content = "It's been bothering me since last night.", Timestamp = DateTime.UtcNow.AddMinutes(-28) },
+        new Message { Id = 4, SenderId = "doctor1", ReceiverId = "patient1", Content = "Do you have any other symptoms like fever or nausea?", Timestamp = DateTime.UtcNow.AddMinutes(-26) },
+        new Message { Id = 5, SenderId = "patient1", ReceiverId = "doctor1", Content = "I felt a little nauseous in the morning.", Timestamp = DateTime.UtcNow.AddMinutes(-25) },
+        new Message { Id = 6, SenderId = "doctor1", ReceiverId = "patient1", Content = "Alright. Have you taken any medication so far?", Timestamp = DateTime.UtcNow.AddMinutes(-24) },
+        new Message { Id = 7, SenderId = "patient1", ReceiverId = "doctor1", Content = "I took a paracetamol but it didn’t help much.", Timestamp = DateTime.UtcNow.AddMinutes(-22) },
+        new Message { Id = 8, SenderId = "doctor1", ReceiverId = "patient1", Content = "Okay. I recommend staying hydrated and resting.", Timestamp = DateTime.UtcNow.AddMinutes(-20) },
+        new Message { Id = 9, SenderId = "doctor1", ReceiverId = "patient1", Content = "If it persists tomorrow, come in for a checkup.", Timestamp = DateTime.UtcNow.AddMinutes(-19) },
+        new Message { Id = 10, SenderId = "patient1", ReceiverId = "doctor1", Content = "Sure, thank you so much!", Timestamp = DateTime.UtcNow.AddMinutes(-18) }
+    };
+
+    public class Message
+    {
+        public int Id { get; set; }
+
+        [Required]
+        public string SenderId { get; set; }
+
+        [Required]
+        public string ReceiverId { get; set; }
+
+        [Required]
+        public string Content { get; set; }
+
+        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+
+        public bool IsRead { get; set; } = false;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JS.InvokeVoidAsync("scrollToBottomOfChat");
+    }
+}
