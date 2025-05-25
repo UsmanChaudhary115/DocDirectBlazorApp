@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
 <header id="header" class="header sticky-top">
-    <div class="topbar d-none d-md-flex align-items-center bg-danger">
+    <div class="topbar d-none d-md-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
                 <i class="bi bi-envelope d-flex align-items-center">
@@ -22,10 +22,14 @@
 
     <div class="branding d-flex align-items-center">
         <div class="container position-relative d-flex align-items-center justify-content-between">
-            <a href="/" class="logo d-flex align-items-center me-auto">
+            @* <a href="/" class="logo d-flex align-items-center me-auto">
                 <h1 class="sitename">DocDirect</h1>
-            </a>
+            </a> *@
+            <a href="/" class="logo d-flex align-items-center me-auto">
+                @* <h1 class="sitename">DocDirect</h1> *@
+                <img src="img/logo.png" class="sitename" alt="DocDirct" />
 
+            </a>
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="/patient-dashboard">Dashboard</a></li>

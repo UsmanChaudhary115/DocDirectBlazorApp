@@ -1,5 +1,8 @@
 ﻿@page "/profile"
 @inject HttpClient Http
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 @using Core.Entities
 @layout PatientLayout
 
@@ -78,8 +81,7 @@
                 <div class="col">
                     <div class="card h-100 appointment-card text-light border-0 shadow-lg">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold">@appointment.DoctorName</h5>
-                            <p class="card-text"><strong>Specialization:</strong> @appointment.Doctor_Specialization</p>
+                            <h5 class="card-title fw-bold">@appointment.DoctorName</h5> 
                             <p class="card-text"><strong>Date:</strong> @appointment.AppointmentDate.ToString("yyyy-MM-dd HH:mm")</p>
                             <p class="card-text"><strong>Description:</strong> @appointment.Description</p>
                         </div>
@@ -96,54 +98,49 @@
 
 
 @code {
+    private string userId; 
     private ProfileViewModel profileModel = new ProfileViewModel();
     private string? SuccessMessage;
     private string? ErrorMessage;
 
     protected override async Task OnInitializedAsync()
     {
-        // Load profile data from API
-        try
+        userId = await localStorage.GetItemAsync<string>("userId");
+        if (string.IsNullOrEmpty(userId))
         {
-            //profileModel = await Http.GetFromJsonAsync<ProfileViewModel>("api/profile") ?? new ProfileViewModel();
-            var dummyProfile = new ProfileViewModel
-                {
-                    Name = "John Doe",
-                    Email = "john.doe@example.com",
-                    Disease = "Hypertension",
-                    OldPassword = null,
-                    NewPassword = null,
-                    ConfirmPassword = null,
-                    Appointments = new List<AppointmentDTO>
-                {
-                    new AppointmentDTO
-                    {
-                        DoctorName = "Dr. Ayesha Khan",
-                        Doctor_Specialization = "Cardiologist",
-                        AppointmentDate = new DateTime(2025, 6, 10, 10, 30, 0),
-                        Description = "Routine heart checkup"
-                    },
-                    new AppointmentDTO
-                    {
-                        DoctorName = "Dr. Usman Saeed",
-                        Doctor_Specialization = "Dermatologist",
-                        AppointmentDate = new DateTime(2025, 6, 15, 14, 0, 0),
-                        Description = "Skin allergy consultation"
-                    },
-                    new AppointmentDTO
-                    {
-                        DoctorName = "Dr. Sana Tariq",
-                        Doctor_Specialization = "Pediatrician",
-                        AppointmentDate = new DateTime(2025, 6, 20, 9, 0, 0),
-                        Description = "Child vaccination follow-up"
-                    }
-                }
-                };
-            profileModel = dummyProfile;
+            // Not logged in — redirect to signin
+            await JS.InvokeVoidAsync("Swal.fire", new
+            {
+                title = "Access Denied",
+                text = "You must be logged in to access this page.",
+                icon = "warning",
+                confirmButtonText = "OK"
+            });
+            Nav.NavigateTo("/signin", forceLoad: true);
+
         }
-        catch
+        // Load profile data from API
+        else
         {
-            ErrorMessage = "Failed to load profile data.";
+            try
+            {
+                //profileModel = await Http.GetFromJsonAsync<ProfileViewModel>("api/profile") ?? new ProfileViewModel();
+                var dummyProfile = new ProfileViewModel
+                    {
+                        Name = "John Doe",
+                        Email = "john.doe@example.com",
+                        Disease = "Hypertension",
+                        OldPassword = null,
+                        NewPassword = null,
+                        ConfirmPassword = null,
+                        Appointments = await Http.GetFromJsonAsync<List<AppointmentDTO>>($"api/AppointmentDTO/GetAppointmentDTOsByPatientId/{userId}")
+                    };
+                profileModel = dummyProfile;
+            }
+            catch
+            {
+                ErrorMessage = "Failed to load profile data.";
+            }
         }
     }
 

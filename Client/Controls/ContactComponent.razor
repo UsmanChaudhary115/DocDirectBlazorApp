@@ -1,6 +1,6 @@
 ﻿@using System.ComponentModel.DataAnnotations
 @inject HttpClient HttpClient
-@inject IJSRuntime JS
+@inject IJSRuntime JSRuntime
 
 <section id="contact" class="contact section light-background">
     <div class="container section-title" data-aos="fade-up">
@@ -40,38 +40,31 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-8 py-3">
-                <EditForm Model="@FormModel" OnValidSubmit="@HandleSubmit" id="contact-form">
+            <div class="col-lg-8">
+                <EditForm Model="@contactForm" OnValidSubmit="@HandleSubmit" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
                     <DataAnnotationsValidator />
                     <div class="row gy-4">
                         <div class="col-md-6">
-                            <label for="name" class="form-label">Name</label>
-                            <InputText id="name" class="form-control" @bind-Value="@FormModel.Name" placeholder="Your Name" />
-                            <ValidationMessage For="@(() => FormModel.Name)" />
+                            <InputText class="form-control" @bind-Value="contactForm.Name" placeholder="Your Name" />
+                            <ValidationMessage For="@(() => contactForm.Name)" />
                         </div>
                         <div class="col-md-6">
-							<label for="email" class="form-label">Email</label>
-                            <InputText id="email" class="form-control" @bind-Value="@FormModel.Email" placeholder="Your Email" />
-                            <ValidationMessage For="@(() => FormModel.Email)" />
+                            <InputText class="form-control" @bind-Value="contactForm.Email" placeholder="Your Email" />
+                            <ValidationMessage For="@(() => contactForm.Email)" />
                         </div>
                         <div class="col-md-12">
-							<label for="subject" class="form-label">Subject</label>
-                            <InputText id="subject" class="form-control" @bind-Value="@FormModel.Subject" placeholder="Subject" />
-                            <ValidationMessage For="@(() => FormModel.Subject)" />
+                            <InputText class="form-control" @bind-Value="contactForm.Subject" placeholder="Subject" />
+                            <ValidationMessage For="@(() => contactForm.Subject)" />
                         </div>
                         <div class="col-md-12">
-							<label for="message" class="form-label">Message</label>
-                            <InputTextArea id="message" class="form-control" @bind-Value="@FormModel.Message" rows="6" placeholder="Message" />
-                            <ValidationMessage For="@(() => FormModel.Message)" />
+                            <InputTextArea class="form-control" @bind-Value="contactForm.Message" rows="6" placeholder="Message" />
+                            <ValidationMessage For="@(() => contactForm.Message)" />
                         </div>
                         <div class="col-md-12 text-center">
-                            <div class="loading" style="@(IsSubmitting ? "display: block;" : "display: none;")">Loading</div>
-                            <div class="error-message" role="alert" style="@(!string.IsNullOrEmpty(ErrorMessage) ? "display: block;" : "display: none;")">@ErrorMessage</div>
-                            <div class="sent-message" role="alert" style="@(IsSuccess ? "display: block;" : "display: none;")">Your message has been sent. Thank you!</div>
-                            <button type="submit" class="btn btn-danger px-4 py-2 shadow" disabled="@IsSubmitting">
-                                @(IsSubmitting ? "Sending..." : "Send Message")
-                            </button>
+                            <div class="loading" style="@(isLoading ? "display: block;" : "display: none;")">Loading</div>
+                            <div class="error-message" style="@(string.IsNullOrEmpty(errorMessage) ? "display: none;" : "display: block;")">@errorMessage</div>
+                            <div class="sent-message" style="@(string.IsNullOrEmpty(successMessage) ? "display: none;" : "display: block;")">@successMessage</div>
+                            <button type="submit" disabled="@isLoading">Send Message</button>
                         </div>
                     </div>
                 </EditForm>
@@ -81,93 +74,90 @@
 </section>
 
 <style>
-    .error-message {
+    .php-email-form .loading,
+    .php-email-form .error-message,
+    .php-email-form .sent-message {
         display: none;
-        background: #df1529;
-        color: #ffffff;
-        text-align: left;
-        padding: 15px;
-        margin-bottom: 24px;
-        font-weight: 600;
     }
 
-    .sent-message {
-        display: none;
-        background: #059652;
-        color: #ffffff;
-        text-align: center;
-        padding: 15px;
-        margin-bottom: 24px;
-        font-weight: 600;
+    .php-email-form .loading {
+        color: var(--accent-color);
+        font-weight: bold;
     }
 
-    .loading {
-        display: none;
-        background: var(--surface-color, #e0e0e0);
-        text-align: center;
-        padding: 15px;
-        margin-bottom: 24px;
-        font-weight: 600;
+    .php-email-form .error-message {
+        color: #dc3545;
+        font-weight: bold;
     }
 
-        .loading::before {
-            content: "";
-            display: inline-block;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            margin: 0 10px -6px 0;
-            border: 3px solid var(--accent-color, #007bff);
-            border-top-color: var(--surface-color, #e0e0e0);
-            animation: php-email-form-loading 1s linear infinite;
-        }
+    .php-email-form .sent-message {
+        color: white;
+        font-weight: bold;
+    }
 </style>
 
 @code {
-    private ContactFormModel FormModel { get; set; } = new();
-    private bool IsSubmitting { get; set; }
-    private string ErrorMessage { get; set; } = string.Empty;
-    private bool IsSuccess { get; set; }
+    private ContactFormModel contactForm = new();
+    private bool isLoading = false;
+    private string errorMessage = string.Empty;
+    private string successMessage = string.Empty;
 
-    private class ContactFormModel
+    public class ContactFormModel
     {
-        [Required(ErrorMessage = "Name is required.")]
+        [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Email is required.")]
-        [EmailAddress(ErrorMessage = "Invalid email address.")]
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
         public string Email { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Subject is required.")]
+        [Required(ErrorMessage = "Subject is required")]
         public string Subject { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Message is required.")]
+        [Required(ErrorMessage = "Message is required")]
         public string Message { get; set; } = string.Empty;
     }
 
     private async Task HandleSubmit()
     {
-        IsSubmitting = true;
-        ErrorMessage = string.Empty;
-        IsSuccess = false;
+        isLoading = true;
+        errorMessage = string.Empty;
+        successMessage = string.Empty;
+        await JSRuntime.InvokeVoidAsync("eval", "document.querySelector('.loading').style.display = 'block';");
 
         try
         {
-            // Call JS method (optional)
-            await JS.InvokeVoidAsync("submitContactForm", FormModel.Name, FormModel.Email, FormModel.Subject, FormModel.Message);
+            var formData = new
+            {
+                name = contactForm.Name,
+                email = contactForm.Email,
+                subject = contactForm.Subject,
+                message = contactForm.Message
+            };
 
+            var response = await HttpClient.PostAsJsonAsync("https://formspree.io/f/xvgalnyw", formData);
 
-                            IsSuccess = true;
-            FormModel = new ContactFormModel(); // Reset form
-            StateHasChanged();
+            if (response.IsSuccessStatusCode)
+            {
+                successMessage = "Your message has been sent. Thank you!";
+                await JSRuntime.InvokeVoidAsync("eval", "document.querySelector('.sent-message').style.display = 'block';");
+                contactForm = new ContactFormModel(); // Reset form
+            }
+            else
+            {
+                errorMessage = "Failed to send your message. Please try again later.";
+                await JSRuntime.InvokeVoidAsync("eval", "document.querySelector('.error-message').style.display = 'block';");
+            }
         }
-        catch
+        catch (Exception ex)
         {
-            ErrorMessage = "An error occurred. Please try again.";
+            errorMessage = $"An error occurred: {ex.Message}";
+            await JSRuntime.InvokeVoidAsync("eval", "document.querySelector('.error-message').style.display = 'block';");
         }
         finally
         {
-            IsSubmitting = false;
+            isLoading = false;
+            await JSRuntime.InvokeVoidAsync("eval", "document.querySelector('.loading').style.display = 'none';");
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
 <header id="header" class="header sticky-top">
-    <div class="topbar d-none d-md-flex align-items-center bg-danger">
+    <div class="topbar d-none d-md-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
                 <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:usmanalim015@gmail.com">usmanalim015@gmail.com</a></i>
@@ -18,8 +18,10 @@
 
     <div class="branding d-flex align-items-center">
         <div class="container position-relative d-flex align-items-center justify-content-between">
-            <a asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center me-auto">
-                <h1 class="sitename">DocDirect</h1>
+            <a href="/" class="logo d-flex align-items-center me-auto">
+                @* <h1 class="sitename">DocDirect</h1> *@
+                <img src="img/logo.png" class="sitename" alt="DocDirct"/>
+
             </a>
 
             <nav id="navmenu" class="navmenu">

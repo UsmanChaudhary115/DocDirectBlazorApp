@@ -17,11 +17,26 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
-/* From Uiverse.io by satyamchaudharydev */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+    overflow-x: hidden;
+}
+
+footer {
+    flex-shrink: 0;
+}
+ 
 /* === removing default button style ===*/
 .button-switch {
     margin: 0;
@@ -74,6 +89,7 @@ body {
     width: 100%;
     filter: drop-shadow(0 0 23px var(--animation-color));
 }
+
 #bottone1 {
     padding: 16px 33px;
     border-radius: 9px;
@@ -107,15 +123,29 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.form-control:focus {
-    background-color: #222;
-    color: #fff;
-    border: 1px solid #ff4d4d;
-    box-shadow: 0 0 0 0.2rem rgba(255, 77, 77, 0.25);
+
+.form-control {
+    color: black;
+    background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+    border-radius: 0;
 }
 
+    .form-control:focus {
+        background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+        border: 1px solid;
+        border-color: var(--accent-color);
+        box-shadow: none;
+        outline: none;
+    }
+
+    .form-control:active {
+        background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+        box-shadow: none;
+        outline: none;
+    }
+
 .appointment-card {
-    background: linear-gradient(135deg, #ff0000, #000000);
+    background: var(--accent-color);
     border-radius: 16px;
     color: #fff;
     padding: 1rem;
@@ -128,7 +158,7 @@ body {
 }
 
 .card.appointment-card {
-    background: linear-gradient(45deg, #ff0000, #000000);
+    background: var(--accent-color);
     color: white;
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -229,7 +259,7 @@ body {
 }
 
 .sent .message-bubble {
-    background: linear-gradient(135deg, #d80000, #000000);
+    background: var(--accent-color);
     border-bottom-right-radius: 4px;
 }
 

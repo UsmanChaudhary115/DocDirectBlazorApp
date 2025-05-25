@@ -1,10 +1,14 @@
 ﻿@page "/appointment/{AppointmentId:int}"
 @inject HttpClient Http
-
+@inject IJSRuntime JS
 @using Core.Entities
 
-<section id="appointmentDetails" class="py-5 d-flex flex-column align-items-center justify-content-center" data-aos="fade-up" data-aos-delay="100">
-    <h3 class="text-danger mb-4 fw-bold text-center">Appointment Details</h3>
+<section id="appointmentDetails" class="py-5 d-flex flex-column align-items-center justify-content-center" data-aos="fade-up" data-aos-delay="100"> 
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Appointment Details</h2>
+        <p>Details of the selected appointment</p>
+    </div>
 
     <div class="container min-width-70">
         @if (appointment == null)
@@ -16,34 +20,34 @@
         else
         {
             <div class="card shadow-lg border-0 rounded-4 bg-white" style="max-width: 600px; margin: auto;">
-                <div class="card-header bg-danger text-white rounded-top-4 d-flex align-items-center gap-2">
+                <div class="card-header text-white rounded-top-4 d-flex align-items-center gap-2" style="background: var(--accent-color);">
                     <i class="bi bi-person-badge-fill fs-3"></i>
                     <h5 class="card-title mb-0 fw-bold">@appointment.Doctor?.Name</h5>
                 </div>
                 <div class="card-body">
                     <p class="card-text mb-2">
-                        <i class="bi bi-briefcase-medical-fill text-danger me-2"></i>
+                        <i class="bi bi-people-fill me-2"></i>
                         <strong>Specialization:</strong> @appointment.Doctor?.Specialization
                     </p>
                     <p class="card-text mb-2">
-                        <i class="bi bi-calendar-event-fill text-danger me-2"></i>
+                        <i class="bi bi-calendar-event-fill me-2"></i>
                         <strong>Date:</strong> @appointment.AppointmentDate.ToString("f")
                     </p>
                     <p class="card-text mb-3">
-                        <i class="bi bi-card-text text-danger me-2"></i>
+                        <i class="bi bi-card-text me-2"></i>
                         <strong>Description:</strong> @appointment.Description
                     </p>
                     <p class="card-text mb-0">
                         <strong>Status:</strong>
                         @if (appointment.isApproved == true)
                         {
-                            <span class="badge bg-gradient rounded-pill text-success px-3 py-2 fs-6">
+                            <span class="badge bg-gradient rounded-pill text-success mx-2 px-3 py-2 fs-6">
                                 <i class="bi bi-check-circle-fill me-1"></i> Approved
                             </span>
                         }
                         else if (appointment.isApproved == false)
                         {
-                            <span class="badge bg-gradient bg-warning text-dark rounded-pill px-3 py-2 fs-6">
+                            <span class="badge bg-gradient bg-warning text-dark rounded-pill mx-2 px-3 py-2 fs-6">
                                 <i class="bi bi-hourglass-split me-1"></i> Pending
                             </span>
                         }
@@ -64,72 +68,9 @@
 @code {
     [Parameter] 
     public int? AppointmentId { get; set; }
-    private Appointment? appointment { get; set; }
-    List<Appointment> appointments = new List<Appointment>
+    private Appointment? appointment { get; set; }  
+    protected override async Task OnParametersSetAsync()
     {
-        new Appointment
-        {
-            AppointmentId = 1001,
-            AppointmentDate = new DateTime(2025, 5, 20, 10, 0, 0),
-            Description = "Routine checkup",
-            isApproved = true,
-            Doctor = new Doctor
-            {
-                Name = "Dr. Sarah Khan",
-                Specialization = "General Physician"
-            }
-        },
-        new Appointment
-        {
-            AppointmentId = 1002,
-            AppointmentDate = new DateTime(2025, 5, 21, 14, 30, 0),
-            Description = "Follow-up after surgery",
-            isApproved = false,
-            Doctor = new Doctor
-            {
-                Name = "Dr. Ahmed Raza",
-                Specialization = "Orthopedic Surgeon"
-            }
-        },
-        new Appointment
-        {
-            AppointmentId = 1003,
-            AppointmentDate = new DateTime(2025, 5, 22, 9, 0, 0),
-            Description = "Dental cleaning",
-            isApproved = true,
-            Doctor = new Doctor
-            {
-                Name = "Dr. Ayesha Malik",
-                Specialization = "Dentist"
-            }
-        },
-        new Appointment
-        {
-            AppointmentId = 1004,
-            AppointmentDate = new DateTime(2025, 5, 23, 11, 15, 0),
-            Description = "Skin allergy consultation",
-            isApproved = false,
-            Doctor = new Doctor
-            {
-                Name = "Dr. Imran Sheikh",
-                Specialization = "Dermatologist"
-            } 
-        }, 
-        new Appointment
-        {
-            AppointmentId = 1005,
-            AppointmentDate = new DateTime(2025, 5, 24, 16, 45, 0),
-            Description = "Eye checkup",
-            isApproved = true,
-            Doctor = new Doctor
-            {
-                Name = "Dr. Nadia Hussain",
-                Specialization = "Ophthalmologist"
-            }
-        }
-    };
-    protected override void OnParametersSet()
-    {
-        appointment = appointments.FirstOrDefault(a => a.AppointmentId == AppointmentId);
+        appointment = await Http.GetFromJsonAsync<Appointment>($"api/Appointment/GetAppointment/{AppointmentId}");
     }
 }

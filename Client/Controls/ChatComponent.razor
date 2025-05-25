@@ -1,7 +1,7 @@
 ﻿@using System.ComponentModel.DataAnnotations
 @inject IJSRuntime JS
 
-<section id="chatSection" data-aos="fade-up">
+<section id="chatSection" class="" data-aos="fade-up">
 
     <div class="d-flex justify-content-center">
         <header class="chat-header p-3" style="min-width: 70%;">
@@ -19,19 +19,58 @@
             </div>
         }
     </div>
+    <div class="chat-input-section bg-light p-3 shadow-sm rounded-bottom" style="max-width: 70%; margin: auto;">
+        <div class="input-group">
+            <input @bind="newMessage" @bind:event="oninput"
+                   type="text"
+                   class="form-control rounded-start-pill px-4 py-2"
+                   placeholder="Type your message..."
+                   @onkeypress="HandleKeyPress" />
+
+            <button class="btn btn-primary rounded-end-pill px-4"
+                    type="button"
+                    @onclick="SendMessage">
+                <i class="bi bi-send-fill"></i>
+            </button>
+        </div>
+    </div>
 </section>
 
 
 <style>
     .chat-header {
-        background: linear-gradient(90deg, #ff0000, #000000);
+        background: var(--accent-color);
         border-radius: 10px 10px 0 0; 
         font-size: 1.5rem;
         text-align: start; 
     }
+
+    .chat-input-section input:focus {
+        box-shadow: none;
+        border-color: #0d6efd;
+    }
 </style>
 
 @code {
+    private string newMessage = "";
+
+    private async Task SendMessage()
+    {
+        if (!string.IsNullOrWhiteSpace(newMessage))
+        {
+            // Call your sending logic
+            //await SendChatMessageAsync(newMessage);
+            newMessage = "";
+        }
+    }
+
+    private async Task HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await SendMessage();
+        }
+    }
     string currentUserId = "patient1";
     string otherPartnerName = "Dr. John Doe";
 

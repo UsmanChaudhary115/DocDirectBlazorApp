@@ -1704,8 +1704,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>q4gd9g4kes</Fingerprint>
-      <Integrity>6rsRaKFNu+A1wf1BOSsmUlcsAYtZbnD953lDErLalec=</Integrity>
+      <Fingerprint>ciy5kbq6nv</Fingerprint>
+      <Integrity>9P2ZdqJp9Nlq1GxAFqlBTvUKRrPsMghST0Fs1/+EpUs=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\main.css'))</OriginalItemSpec>
@@ -1722,8 +1722,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>awzlhtwxdu</Fingerprint>
-      <Integrity>BtIKYspRbtf0ddt0E5Vw3wxSiVHUUpBD2Sj3D8k3hC0=</Integrity>
+      <Fingerprint>a8sjxrpadk</Fingerprint>
+      <Integrity>qjLfCiN03iw0TJQE/ZNdqVDzs8zQB3YR0wIN+k53Gsk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
@@ -2244,8 +2244,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>durc1q1hi1</Fingerprint>
-      <Integrity>C0/RV6n1lPnA8R2o5RWGP+93rlNIOKhNV4soqeWHh7g=</Integrity>
+      <Fingerprint>rqky9c65cw</Fingerprint>
+      <Integrity>g5bcsBElHJ9anCZzsI8yFOX0x6YCKWrthzTdCGISl50=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\logo.png'))</OriginalItemSpec>
@@ -2370,8 +2370,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ck861i58rm</Fingerprint>
-      <Integrity>3On9/piKnXNfWTKdK6Yt5F48o2A5gKSCLKyTHLKRoBY=</Integrity>
+      <Fingerprint>0ikfltd85u</Fingerprint>
+      <Integrity>eFFjUZcuB/GHjCExv1l/8lNUMYQZsO0G+1wSNRXw57U=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\index.html'))</OriginalItemSpec>
@@ -2424,8 +2424,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>l542czlsbu</Fingerprint>
-      <Integrity>dzaIdmjHM+qiwB2Q6HMrOSoJK4e5EhBbUrN1Ke/rd6c=</Integrity>
+      <Fingerprint>uxa0tkeizt</Fingerprint>
+      <Integrity>nlv5F0f/MFfeEQyWPg9+2ixfwIFQPNpJPKZcY4BKvLU=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\form.js'))</OriginalItemSpec>
@@ -2465,6 +2465,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\navbar.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\preloader.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Client</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>/</BasePath>
+      <RelativePath>js/preloader.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>la8pfxei37</Fingerprint>
+      <Integrity>PemDoRtDNbkSuwaNIYIO4tELzgaJItVBAAiBgo5/eGQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\preloader.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\scrollTop.js'))">
       <SourceType>Package</SourceType>

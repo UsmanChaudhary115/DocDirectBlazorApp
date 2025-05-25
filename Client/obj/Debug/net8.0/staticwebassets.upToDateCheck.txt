@@ -134,6 +134,7 @@ wwwroot\js\chat-scroll.js
 wwwroot\js\form.js
 wwwroot\js\main.js
 wwwroot\js\navbar.js
+wwwroot\js\preloader.js
 wwwroot\js\scrollTop.js
 wwwroot\js\site.js
 wwwroot\js\swiper-init.js
