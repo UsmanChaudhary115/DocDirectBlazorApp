@@ -1,0 +1,208 @@
+﻿@page "/admin-appointments"
+@inject HttpClient Http
+@inject IJSRuntime JS
+@layout AdminLayout
+@using Shared.Entities
+
+<h2 class="title">📋 All Appointments</h2>
+
+@if (appointments == null)
+{
+    <p>Loading appointments...</p>
+}
+else
+{
+    <h3>✅ Approved Appointments</h3>
+    @if (approved.Count == 0)
+    {
+        <p>No approved appointments.</p>
+    }
+    else
+    {
+        @RenderTable(approved, showActions: true, isPending: false)
+    }
+
+    <h3>⏳ Pending Appointments</h3>
+    @if (pending.Count == 0)
+    {
+        <p>No pending appointments.</p>
+    }
+    else
+    {
+        @RenderTable(pending, showActions: true, isPending: true)
+    }
+
+    <h3>❌ Deleted Appointments</h3>
+    @if (deleted.Count == 0)
+    {
+        <p>No deleted appointments.</p>
+    }
+    else
+    {
+        @RenderTable(deleted, showActions: false)
+    }
+}
+
+@code {
+    private List<Appointment>? appointments;
+    private List<Appointment> approved = new();
+    private List<Appointment> pending = new();
+    private List<Appointment> deleted = new();
+    private Appointment? editingAppointment;
+    private string newDescription = "";
+    private DateTime newDate;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAppointments();
+    }
+
+    private async Task LoadAppointments()
+    {
+        appointments = await Http.GetFromJsonAsync<List<Appointment>>("api/admin/appointments/all");
+
+        approved = appointments.Where(a => a.isApproved == true && a.isDeleted != true).ToList();
+        pending = appointments.Where(a => a.isApproved != true && a.isDeleted != true).ToList();
+        deleted = appointments.Where(a => a.isDeleted == true).ToList();
+    }
+
+    private async Task ApproveAppointment(Appointment appointment)
+    {
+        appointment.isApproved = true;
+        await UpdateAppointment(appointment);
+    }
+
+    private async Task DeleteAppointment(Appointment appointment)
+    {
+        bool confirm = await JS.InvokeAsync<bool>("confirm", "Are you sure you want to delete this appointment?");
+        if (!confirm) return;
+
+        appointment.isDeleted = true;
+        await UpdateAppointment(appointment);
+    }
+
+    private async Task UpdateAppointment(Appointment appointment)
+    {
+        var response = await Http.PutAsJsonAsync($"api/admin/appointments/{appointment.AppointmentId}", appointment);
+        if (response.IsSuccessStatusCode)
+        {
+            await JS.InvokeVoidAsync("alert", "✅ Appointment updated.");
+
+            // Reload all appointments after the update
+            await LoadAppointments();
+        }
+        else
+        {
+            await JS.InvokeVoidAsync("alert", "❌ Failed to update appointment.");
+        }
+    }
+    private async Task SetAppointmentStatus(int id, bool approve, bool delete)
+    {
+        var dto = new
+        {
+            IsApproved = approve,
+            IsDeleted = delete
+        };
+
+        var response = await Http.PutAsJsonAsync($"api/admin/appointments/{id}/status", dto);
+
+        if (response.IsSuccessStatusCode)
+        {
+            await JS.InvokeVoidAsync("alert", "✅ Status updated successfully!");
+            await LoadAppointments(); // reload data
+        }
+        else
+        {
+            await JS.InvokeVoidAsync("alert", "❌ Failed to update status.");
+        }
+    }
+
+    private void BeginEdit(Appointment appointment)
+    {
+        editingAppointment = appointment;
+        newDescription = appointment.Description;
+        newDate = appointment.AppointmentDate;
+    }
+
+    private void CancelEdit()
+    {
+        editingAppointment = null;
+        newDescription = "";
+    }
+
+    private async Task SaveEdit(Appointment appointment)
+    {
+        appointment.Description = newDescription;
+        appointment.AppointmentDate = newDate;
+
+        var response = await Http.PutAsJsonAsync($"api/admin/appointments/{appointment.AppointmentId}", appointment);
+
+        if (response.IsSuccessStatusCode)
+        {
+            await JS.InvokeVoidAsync("alert", "✅ Appointment updated.");
+            editingAppointment = null;
+            await LoadAppointments();
+        }
+        else
+        {
+            await JS.InvokeVoidAsync("alert", "❌ Failed to update appointment.");
+        }
+    }
+
+    RenderFragment RenderTable(List<Appointment> list, bool showActions, bool isPending = false) => __builder =>
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Doctor</th>
+                    <th>Patient</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    @if (showActions)
+                    {
+                        <th>Actions</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var appointment in list)
+                {
+                    <tr>
+                        <td>@appointment.Doctor?.Name</td>
+                        <td>@appointment.Patient?.Name</td>
+                        <td>@appointment.AppointmentDate.ToShortDateString()</td>
+                        <td>@appointment.Description</td>
+                        @if (showActions)
+                        {
+                            <td>
+                                @if (isPending)
+                                {
+                                    <button class="btn-approve" @onclick="() => SetAppointmentStatus(appointment.AppointmentId, true, false)">✅ Approve</button>
+                                }
+                                <button class="btn-delete" @onclick="() => SetAppointmentStatus(appointment.AppointmentId, false, true)">🗑 Delete</button>
+                                @if (!isPending)
+                                {
+                                    @if (editingAppointment?.AppointmentId == appointment.AppointmentId)
+                                    {
+                                        <div>
+                                            <input type="date" @bind="newDate" />
+                                            <input type="text" @bind="newDescription" placeholder="Description" />
+                                            <button class="btn-save" @onclick="() => SaveEdit(appointment)">💾 Save</button>
+                                            <button class="btn-cancel" @onclick="CancelEdit">❌ Cancel</button>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn-edit" @onclick="() => BeginEdit(appointment)">✏ Edit</button>
+                                    }
+                                }
+                                    
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+;
+    };
+}

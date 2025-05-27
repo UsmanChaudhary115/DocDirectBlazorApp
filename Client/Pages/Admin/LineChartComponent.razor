@@ -1,0 +1,50 @@
+﻿@inject IJSRuntime JSRuntime
+
+<div class="chart-container">
+    <h3>@Title</h3>
+    <canvas id="@canvasId" width="400" height="200"></canvas>
+</div>
+@code {
+    private readonly string canvasId = $"lineChart_{Guid.NewGuid():N}";
+
+    [Parameter] public string Title { get; set; } = "Line Chart";
+
+    // Chart labels (e.g. months)
+    [Parameter] public string[] Labels { get; set; } = Array.Empty<string>();
+
+    // Data for the chart - support multiple datasets
+    [Parameter] public ChartDataset[] Datasets { get; set; } = Array.Empty<ChartDataset>();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Convert Datasets to JS format
+            var datasetsForJs = Datasets.Select(d => new
+            {
+                label = d.Label,
+                data = d.Data,
+                fill = d.Fill,
+                borderColor = d.BorderColor,
+                backgroundColor = d.BackgroundColor,
+                tension = d.Tension,
+                pointBackgroundColor = d.PointBackgroundColor,
+                pointRadius = d.PointRadius
+            }).ToArray();
+
+            await JSRuntime.InvokeVoidAsync("chartInterop.createLineChart", canvasId, Labels, datasetsForJs);
+        }
+    }
+
+    public class ChartDataset
+    {
+        public string Label { get; set; } = "";
+        public int[] Data { get; set; } = Array.Empty<int>();
+        public bool Fill { get; set; } = true;
+        public string BorderColor { get; set; } = "#3b82f6";
+        public string BackgroundColor { get; set; } = "rgba(59, 130, 246, 0.2)";
+        public double Tension { get; set; } = 0.3;
+        public string PointBackgroundColor { get; set; } = "#3b82f6";
+        public int PointRadius { get; set; } = 5;
+    }
+}

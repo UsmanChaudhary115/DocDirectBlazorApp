@@ -1,0 +1,68 @@
+﻿@* <div class="bg-white shadow rounded-lg p-6 flex flex-col justify-between">
+    <div class="text-sm font-semibold text-gray-500 mb-2">@Title</div>
+    <div class="flex items-center justify-between">
+        <div class="text-3xl font-bold text-gray-900">@Value</div>
+        <div class="text-sm font-medium @(IsPositive ? "text-green-600" : "text-red-600")">
+            @Percentage
+        </div>
+    </div>
+</div> *@
+@* <div class="dashboard-card">
+    <div class="text-sm font-semibold text-gray-500 mb-2">@Title</div>
+    <div class="flex items-center justify-between">
+        <div class="value">@Value</div>
+        <div class="percentage @(IsPositive ? "text-green-600" : "text-red-600")">
+            @Percentage
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter] public string Title { get; set; } = "";
+    [Parameter] public string Value { get; set; } = "";
+    [Parameter] public string Percentage { get; set; } = "";
+
+    private bool IsPositive => Percentage.StartsWith("+");
+} *@
+@* <div class="dashboard-card" @attributes="AdditionalAttributes">
+    <div class="text-sm font-semibold text-gray-500 mb-2">@Title</div>
+    <div class="flex items-center justify-between">
+        <div class="value">@Value</div>
+        <div class="percentage @(IsPositive ? "text-green-600" : "text-red-600")">
+            @Percentage
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; } = "";
+    [Parameter] public string Value { get; set; } = "";
+    [Parameter] public string Percentage { get; set; } = "";
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private bool IsPositive => Percentage.StartsWith("+");
+} *@
+
+
+<div class="dashboard-card" @attributes="AdditionalAttributes">
+    <div class="text-sm font-semibold text-gray-500 mb-2">@Title</div>
+    <div class="flex items-center justify-between">
+        <div class="value">@Value</div>
+        <div class="percentage @(IsPositive ? "text-green-600" : "text-red-600")">
+            @Percentage
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; } = "";
+    [Parameter] public string Value { get; set; } = "";
+    [Parameter] public string Percentage { get; set; } = "";
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private bool IsPositive => Percentage.StartsWith("+");
+}
+

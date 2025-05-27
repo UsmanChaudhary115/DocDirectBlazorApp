@@ -1,0 +1,93 @@
+﻿@page "/register-doctor"
+@using Shared.Entities
+@inject IJSRuntime JS
+@inject HttpClient Http
+@layout AdminLayout
+@inject NavigationManager Navigation
+
+<h3 class="text-2xl font-semibold mb-4">Register New Doctor</h3>
+
+<EditForm Model="@doctor" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+            <label class="block font-medium">Name</label>
+            <InputText class="form-input w-full" @bind-Value="doctor.Name" />
+        </div>
+        <div>
+            <label class="block font-medium">Email</label>
+            <InputText class="form-input w-full" @bind-Value="doctor.Email" />
+        </div>
+        <div>
+            <label class="block font-medium">Gender</label>
+            <InputSelect class="form-select w-full" @bind-Value="doctor.Gender">
+                <option disabled value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </InputSelect>
+        </div>
+        <div>
+            <label class="block font-medium">Country</label>
+            <InputText class="form-input w-full" @bind-Value="doctor.Country" />
+        </div>
+        <div>
+            <label class="block font-medium">Education</label>
+            <InputText class="form-input w-full" @bind-Value="doctor.Education" />
+        </div>
+        <div>
+            <label class="block font-medium">Experience</label>
+            <InputText class="form-input w-full" @bind-Value="doctor.Experience" />
+        </div>
+        <div>
+            <label class="block font-medium">Worked At</label>
+            <InputText class="form-input w-full" @bind-Value="doctor.WorkedAt" />
+        </div>
+        <div>
+            <label class="block font-medium">Specialization</label>
+            <InputText class="form-input w-full" @bind-Value="doctor.Specialization" />
+        </div>
+    </div>
+
+    <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        Register Doctor
+    </button>
+</EditForm>
+
+@code {
+    private Doctor doctor = new();
+
+    private async Task HandleValidSubmit()
+    {
+        Console.WriteLine("Submitting doctor...");
+        try
+        {
+            
+
+            var response = await Http.PostAsJsonAsync("/api/Doctors/register", doctor);
+
+            var content = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Status: {response.StatusCode}");
+            Console.WriteLine($"Response content: {content}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                await JS.InvokeVoidAsync("alert", "Doctor registered successfully!");
+                Navigation.NavigateTo("/doctors");
+            }
+            else
+            {
+                await JS.InvokeVoidAsync("alert", $"Registration failed: {response.StatusCode}");
+                Console.WriteLine("Registration failed.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Exception occurred: " + ex.Message);
+            await JS.InvokeVoidAsync("alert", "Unexpected error: " + ex.Message);
+        }
+    }
+
+}

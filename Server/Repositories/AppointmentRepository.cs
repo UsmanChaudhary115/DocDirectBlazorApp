@@ -1,4 +1,4 @@
-﻿using Core.Entities;
+﻿using Shared.Entities;
 using Microsoft.EntityFrameworkCore;
 using Server.Interfaces;
 using System.Collections.Generic;

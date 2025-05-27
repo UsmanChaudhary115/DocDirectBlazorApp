@@ -1,4 +1,4 @@
-﻿using Core.Entities;
+﻿using Shared.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Server.Interfaces;

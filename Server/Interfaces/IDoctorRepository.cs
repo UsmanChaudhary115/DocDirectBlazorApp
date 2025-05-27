@@ -1,4 +1,4 @@
-﻿using Core.Entities;
+﻿using Shared.Entities;
 
 namespace Server.Interfaces
 {
@@ -10,5 +10,8 @@ namespace Server.Interfaces
         Task<Doctor> GetDoctorByIdAsync(int id);
         Task UpdateDoctorAsync(Doctor doctor);
         Task<IEnumerable<Doctor>> GetDoctorsBySpecializationAsync(string specialization);
-    }
+        Task<IEnumerable<Doctor>> GetApprovedDoctors();
+
+		Task<IEnumerable<Doctor>> GetPendingDoctors();
+	}
 }

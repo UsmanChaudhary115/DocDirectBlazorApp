@@ -1,5 +1,215 @@
 [
   {
+    "ContainingType": "Server.Controllers.AdminController",
+    "Method": "UpdateAppointment",
+    "RelativePath": "api/Admin/appointments/{appointmentId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedAppointment",
+        "Type": "Shared.Entities.Appointment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.AdminController",
+    "Method": "DeleteAppointment",
+    "RelativePath": "api/Admin/appointments/{appointmentId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.AdminController",
+    "Method": "UpdateAppointmentStatus",
+    "RelativePath": "api/Admin/appointments/{appointmentId}/status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Shared.Entities.AppointmentStatusUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.AdminController",
+    "Method": "GetAllAppointments",
+    "RelativePath": "api/Admin/appointments/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.AdminController",
+    "Method": "GetDashboardStats",
+    "RelativePath": "api/Admin/dashboard/stats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Shared.Entities.DashboardStatsDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Server.Controllers.AdminController",
+    "Method": "GetDoctorById",
+    "RelativePath": "api/Admin/doctors/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Shared.Entities.Doctor",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Server.Controllers.AdminController",
+    "Method": "GetAppointmentsForDoctor",
+    "RelativePath": "api/Admin/doctors/{id}/appointments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Appointment, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Server.Controllers.AdminController",
+    "Method": "GetMonthlyAppointmentStats",
+    "RelativePath": "api/Admin/monthly-appointments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.MonthlyAppointmentStats, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Server.Controllers.AdminController",
+    "Method": "GetAllPatients",
+    "RelativePath": "api/Admin/patients",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Patient, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Server.Controllers.AdminController",
+    "Method": "GetRecentActivity",
+    "RelativePath": "api/Admin/recent-activity",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.AdminController",
+    "Method": "GetTodayAppointments",
+    "RelativePath": "api/Admin/today",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Appointment, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Server.Controllers.AppointmentController",
     "Method": "CreateAppointment",
     "RelativePath": "api/Appointment/CreateAppointment",
@@ -9,13 +219,13 @@
     "Parameters": [
       {
         "Name": "appointment",
-        "Type": "Core.Entities.Appointment",
+        "Type": "Shared.Entities.Appointment",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.Appointment",
+        "Type": "Shared.Entities.Appointment",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -57,7 +267,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.Appointment, Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Appointment, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -77,7 +287,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.Appointment, Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Appointment, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -103,7 +313,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.Appointment",
+        "Type": "Shared.Entities.Appointment",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -128,7 +338,7 @@
       },
       {
         "Name": "appointment",
-        "Type": "Core.Entities.Appointment",
+        "Type": "Shared.Entities.Appointment",
         "IsRequired": true
       }
     ],
@@ -144,13 +354,13 @@
     "Parameters": [
       {
         "Name": "appointmentDTO",
-        "Type": "Core.Entities.AppointmentDTO",
+        "Type": "Shared.Entities.AppointmentDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.AppointmentDTO",
+        "Type": "Shared.Entities.AppointmentDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -186,7 +396,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.AppointmentDTO, Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.AppointmentDTO, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -212,7 +422,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.AppointmentDTO",
+        "Type": "Shared.Entities.AppointmentDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -238,7 +448,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.AppointmentDTO, Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.AppointmentDTO, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -263,7 +473,7 @@
       },
       {
         "Name": "appointmentDTO",
-        "Type": "Core.Entities.AppointmentDTO",
+        "Type": "Shared.Entities.AppointmentDTO",
         "IsRequired": true
       }
     ],
@@ -279,7 +489,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "Core.Entities.SignInViewModel",
+        "Type": "Shared.Entities.SignInViewModel",
         "IsRequired": true
       }
     ],
@@ -295,7 +505,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "Core.Entities.RegisterViewModel",
+        "Type": "Shared.Entities.RegisterViewModel",
         "IsRequired": true
       }
     ],
@@ -331,13 +541,13 @@
     "Parameters": [
       {
         "Name": "doctor",
-        "Type": "Core.Entities.Doctor",
+        "Type": "Shared.Entities.Doctor",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.Doctor",
+        "Type": "Shared.Entities.Doctor",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -373,7 +583,27 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.Doctor, Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Doctor, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Server.Controllers.DoctorsController",
+    "Method": "GetApprovedDoctors",
+    "RelativePath": "api/Doctors/GetApprovedDoctors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Doctor, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -399,7 +629,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.Doctor",
+        "Type": "Shared.Entities.Doctor",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -425,7 +655,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.Doctor, Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Doctor, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -434,6 +664,42 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Server.Controllers.DoctorsController",
+    "Method": "GetPendingDoctors",
+    "RelativePath": "api/Doctors/GetPendingDoctors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Doctor, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Server.Controllers.DoctorsController",
+    "Method": "RegisterDoctor",
+    "RelativePath": "api/Doctors/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctor",
+        "Type": "Shared.Entities.Doctor",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Server.Controllers.DoctorsController",
@@ -450,10 +716,66 @@
       },
       {
         "Name": "doctor",
-        "Type": "Core.Entities.Doctor",
+        "Type": "Shared.Entities.Doctor",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.NotificationsController",
+    "Method": "GetRecentNotifications",
+    "RelativePath": "api/Notifications/recent",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.PatientsController",
+    "Method": "GetPatients",
+    "RelativePath": "api/Patients",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Patient, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Server.Controllers.PatientsController",
+    "Method": "GetPatient",
+    "RelativePath": "api/Patients/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Shared.Entities.Patient",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Core.Entities;
+using Shared.Entities;
 using Microsoft.AspNetCore.Identity;
 using Server.Repositories;
 using Server.Interfaces;
@@ -21,6 +21,7 @@ builder.Services.AddDbContext<HospitalDbContext>(options =>
 builder.Services.AddScoped<IAppointmentDTORepository, AppointmentDTORepository>();
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 
 // Add Identity services for Patient user entity
 builder.Services.AddIdentity<Patient, IdentityRole>(options =>

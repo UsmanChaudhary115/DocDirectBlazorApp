@@ -91,6 +91,7 @@ wwwroot\assets\vendor\purecounter\purecounter_vanilla.js.map
 wwwroot\assets\vendor\swiper\swiper-bundle.min.css
 wwwroot\assets\vendor\swiper\swiper-bundle.min.js
 wwwroot\assets\vendor\swiper\swiper-bundle.min.js.map
+wwwroot\css\admin.css
 wwwroot\css\main.css
 wwwroot\css\site.css
 wwwroot\favicon.ico

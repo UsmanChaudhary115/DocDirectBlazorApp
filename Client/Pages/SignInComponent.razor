@@ -1,5 +1,5 @@
 ﻿@page "/signin"
-@using Core.Entities
+@using Shared.Entities
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
 @inject HttpClient Http
@@ -10,69 +10,69 @@
 <style>
     /* Form container styling */
     .container1 {
-        background: /* linear-gradient(135deg, black, red); */ var(--accent-color);
-        padding: 1.5rem 2rem;  
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 100%;  
-        text-align: center;
-        color: #fff;
-        animation: fadeIn 1s ease-out;
+    background: /* linear-gradient(135deg, black, red); */ var(--accent-color);
+    padding: 1.5rem 2rem;  
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%;  
+    text-align: center;
+    color: #fff;
+    animation: fadeIn 1s ease-out;
     }
 
     /* Welcome message container */
     .welcome-message-container {
-        padding: 1.5rem 2rem; /* px-4 py-3 for consistent spacing */
+    padding: 1.5rem 2rem; /* px-4 py-3 for consistent spacing */
     }
 
     /* Heading styles */
     .welcome-heading, .container1 h2 {
-        font-size: 1.75rem; /* Base size, will scale with fs-* */
-        margin-bottom: 1.25rem; /* mb-3 equivalent */
-        font-weight: 700;
+    font-size: 1.75rem; /* Base size, will scale with fs-* */
+    margin-bottom: 1.25rem; /* mb-3 equivalent */
+    font-weight: 700;
     }
 
     /* Welcome description */
     .welcome-description {
-        font-size: 1rem; /* Base size, will scale */
-        line-height: 1.6;
+    font-size: 1rem; /* Base size, will scale */
+    line-height: 1.6;
     }
 
     /* Message in form */
     .message {
-        font-size: 1rem; /* Base size */
-        margin-bottom: 1.5rem; /* mb-3 */
-        color: #ddd;
+    font-size: 1rem; /* Base size */
+    margin-bottom: 1.5rem; /* mb-3 */
+    color: #ddd;
     }
 
     /* Form inputs */
     .form-control {
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        padding: 0.75rem; /* Consistent with Bootstrap */
-        font-size: 1rem;
-        transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 0.75rem; /* Consistent with Bootstrap */
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
     }
 
-        .form-control:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
-        }
+    .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+    }
 
     /* Form labels */
     .form-label {
-        font-size: 1rem; /* Base size */
+    font-size: 1rem; /* Base size */
     }
 
     /* Button styling */
     .btn {
-        padding: 0.75rem; /* Consistent with Bootstrap */
-        font-size: 1rem;
-        border-radius: 5px;
-        transition: all 0.3s ease-in-out;
+    padding: 0.75rem; /* Consistent with Bootstrap */
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
     }
-         
+
 </style>
 <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center px-3 px-lg-4">
     <div class="row w-100 align-items-center mx-auto" style="max-width: 1400px;">
@@ -102,7 +102,7 @@
                         <InputText @bind-Value="signInModel.Password" class="form-control" placeholder="Enter password" type="password" />
                     </div>
                     <div class="d-grid">
-                            <button type="submit" class="btn btn-dark">Sign In</button>
+                        <button type="submit" class="btn btn-dark">Sign In</button>
                     </div>
                 </EditForm>
                 <div class="d-grid mt-3">
@@ -122,10 +122,10 @@
     {
         var userId = await localStorage.GetItemAsync<string>("userId");
 
-		if (userId != null)
-		{
-			Navigation.NavigateTo("/patient-dashboard");
-		}
+        if (userId != null)
+        {
+            Navigation.NavigateTo("/patient-dashboard");
+        }
 
         base.OnInitialized();
         Message = "Enter your credentials";
@@ -144,7 +144,8 @@
             if (response.IsSuccessStatusCode)
             {
                 result = await response.Content.ReadFromJsonAsync<LoginResponse>();
-                 
+                Console.WriteLine($"UserId: {result.UserId}");
+                Console.WriteLine($"Name: {result.Name}");
                 await localStorage.SetItemAsync("userId", result.UserId);
                 await localStorage.SetItemAsync("email", result.Email);
                 await localStorage.SetItemAsync("name", result.Name);

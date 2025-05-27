@@ -1,4 +1,4 @@
-﻿using Core.Entities;
+﻿using Shared.Entities;
 
 namespace Server.Interfaces
 {

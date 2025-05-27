@@ -1,0 +1,72 @@
+﻿@page "/admin-dashboard/today-appointments"
+@using Shared.Entities
+@inject HttpClient Http
+
+<h3 class="text-xl font-semibold mb-4">📅 Today's Appointments</h3>
+
+@if (appointments == null)
+{
+    <p>Loading appointments...</p>
+}
+else if (!appointments.Any())
+{
+    <p class="text-gray-500">No appointments scheduled for today.</p>
+}
+else
+{
+    <table class="min-w-full table-auto border-collapse bg-white rounded-xl overflow-hidden shadow">
+        <thead class="bg-gray-100 text-gray-700 text-xs uppercase tracking-wider">
+            <tr>
+                <th class="px-6 py-3">Patient</th>
+                <th class="px-6 py-3">Doctor</th>
+                <th class="px-6 py-3">Time</th>
+                <th class="px-6 py-3">Status</th>
+            </tr>
+        </thead>
+        <tbody class="text-sm text-gray-700 divide-y divide-gray-200">
+            @foreach (var appt in appointments)
+            {
+                <tr class="hover:bg-gray-50 transition duration-200">
+                    <td class="px-6 py-4">@appt.Patient?.Name</td>
+                    <td class="px-6 py-4">@appt.Doctor?.Name</td>
+                    <td class="px-6 py-4">@appt.AppointmentDate.ToString("hh:mm tt")</td>
+                    <td class="px-6 py-4">
+                        @if (appt.isDeleted==true)
+                        {
+                            <span class="badge bg-red-100 text-red-700">Cancelled</span>
+                        }
+                        else if (appt.isApproved==true)
+                        {
+                            <span class="badge bg-green-100 text-green-700">Confirmed</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-yellow-100 text-yellow-700">Pending</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+@code {
+    private List<Appointment> appointments;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var result = await Http.GetFromJsonAsync<List<Appointment>>("/api/Admin/today");
+            if (result != null)
+            {
+                appointments = result;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error loading today's appointments: " + ex.Message);
+        }
+    }
+}

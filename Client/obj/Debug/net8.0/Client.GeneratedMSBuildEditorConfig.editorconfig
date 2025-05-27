@@ -88,8 +88,72 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcV2VsY29tZUNhcm91c2VsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Layout/AdminLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEFkbWluTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Layout/PatientLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFBhdGllbnRMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/Appointments.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXBwb2ludG1lbnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRGFzaGJvYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/DashboardCard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRGFzaGJvYXJkQ2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/DoctorDetail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRG9jdG9yRGV0YWlsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/DoctorModal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRG9jdG9yTW9kYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/Doctors.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRG9jdG9ycy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/LineChartComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTGluZUNoYXJ0Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/NotificationCard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTm90aWZpY2F0aW9uQ2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/Patients.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUGF0aWVudHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/QuickActions.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUXVpY2tBY3Rpb25zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/RegisterDoctor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUmVnaXN0ZXJEb2N0b3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/StaffCard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU3RhZmZDYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/TodayAppointmentsPreview.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVG9kYXlBcHBvaW50bWVudHNQcmV2aWV3LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cV2VhdGhlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/WeatherWidget.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cV2VhdGhlcldpZGdldC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Home.razor]

@@ -1,0 +1,55 @@
+﻿@page "/admin-dashboard"
+@using Shared.Entities
+@inject IJSRuntime JS
+@inject HttpClient Http
+@layout AdminLayout
+@using System.Globalization
+
+
+@inject NavigationManager NavManager
+
+<WeatherWidget />
+@if (stats != null)
+{
+    <div class="dash flex flex-wrap gap-4 mb-6">
+        <DashboardCard class="dashboard-card" title="Total Doctors" value="@stats.TotalDoctors.ToString()" percentage="+3.5%" @onclick="@(() => NavManager.NavigateTo("/doctors"))" />
+        <DashboardCard class="dashboard-card" title="Appointments Today" value="@stats.AppointmentsToday.ToString()" percentage="+12%" @onclick="@(() => NavManager.NavigateTo("/appointments"))" />
+        <DashboardCard class="dashboard-card" title="Patients Registered" value="@stats.RegisteredPatients.ToString()" percentage="+8%" @onclick="@(() => NavManager.NavigateTo("/patients"))" />
+        <DashboardCard class="dashboard-card" title="Cancelled Appointments" value="@stats.CancelledAppointments.ToString()" percentage="+4%" @onclick="@(() => NavManager.NavigateTo("/appointments"))" />
+    </div>
+}
+else
+{
+    <p>Loading dashboard stats...</p>
+}
+<h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+    <i class="fas fa-bolt text-blue-500"></i> Recent Activity
+</h3>
+@if (notifications?.Count > 0)
+{
+    @foreach (var notification in notifications.Where(n => n.Timestamp.ToLocalTime().Date == DateTime.Today))
+    {
+        <NotificationCard Title="@notification.Message" Timestamp="@notification.Timestamp" />
+    }
+}
+else
+{
+    <p>No recent activity.</p>
+}
+@* 
+<h3 class="text-xl font-semibold mt-6 mb-4">Top Doctors</h3>
+<StaffCard DoctorName="Dr. Adeel" Status="Online" AppointmentsToday="8" />
+<StaffCard DoctorName="Dr. Fatima" Status="Offline" AppointmentsToday="6" /> *@
+<h3 class="text-xl font-semibold mt-6 mb-4">Upcoming Appointments</h3>
+<TodayAppointmentsPreview/>
+
+@code{
+    private DashboardStatsDto? stats;
+    private List<Notification> notifications = new();
+    protected override async Task OnInitializedAsync()
+    {
+
+        stats = await Http.GetFromJsonAsync<DashboardStatsDto>("/api/Admin/dashboard/stats");
+        notifications = await Http.GetFromJsonAsync<List<Notification>>("/api/Notifications/recent");
+    } 
+}

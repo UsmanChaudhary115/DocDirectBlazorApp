@@ -1,0 +1,13 @@
+﻿<div class="p-4 border rounded-lg shadow-sm bg-white flex items-center justify-between mb-2">
+    <div>
+        <h5 class="font-medium">@DoctorName</h5>
+        <span class="text-sm text-gray-500">Status: <span class="font-semibold text-green-600">@Status</span></span>
+    </div>
+    <div class="text-sm text-gray-600">Appointments Today: <strong>@AppointmentsToday</strong></div>
+</div>
+
+@code {
+    [Parameter] public string DoctorName { get; set; }
+    [Parameter] public string Status { get; set; }
+    [Parameter] public int AppointmentsToday { get; set; }
+}

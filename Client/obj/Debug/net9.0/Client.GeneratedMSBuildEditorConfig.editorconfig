@@ -1,0 +1,201 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = Client
+build_property.RootNamespace = Client
+build_property.ProjectDir = C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Usman\Desktop\DocDirectBlazorApp\Client
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/AboutComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQWJvdXRDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/AppointmentDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQXBwb2ludG1lbnREZXRhaWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/ChatComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQ2hhdENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/ContactComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQ29udGFjdENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/Departments.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRGVwYXJ0bWVudHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/Doctors.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRG9jdG9ycy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/FAQs.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRkFRcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/HeroComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcSGVyb0NvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/Services.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcU2VydmljZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/StatsComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcU3RhdHNDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/TestimonialsComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcVGVzdGltb25pYWxzQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/UpdateAppoinmentComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcVXBkYXRlQXBwb2lubWVudENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Controls/WelcomeCarousel.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcV2VsY29tZUNhcm91c2VsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Layout/AdminLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEFkbWluTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Layout/PatientLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFBhdGllbnRMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/Appointments.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXBwb2ludG1lbnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRGFzaGJvYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/DashboardCard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRGFzaGJvYXJkQ2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/DoctorDetail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRG9jdG9yRGV0YWlsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/DoctorList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRG9jdG9yTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/DoctorModal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRG9jdG9yTW9kYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/Doctors.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRG9jdG9ycy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/LineChartComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTGluZUNoYXJ0Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/NotificationCard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTm90aWZpY2F0aW9uQ2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/Patients.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUGF0aWVudHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/QuickActions.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUXVpY2tBY3Rpb25zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/RegisterDoctor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUmVnaXN0ZXJEb2N0b3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/StaffCard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU3RhZmZDYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/TodayAppointmentsPreview.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVG9kYXlBcHBvaW50bWVudHNQcmV2aWV3LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cV2VhdGhlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Admin/WeatherWidget.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cV2VhdGhlcldpZGdldC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Patient/PatientHomeComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudFxQYXRpZW50SG9tZUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Patient/ProfileComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudFxQcm9maWxlQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/Patient/SignoutComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudFxTaWdub3V0Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/RegisterComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXJDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-tmopy668it
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-9qkkwgv1yd
+
+[C:/Users/Usman/Desktop/DocDirectBlazorApp/Client/Pages/SignInComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2lnbkluQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-elv1s38xx7

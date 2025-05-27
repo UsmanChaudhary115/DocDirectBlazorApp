@@ -1,7 +1,8 @@
-﻿using Core.Entities;
+﻿using Shared.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Server.Interfaces;
+using Microsoft.EntityFrameworkCore; 
 
 namespace Server.Controllers
 {
@@ -9,12 +10,65 @@ namespace Server.Controllers
     [ApiController]
     public class DoctorsController : ControllerBase
     {
-        private readonly IDoctorRepository _doctorsRepository;
-        public DoctorsController(IDoctorRepository doctorsRepository)
+        private readonly IDoctorRepository _doctorsRepository; 
+		private readonly INotificationService _notificationService;
+		public DoctorsController(IDoctorRepository doctorsRepository, INotificationService notificationService)
         {
-            _doctorsRepository = doctorsRepository;
-        }
-        [HttpGet("GetAllDoctors")]
+            _doctorsRepository = doctorsRepository; 
+			_notificationService = notificationService;
+		} 
+		[HttpPost("register")]
+		public async Task<IActionResult> RegisterDoctor([FromBody] Doctor doctor)
+		{
+			Console.WriteLine($"Received doctor: {doctor?.Name}");
+
+			if (!ModelState.IsValid)
+			{
+				foreach (var state in ModelState)
+				{
+					foreach (var error in state.Value.Errors)
+					{
+						Console.WriteLine($"Validation error in {state.Key}: {error.ErrorMessage}");
+                    }
+                }
+
+				return BadRequest(ModelState);
+			}
+
+			await _doctorsRepository.AddDoctorAsync(doctor); 
+
+			await _notificationService.AddNotificationAsync($"New doctor registered: {doctor.Name}");
+
+			return Ok();
+		}
+        [HttpGet("GetApprovedDoctors")]
+		public async Task<ActionResult<IEnumerable<Doctor>>> GetApprovedDoctors()
+		{
+			try
+			{
+                var doctors = await _doctorsRepository.GetApprovedDoctors();
+                    return Ok(doctors);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Internal server error: {ex.Message}");
+			}
+		}
+        [HttpGet("GetPendingDoctors")]
+		public async Task<ActionResult<IEnumerable<Doctor>>> GetPendingDoctors()
+		{
+			try
+			{
+				var doctors = await _doctorsRepository.GetPendingDoctors();
+					return Ok(doctors);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Internal server error: {ex.Message}");
+			}
+		}
+
+		[HttpGet("GetAllDoctors")]
         public async Task<ActionResult<IEnumerable<Doctor>>> GetAllDoctors()
         {
             try

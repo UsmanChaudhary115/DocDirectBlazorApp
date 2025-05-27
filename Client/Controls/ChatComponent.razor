@@ -60,6 +60,7 @@
         {
             // Call your sending logic
             //await SendChatMessageAsync(newMessage);
+            messages.Add(new Message { Id = messages.Count + 1, SenderId = currentUserId, ReceiverId = "doctor1", Content = newMessage, Timestamp = DateTime.UtcNow });
             newMessage = "";
         }
     }

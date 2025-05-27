@@ -1,4 +1,4 @@
-﻿using Core.Entities;
+﻿using Shared.Entities;
 using Microsoft.EntityFrameworkCore;
 using Server.Interfaces;
 
@@ -43,5 +43,13 @@ namespace Server.Repositories
         {
             return await _context.Doctors.Where(d => d.Specialization == specialization).ToListAsync();
         }
+        public async Task<IEnumerable<Doctor>> GetApprovedDoctors()
+		{
+			return await _context.Doctors.Where(d => d.IsApproved == true).ToListAsync();
+		}
+        public async Task<IEnumerable<Doctor>> GetPendingDoctors()
+		{
+			return await _context.Doctors.Where(d => d.IsApproved == false).ToListAsync();
+		}
     }
 }

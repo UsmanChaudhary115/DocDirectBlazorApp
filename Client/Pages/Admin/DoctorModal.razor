@@ -1,0 +1,34 @@
+﻿@using Shared.Entities
+@inject IJSRuntime JS
+<!-- Components/DoctorModal.razor -->
+@if (IsVisible)
+{
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-[400px]">
+            <h2 class="text-xl font-bold mb-4">Add Doctor</h2>
+
+            <input class="w-full mb-2 p-2 border" @bind="Doctor.Name" placeholder="Name" />
+            <input class="w-full mb-2 p-2 border" @bind="Doctor.Specialization" placeholder="Specialization" />
+
+            <div class="flex justify-end space-x-2 mt-4">
+                <button class="px-4 py-2 bg-gray-300 rounded" @onclick="OnClose">Cancel</button>
+                <button class="px-4 py-2 bg-blue-600 text-white rounded" @onclick="SaveDoctor">Save</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private Doctor Doctor { get; set; } = new();
+
+    [Inject] private HttpClient Http { get; set; }
+
+    private async Task SaveDoctor()
+    {
+        await Http.PostAsJsonAsync("api/doctors", Doctor);
+        await OnClose.InvokeAsync();
+    }
+}

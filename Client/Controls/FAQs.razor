@@ -1,4 +1,4 @@
-﻿@using Core.Entities;
+﻿@using Shared.Entities;
 <section id="faq" class="faq section light-background">
     <div class="container section-title" data-aos="fade-up">
         <h2>Frequently Asked Questions</h2>
@@ -22,7 +22,7 @@
                     </h2>
                     <div id="@collapseId" class="faq-content accordion-collapse collapse"
                          aria-labelledby="@headingId" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body bg-dark text-light py-4">
+                        <div class="accordion-body text-light py-4" style="background: var(--accent-color)">
                             @faq.Answer
                         </div>
                     </div>

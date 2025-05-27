@@ -1,0 +1,190 @@
+﻿@page "/admin-doctors"
+@inject HttpClient Http
+@layout AdminLayout
+@using Shared.Entities
+
+<h2 style="margin-left: 1rem; color: #1f2937; font-size: 2rem; font-weight: 600;">
+    🩺 Doctors
+</h2>
+
+<!-- 🔍 Filter Section -->
+<div class="filter-container">
+    <input type="text"
+           @bind="SearchText"
+           @bind:event="oninput"
+           placeholder="🔍 Search by name..."
+           class="search-input" />
+
+    <select @bind="SelectedSpecialization" class="dropdown">
+        <option value="All">All</option>
+        @foreach (var specialization in GetSpecializations())
+        {
+            <option value="@specialization">@specialization</option>
+        }
+    </select>
+</div>
+
+<!-- ✅ Approved Doctors Section -->
+@if (approvedDoctors == null)
+{
+    <p>Loading approved doctors...</p>
+}
+else if (!filteredApprovedDoctors.Any())
+{
+    <p>No approved doctors found.</p>
+}
+else
+{
+    <div class="doctor-list">
+        @foreach (var doctor in filteredApprovedDoctors)
+        {
+            <div class="doctor-card" @onclick="() => NavigateToDetails(doctor.DoctorId)" style="cursor: pointer;">
+                <h4>@doctor.Name</h4>
+                <p><strong>Specialization:</strong> @doctor.Specialization</p>
+                <p><strong>City:</strong> @doctor.WorkedAt</p>
+            </div>
+        }
+    </div>
+}
+
+
+
+<hr />
+
+<!-- ⏳ Pending Doctors Section -->
+<h3 style="margin-left: 1rem; color: #b45309;">⏳ Pending Doctor Approvals</h3>
+
+@if (pendingDoctors == null)
+{
+    <p>Loading pending doctors...</p>
+}
+else if (!pendingDoctors.Any())
+{
+    <p>No doctors pending approval.</p>
+}
+else
+{
+    <div class="doctor-list">
+        @foreach (var doctor in pendingDoctors)
+        {
+            <div class="doctor-card" style="background-color: #fff8e1;">
+                <h4>@doctor.Name</h4>
+                <p><strong>Specialization:</strong> @doctor.Specialization</p>
+                <p><strong>Email:</strong> @doctor.Email</p>
+                <p><strong>City:</strong> @doctor.WorkedAt</p>
+                <button class="btn btn-success" @onclick="() => ApproveDoctor(doctor.DoctorId)">✅ Approve</button>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private List<Doctor>? approvedDoctors;
+    private List<Doctor>? filteredApprovedDoctors;
+    private List<Doctor>? pendingDoctors;
+    [Inject] private NavigationManager Navigation { get; set; }
+
+    private void NavigateToDetails(int doctorId)
+    {
+        Navigation.NavigateTo($"/doctor/{doctorId}");
+    }
+    private string _searchText = string.Empty;
+    private string _selectedSpecialization = "All";
+
+    private string SearchText
+    {
+        get => _searchText;
+        set
+        {
+            _searchText = value;
+            FilterApprovedDoctors();
+        }
+    }
+
+    private string SelectedSpecialization
+    {
+        get => _selectedSpecialization;
+        set
+        {
+            _selectedSpecialization = value;
+            FilterApprovedDoctors();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDoctors();
+    }
+
+    private async Task LoadDoctors()
+    {
+        approvedDoctors = await Http.GetFromJsonAsync<List<Doctor>>("/api/Doctors/GetApprovedDoctors");
+        pendingDoctors = await Http.GetFromJsonAsync<List<Doctor>>("/api/Doctors/GetPendingDoctors");
+        FilterApprovedDoctors();
+    }
+
+    private void FilterApprovedDoctors()
+    {
+        if (approvedDoctors == null) return;
+
+        filteredApprovedDoctors = approvedDoctors
+            .Where(d =>
+                (string.IsNullOrWhiteSpace(SearchText) || d.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase)) &&
+                (SelectedSpecialization == "All" || d.Specialization == SelectedSpecialization))
+            .ToList();
+    }
+
+    private async Task ApproveDoctor(int doctorId)
+    {
+        var response = await Http.PutAsync($"api/doctors/approve/{doctorId}", null);
+        if (response.IsSuccessStatusCode)
+        {
+            await LoadDoctors(); // refresh lists after approval
+        }
+    }
+
+    private List<string> GetSpecializations()
+    {
+        return approvedDoctors?
+            .Select(d => d.Specialization)
+            .Distinct()
+            .OrderBy(s => s)
+            .ToList() ?? new List<string>();
+    }
+}
+
+
+
+
+@* @code {
+    private List<Doctor>? doctors;
+    private Dictionary<int, List<Appointment>?> visibleAppointments = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            doctors = await Http.GetFromJsonAsync<List<Doctor>>("api/doctors");
+    }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ Error loading doctors: {ex.Message}");
+        }
+    }
+
+
+    private async Task ToggleAppointments(int doctorId)
+    {
+        if (!visibleAppointments.ContainsKey(doctorId))
+        {
+            visibleAppointments[doctorId] = null;
+            var appointments = await Http.GetFromJsonAsync<List<Appointment>>($"api/doctors/{doctorId}/appointments");
+            visibleAppointments[doctorId] = appointments;
+        }
+        else
+        {
+            visibleAppointments.Remove(doctorId);
+        }
+    }
+}
+ *@

@@ -1,0 +1,109 @@
+﻿@page "/doctor/{id:int}"
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@using Shared.Entities
+@inject IJSRuntime JS
+@layout AdminLayout
+
+
+<h2 class="title">👨‍⚕️ Doctor Details</h2>
+
+@if (doctor == null)
+{
+    <p>Loading doctor information...</p>
+}
+else
+{
+    <div class="doctor-details">
+        <h3>@doctor.Name</h3>
+        <p><strong>Email:</strong> @doctor.Email</p>
+        <p><strong>Gender:</strong> @doctor.Gender</p>
+        <p><strong>Specialization:</strong> @doctor.Specialization</p>
+        <p><strong>City:</strong> @doctor.WorkedAt</p>
+        <p><strong>Country:</strong> @doctor.Country</p>
+        <p><strong>Degree:</strong> @doctor.Education</p>
+    </div>
+
+    <h4 class="appointment-title">📅 Appointments</h4>
+
+    @if (appointments == null)
+    {
+        <p>Loading appointments...</p>
+    }
+    else if (appointments.Count == 0)
+    {
+        <p>No appointments found for this doctor.</p>
+    }
+    else
+    {
+        <ul class="appointment-list">
+            @foreach (var appointment in appointments)
+            {
+                @if (appointment.AppointmentDate < DateTime.Today)
+                {
+                    <span>📅 @appointment.AppointmentDate.ToShortDateString()</span>
+                    <span>📝 @appointment.Description</span>
+                }
+                else
+                {
+                <li>
+                    📅 <input type="date" @bind="appointment.AppointmentDate" />
+                    📝 <input type="text" @bind="appointment.Description" placeholder="Description" />
+
+                    👤 @appointment.Patient?.Name
+
+                    <button class="btn-save" @onclick="@(() => UpdateAppointment(appointment))">💾 Save</button>
+                    <button class="btn-delete" @onclick="@(() => DeleteAppointment(appointment.AppointmentId))">🗑️ Delete</button>
+                </li>
+                }
+            }
+        </ul>
+
+    }
+}
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private Doctor? doctor;
+    private List<Appointment>? appointments;
+
+    protected override async Task OnInitializedAsync()
+    {
+        doctor = await Http.GetFromJsonAsync<Doctor>($"api/admin/doctors/{id}");
+        appointments = await Http.GetFromJsonAsync<List<Appointment>>($"api/admin/doctors/{id}/appointments");
+    }
+    private async Task UpdateAppointment(Appointment appointment)
+    {
+        var response = await Http.PutAsJsonAsync($"api/admin/appointments/{appointment.AppointmentId}", appointment);
+
+        if (response.IsSuccessStatusCode)
+        {
+            await JS.InvokeVoidAsync("alert", "✅ Appointment updated successfully!");
+        }
+        else
+        {
+            await JS.InvokeVoidAsync("alert", "❌ Failed to update appointment.");
+        }
+    }
+
+    private async Task DeleteAppointment(int appointmentId)
+    {
+        bool confirm = await JS.InvokeAsync<bool>("confirm", "Are you sure you want to delete this appointment?");
+        if (!confirm) return;
+
+        var response = await Http.DeleteAsync($"api/admin/appointments/{appointmentId}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            appointments = appointments.Where(a => a.AppointmentId != appointmentId).ToList();
+            await JS.InvokeVoidAsync("alert", "🗑️ Appointment deleted successfully.");
+        }
+        else
+        {
+            await JS.InvokeVoidAsync("alert", "❌ Failed to delete appointment.");
+        }
+    }
+
+}

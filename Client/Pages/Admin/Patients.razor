@@ -1,0 +1,70 @@
+﻿@page "/admin-patients"
+@inject HttpClient Http
+@layout AdminLayout
+
+@using Shared.Entities
+
+<h2 class="mb-4 text-center text-primary-emphasis fw-bold display-6">
+    <i class="bi bi-people-fill me-2"></i>Registered Patients
+</h2>
+
+@if (patients == null)
+{
+    <div class="text-center my-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="mt-3">Loading patients...</p>
+    </div>
+}
+else if (!patients.Any())
+{
+    <div class="alert alert-warning text-center mx-auto w-50">
+        No patients found.
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="row g-4">
+            @foreach (var patient in patients)
+            {
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary-emphasis fw-semibold">
+                                @(string.IsNullOrWhiteSpace(patient?.Name) ? "No Name Provided" : patient.Name)
+                            </h5>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong>Email:</strong>
+                                    @(string.IsNullOrWhiteSpace(patient?.Email) ? "Not Provided" : patient.Email)
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Disease:</strong>
+                                    @(string.IsNullOrWhiteSpace(patient?.Disease) ? "N/A" : patient.Disease)
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Phone:</strong>
+                                    @(string.IsNullOrWhiteSpace(patient?.PhoneNumber) ? "Not Provided" : patient.PhoneNumber)
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Username:</strong>
+                                    @(string.IsNullOrWhiteSpace(patient?.UserName) ? "N/A" : patient.UserName)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    private List<Patient> patients;
+
+    protected override async Task OnInitializedAsync()
+    {
+        patients = await Http.GetFromJsonAsync<List<Patient>>("api/Admin/patients");
+    }
+}

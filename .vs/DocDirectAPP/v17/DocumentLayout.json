@@ -3,8 +3,134 @@
   "WorkspaceRootPath": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\controls\\contactcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\controls\\contactcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\controls\\chatcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\controls\\chatcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\controls\\faqs.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\controls\\faqs.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\admin\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\admin\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\admin\\appointments.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\admin\\appointments.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\admin\\doctors.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\admin\\doctors.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\repositories\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\repositories\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\admin\\patients.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\admin\\patients.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\interfaces\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\interfaces\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/DocDirectDb/True/SqlTable/dbo.Doctors.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\signincomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\signincomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\data\\hospitaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\data\\hospitaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\repositories\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\repositories\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\interfaces\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\interfaces\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C90F2A2E-17C3-4DAC-BA7A-55E79ECCE598}|SharedLibrary\\SharedLibrary.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\sharedlibrary\\entities\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C90F2A2E-17C3-4DAC-BA7A-55E79ECCE598}|SharedLibrary\\SharedLibrary.csproj|solutionrelative:sharedlibrary\\entities\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C90F2A2E-17C3-4DAC-BA7A-55E79ECCE598}|SharedLibrary\\SharedLibrary.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\sharedlibrary\\entities\\hospitaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C90F2A2E-17C3-4DAC-BA7A-55E79ECCE598}|SharedLibrary\\SharedLibrary.csproj|solutionrelative:sharedlibrary\\entities\\hospitaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\patient\\patienthomecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\patient\\patienthomecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\admin\\doctordetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\admin\\doctordetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C90F2A2E-17C3-4DAC-BA7A-55E79ECCE598}|SharedLibrary\\SharedLibrary.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\sharedlibrary\\entities\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C90F2A2E-17C3-4DAC-BA7A-55E79ECCE598}|SharedLibrary\\SharedLibrary.csproj|solutionrelative:sharedlibrary\\entities\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C90F2A2E-17C3-4DAC-BA7A-55E79ECCE598}|SharedLibrary\\SharedLibrary.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\sharedlibrary\\entities\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C90F2A2E-17C3-4DAC-BA7A-55E79ECCE598}|SharedLibrary\\SharedLibrary.csproj|solutionrelative:sharedlibrary\\entities\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C90F2A2E-17C3-4DAC-BA7A-55E79ECCE598}|SharedLibrary\\SharedLibrary.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\sharedlibrary\\sharedlibrary.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C90F2A2E-17C3-4DAC-BA7A-55E79ECCE598}|SharedLibrary\\SharedLibrary.csproj|solutionrelative:sharedlibrary\\sharedlibrary.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\client.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\client.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\layout\\adminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\layout\\adminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\patient\\signoutcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -19,20 +145,8 @@
       "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\wwwroot\\css\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\controls\\chatcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\controls\\chatcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\layout\\patientlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\layout\\patientlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\wwwroot\\js\\navbar.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -47,14 +161,6 @@
       "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\models\\appointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\models\\appointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\models\\appointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\models\\appointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -67,28 +173,12 @@
       "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\controls\\appointmentdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\signincomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\signincomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\patient\\profilecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\patient\\profilecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\controls\\doctors.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\controls\\doctors.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -97,14 +187,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\repositories\\appointmentdtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\repositories\\appointmentdtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\repositories\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\repositories\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\interfaces\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\interfaces\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -114,17 +196,102 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ContactComponent.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\ContactComponent.razor",
+              "RelativeDocumentMoniker": "Client\\Controls\\ContactComponent.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\ContactComponent.razor",
+              "RelativeToolTip": "Client\\Controls\\ContactComponent.razor",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-26T15:04:30.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FAQs.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\FAQs.razor",
+              "RelativeDocumentMoniker": "Client\\Controls\\FAQs.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\FAQs.razor",
+              "RelativeToolTip": "Client\\Controls\\FAQs.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-26T12:37:37.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Doctors.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Doctors.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\Admin\\Doctors.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Doctors.razor",
+              "RelativeToolTip": "Client\\Pages\\Admin\\Doctors.razor",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAAHkAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-26T12:17:02.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DoctorsController.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\DoctorsController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\DoctorsController.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\DoctorsController.cs",
+              "RelativeToolTip": "Server\\Controllers\\DoctorsController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAA3wEQAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T14:21:36.171Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "Appointments.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Appointments.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\Admin\\Appointments.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Appointments.razor",
+              "RelativeToolTip": "Client\\Pages\\Admin\\Appointments.razor",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAAAAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-26T09:34:46.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Server\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAowGIAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:51:19.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Dashboard.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\Admin\\Dashboard.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Dashboard.razor",
+              "RelativeToolTip": "Client\\Pages\\Admin\\Dashboard.razor",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACsAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-26T09:34:48.858Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ChatComponent.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\ChatComponent.razor",
               "RelativeDocumentMoniker": "Client\\Controls\\ChatComponent.razor",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\ChatComponent.razor",
               "RelativeToolTip": "Client\\Controls\\ChatComponent.razor",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFkAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-25T20:14:58.208Z",
               "EditorCaption": ""
@@ -132,71 +299,339 @@
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "navbar.js",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\js\\navbar.js",
-              "RelativeDocumentMoniker": "Client\\wwwroot\\js\\navbar.js",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\js\\navbar.js",
-              "RelativeToolTip": "Client\\wwwroot\\js\\navbar.js",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-25T20:11:48.201Z",
-              "EditorCaption": ""
+              "Title": "DoctorRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\DoctorRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Repositories\\DoctorRepository.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\DoctorRepository.cs",
+              "RelativeToolTip": "Server\\Repositories\\DoctorRepository.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAA7wC0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T14:31:01.473Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "WelcomeCarousel.razor",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\WelcomeCarousel.razor",
-              "RelativeDocumentMoniker": "Client\\Controls\\WelcomeCarousel.razor",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\WelcomeCarousel.razor",
-              "RelativeToolTip": "Client\\Controls\\WelcomeCarousel.razor",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Patients.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Patients.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\Admin\\Patients.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Patients.razor",
+              "RelativeToolTip": "Client\\Pages\\Admin\\Patients.razor",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAB4AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-25T20:08:41.033Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-26T11:54:53.842Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PatientLayout.razor",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\PatientLayout.razor",
-              "RelativeDocumentMoniker": "Client\\Layout\\PatientLayout.razor",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\PatientLayout.razor",
-              "RelativeToolTip": "Client\\Layout\\PatientLayout.razor",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABsAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-25T20:02:42.14Z",
-              "EditorCaption": ""
+              "DocumentIndex": 10,
+              "Title": "IDoctorRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Interfaces\\IDoctorRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Interfaces\\IDoctorRepository.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Interfaces\\IDoctorRepository.cs",
+              "RelativeToolTip": "Server\\Interfaces\\IDoctorRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T14:21:58.406Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "Client\\Layout\\MainLayout.razor",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "Client\\Layout\\MainLayout.razor",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABgAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-25T19:04:00.481Z",
-              "EditorCaption": ""
+              "DocumentIndex": 12,
+              "Title": "dbo.Doctors.sql",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/DocDirectDb/True/SqlTable/dbo.Doctors.sql",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/DocDirectDb/True/SqlTable/dbo.Doctors.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-05-26T12:05:17.46Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 14,
+              "Title": "PatientsController.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\PatientsController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\PatientsController.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\PatientsController.cs",
+              "RelativeToolTip": "Server\\Controllers\\PatientsController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAMAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:51:25.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\NotificationService.cs",
+              "RelativeDocumentMoniker": "Server\\Repositories\\NotificationService.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\NotificationService.cs",
+              "RelativeToolTip": "Server\\Repositories\\NotificationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:48:08.155Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Program.cs",
+              "RelativeDocumentMoniker": "Server\\Program.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Program.cs",
+              "RelativeToolTip": "Server\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T14:47:22.839Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "INotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Interfaces\\INotificationService.cs",
+              "RelativeDocumentMoniker": "Server\\Interfaces\\INotificationService.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Interfaces\\INotificationService.cs",
+              "RelativeToolTip": "Server\\Interfaces\\INotificationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:49:23.683Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "HospitalDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Data\\HospitalDbContext.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\HospitalDbContext.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Data\\HospitalDbContext.cs",
+              "RelativeToolTip": "Server\\Data\\HospitalDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:31:06.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "SignInComponent.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\SignInComponent.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\SignInComponent.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\SignInComponent.razor",
+              "RelativeToolTip": "Client\\Pages\\SignInComponent.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-23T05:13:43.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\index.html",
               "RelativeDocumentMoniker": "Client\\wwwroot\\index.html",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\index.html",
               "RelativeToolTip": "Client\\wwwroot\\index.html",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-05-25T19:03:48.615Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T19:03:48.615Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 22,
+              "Title": "PatientHomeComponent.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\PatientHomeComponent.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\Patient\\PatientHomeComponent.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\PatientHomeComponent.razor",
+              "RelativeToolTip": "Client\\Pages\\Patient\\PatientHomeComponent.razor",
+              "ViewState": "AgIAAE8BAAAAAAAAAAAAABEAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-22T19:18:46.397Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Server.csproj",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Server.csproj",
+              "RelativeDocumentMoniker": "Server\\Server.csproj",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Server.csproj",
+              "RelativeToolTip": "Server\\Server.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-26T10:01:12.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "DoctorDetail.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\DoctorDetail.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\Admin\\DoctorDetail.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\DoctorDetail.razor",
+              "RelativeToolTip": "Client\\Pages\\Admin\\DoctorDetail.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-26T10:07:46.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\Appointment.cs",
+              "RelativeDocumentMoniker": "SharedLibrary\\Entities\\Appointment.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\Appointment.cs",
+              "RelativeToolTip": "SharedLibrary\\Entities\\Appointment.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:04:31.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "HospitalDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\HospitalDbContext.cs",
+              "RelativeDocumentMoniker": "SharedLibrary\\Entities\\HospitalDbContext.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\HospitalDbContext.cs",
+              "RelativeToolTip": "SharedLibrary\\Entities\\HospitalDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:12:32.189Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Doctor.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\Doctor.cs",
+              "RelativeDocumentMoniker": "SharedLibrary\\Entities\\Doctor.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\Doctor.cs",
+              "RelativeToolTip": "SharedLibrary\\Entities\\Doctor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:09:45.219Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Microsoft.PackageDependencyResolution.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ViewState": "AgIAAAkBAAAAAAAAAAAWwAkBAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-05-26T10:01:33.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "SharedLibrary.csproj",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\SharedLibrary.csproj",
+              "RelativeDocumentMoniker": "SharedLibrary\\SharedLibrary.csproj",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\SharedLibrary.csproj",
+              "RelativeToolTip": "SharedLibrary\\SharedLibrary.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-26T10:03:57.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Patient.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\Patient.cs",
+              "RelativeDocumentMoniker": "SharedLibrary\\Entities\\Patient.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\Patient.cs",
+              "RelativeToolTip": "SharedLibrary\\Entities\\Patient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:05:26.503Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Client.csproj",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Client.csproj",
+              "RelativeDocumentMoniker": "Client\\Client.csproj",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Client.csproj",
+              "RelativeToolTip": "Client\\Client.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-26T09:58:10.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Program.cs",
+              "RelativeDocumentMoniker": "Client\\Program.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Program.cs",
+              "RelativeToolTip": "Client\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T09:56:40.686Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\_Imports.razor",
+              "RelativeDocumentMoniker": "Client\\_Imports.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\_Imports.razor",
+              "RelativeToolTip": "Client\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-26T09:34:08.996Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "AdminLayout.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\AdminLayout.razor",
+              "RelativeDocumentMoniker": "Client\\Layout\\AdminLayout.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\AdminLayout.razor",
+              "RelativeToolTip": "Client\\Layout\\AdminLayout.razor",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAHAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-26T09:31:45.662Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "navbar.js",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\js\\navbar.js",
+              "RelativeDocumentMoniker": "Client\\wwwroot\\js\\navbar.js",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\js\\navbar.js",
+              "RelativeToolTip": "Client\\wwwroot\\js\\navbar.js",
+              "ViewState": "AgIAACMAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-05-25T20:11:48.201Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "WelcomeCarousel.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\WelcomeCarousel.razor",
+              "RelativeDocumentMoniker": "Client\\Controls\\WelcomeCarousel.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\WelcomeCarousel.razor",
+              "RelativeToolTip": "Client\\Controls\\WelcomeCarousel.razor",
+              "ViewState": "AgIAAAkAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-25T20:08:41.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "PatientLayout.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\PatientLayout.razor",
+              "RelativeDocumentMoniker": "Client\\Layout\\PatientLayout.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\PatientLayout.razor",
+              "RelativeToolTip": "Client\\Layout\\PatientLayout.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAIBJwBsAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-25T20:02:42.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Client\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Client\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAYwHYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-25T19:04:00.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "Client\\wwwroot\\css\\site.css",
@@ -204,99 +639,47 @@
               "RelativeToolTip": "Client\\wwwroot\\css\\site.css",
               "ViewState": "AgIAAHYAAAAAAAAAAAAgwIEAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-05-25T18:46:19.584Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T18:46:19.584Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 35,
               "Title": "main.css",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\css\\main.css",
               "RelativeDocumentMoniker": "Client\\wwwroot\\css\\main.css",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\css\\main.css",
               "RelativeToolTip": "Client\\wwwroot\\css\\main.css",
-              "ViewState": "AgIAALwGAAAAAAAAAAAAAMAGAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALkGAAAAAAAAAIBJwMAGAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-05-25T18:42:51.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T18:42:51.393Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AppointmentDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Models\\AppointmentDTO.cs",
-              "RelativeDocumentMoniker": "Client\\Models\\AppointmentDTO.cs",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Models\\AppointmentDTO.cs",
-              "RelativeToolTip": "Client\\Models\\AppointmentDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAwwA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T18:03:25.848Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AppointmentDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Models\\AppointmentDTO.cs",
-              "RelativeDocumentMoniker": "Server\\Models\\AppointmentDTO.cs",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Models\\AppointmentDTO.cs",
-              "RelativeToolTip": "Server\\Models\\AppointmentDTO.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAA/wA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T18:02:51.691Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PatientHomeComponent.razor",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\PatientHomeComponent.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\Patient\\PatientHomeComponent.razor",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\PatientHomeComponent.razor",
-              "RelativeToolTip": "Client\\Pages\\Patient\\PatientHomeComponent.razor",
-              "ViewState": "AgIAABQBAAAAAAAAAAAswCwBAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-22T19:18:46.397Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 33,
               "Title": "SignoutComponent.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\SignoutComponent.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Patient\\SignoutComponent.razor",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\SignoutComponent.razor",
               "RelativeToolTip": "Client\\Pages\\Patient\\SignoutComponent.razor",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACQAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAIBJwCQAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-23T07:26:48.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T07:26:48.281Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "SignInComponent.razor",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\SignInComponent.razor",
-              "RelativeDocumentMoniker": "Client\\Pages\\SignInComponent.razor",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\SignInComponent.razor",
-              "RelativeToolTip": "Client\\Pages\\SignInComponent.razor",
-              "ViewState": "AgIAAKUAAAAAAAAAAAAAAIgAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-23T05:13:43.351Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 42,
               "Title": "AppointmentDetails.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\AppointmentDetails.razor",
               "RelativeDocumentMoniker": "Client\\Controls\\AppointmentDetails.razor",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\AppointmentDetails.razor",
               "RelativeToolTip": "Client\\Controls\\AppointmentDetails.razor",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAEkAAABgAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAIBJwEkAAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-25T14:43:53.325Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 40,
               "Title": "AppointmentController.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AppointmentController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\AppointmentController.cs",
@@ -308,7 +691,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 41,
               "Title": "AppointmentDTOController.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AppointmentDTOController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\AppointmentDTOController.cs",
@@ -320,7 +703,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 43,
               "Title": "ProfileComponent.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\ProfileComponent.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Patient\\ProfileComponent.razor",
@@ -332,103 +715,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "DoctorsController.cs",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\DoctorsController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\DoctorsController.cs",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\DoctorsController.cs",
-              "RelativeToolTip": "Server\\Controllers\\DoctorsController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAIAwwGAAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T14:21:36.171Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 44,
               "Title": "Doctors.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\Doctors.razor",
               "RelativeDocumentMoniker": "Client\\Controls\\Doctors.razor",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\Doctors.razor",
               "RelativeToolTip": "Client\\Controls\\Doctors.razor",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABcAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAIBJwBcAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-25T14:51:32.958Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 39,
               "Title": "Home.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Home.razor",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Home.razor",
               "RelativeToolTip": "Client\\Pages\\Home.razor",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABwAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAIBJwBwAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-25T14:51:25.531Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Appointment.cs",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Models\\Appointment.cs",
-              "RelativeDocumentMoniker": "Server\\Models\\Appointment.cs",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Models\\Appointment.cs",
-              "RelativeToolTip": "Server\\Models\\Appointment.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAcAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T14:34:48.979Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Program.cs",
-              "RelativeDocumentMoniker": "Server\\Program.cs",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Program.cs",
-              "RelativeToolTip": "Server\\Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T14:47:22.839Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 45,
               "Title": "App.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\App.razor",
               "RelativeDocumentMoniker": "Client\\App.razor",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\App.razor",
               "RelativeToolTip": "Client\\App.razor",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAIBJwBAAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-25T14:39:46.346Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "DoctorRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\DoctorRepository.cs",
-              "RelativeDocumentMoniker": "Server\\Repositories\\DoctorRepository.cs",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\DoctorRepository.cs",
-              "RelativeToolTip": "Server\\Repositories\\DoctorRepository.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAkwCkAAABlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T14:31:01.473Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "IDoctorRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Interfaces\\IDoctorRepository.cs",
-              "RelativeDocumentMoniker": "Server\\Interfaces\\IDoctorRepository.cs",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Interfaces\\IDoctorRepository.cs",
-              "RelativeToolTip": "Server\\Interfaces\\IDoctorRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAABZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T14:21:58.406Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 46,
               "Title": "AppointmentDTORepository.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\AppointmentDTORepository.cs",
               "RelativeDocumentMoniker": "Server\\Repositories\\AppointmentDTORepository.cs",
