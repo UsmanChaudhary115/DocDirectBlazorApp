@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\controls\\contactcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\controls\\contactcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\controls\\chatcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\controls\\chatcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -192,11 +196,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "ContactComponent.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\ContactComponent.razor",
+              "RelativeDocumentMoniker": "Client\\Controls\\ContactComponent.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\ContactComponent.razor",
+              "RelativeToolTip": "Client\\Controls\\ContactComponent.razor",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-26T15:04:30.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "FAQs.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\FAQs.razor",
               "RelativeDocumentMoniker": "Client\\Controls\\FAQs.razor",
@@ -208,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Doctors.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Doctors.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Admin\\Doctors.razor",
@@ -220,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "DoctorsController.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\DoctorsController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\DoctorsController.cs",
@@ -232,7 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Appointments.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Appointments.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Admin\\Appointments.razor",
@@ -244,7 +261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\AdminController.cs",
@@ -256,7 +273,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Dashboard.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Dashboard.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Admin\\Dashboard.razor",
@@ -268,20 +285,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ChatComponent.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\ChatComponent.razor",
               "RelativeDocumentMoniker": "Client\\Controls\\ChatComponent.razor",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\ChatComponent.razor",
               "RelativeToolTip": "Client\\Controls\\ChatComponent.razor",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAD0AAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFkAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-25T20:14:58.208Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T20:14:58.208Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "DoctorRepository.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\DoctorRepository.cs",
               "RelativeDocumentMoniker": "Server\\Repositories\\DoctorRepository.cs",
@@ -293,7 +309,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Patients.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Patients.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Admin\\Patients.razor",
@@ -305,7 +321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "IDoctorRepository.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Interfaces\\IDoctorRepository.cs",
               "RelativeDocumentMoniker": "Server\\Interfaces\\IDoctorRepository.cs",
@@ -317,7 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "dbo.Doctors.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/DocDirectDb/True/SqlTable/dbo.Doctors.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/DocDirectDb/True/SqlTable/dbo.Doctors.sql",
@@ -326,7 +342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "PatientsController.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\PatientsController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\PatientsController.cs",
@@ -338,7 +354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "NotificationService.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\NotificationService.cs",
               "RelativeDocumentMoniker": "Server\\Repositories\\NotificationService.cs",
@@ -350,7 +366,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Program.cs",
               "RelativeDocumentMoniker": "Server\\Program.cs",
@@ -362,7 +378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "INotificationService.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Interfaces\\INotificationService.cs",
               "RelativeDocumentMoniker": "Server\\Interfaces\\INotificationService.cs",
@@ -374,7 +390,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "HospitalDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Data\\HospitalDbContext.cs",
               "RelativeDocumentMoniker": "Server\\Data\\HospitalDbContext.cs",
@@ -386,7 +402,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "SignInComponent.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\SignInComponent.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\SignInComponent.razor",
@@ -398,7 +414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\index.html",
               "RelativeDocumentMoniker": "Client\\wwwroot\\index.html",
@@ -410,7 +426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "PatientHomeComponent.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\PatientHomeComponent.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Patient\\PatientHomeComponent.razor",
@@ -422,7 +438,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Server.csproj",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Server.csproj",
               "RelativeDocumentMoniker": "Server\\Server.csproj",
@@ -434,7 +450,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "DoctorDetail.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\DoctorDetail.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Admin\\DoctorDetail.razor",
@@ -446,7 +462,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Appointment.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\Appointment.cs",
               "RelativeDocumentMoniker": "SharedLibrary\\Entities\\Appointment.cs",
@@ -458,7 +474,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "HospitalDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\HospitalDbContext.cs",
               "RelativeDocumentMoniker": "SharedLibrary\\Entities\\HospitalDbContext.cs",
@@ -470,7 +486,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "Doctor.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\Doctor.cs",
               "RelativeDocumentMoniker": "SharedLibrary\\Entities\\Doctor.cs",
@@ -482,7 +498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "Microsoft.PackageDependencyResolution.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
@@ -494,7 +510,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "SharedLibrary.csproj",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\SharedLibrary.csproj",
               "RelativeDocumentMoniker": "SharedLibrary\\SharedLibrary.csproj",
@@ -506,7 +522,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "Patient.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\Patient.cs",
               "RelativeDocumentMoniker": "SharedLibrary\\Entities\\Patient.cs",
@@ -518,7 +534,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "Client.csproj",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Client.csproj",
               "RelativeDocumentMoniker": "Client\\Client.csproj",
@@ -530,7 +546,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Program.cs",
               "RelativeDocumentMoniker": "Client\\Program.cs",
@@ -542,7 +558,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "_Imports.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\_Imports.razor",
               "RelativeDocumentMoniker": "Client\\_Imports.razor",
@@ -554,7 +570,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "AdminLayout.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\AdminLayout.razor",
               "RelativeDocumentMoniker": "Client\\Layout\\AdminLayout.razor",
@@ -566,7 +582,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "navbar.js",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\js\\navbar.js",
               "RelativeDocumentMoniker": "Client\\wwwroot\\js\\navbar.js",
@@ -578,7 +594,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "WelcomeCarousel.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\WelcomeCarousel.razor",
               "RelativeDocumentMoniker": "Client\\Controls\\WelcomeCarousel.razor",
@@ -590,7 +606,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "PatientLayout.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\PatientLayout.razor",
               "RelativeDocumentMoniker": "Client\\Layout\\PatientLayout.razor",
@@ -602,7 +618,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "Client\\Layout\\MainLayout.razor",
@@ -614,7 +630,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "Client\\wwwroot\\css\\site.css",
@@ -626,7 +642,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "main.css",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\css\\main.css",
               "RelativeDocumentMoniker": "Client\\wwwroot\\css\\main.css",
@@ -638,7 +654,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "SignoutComponent.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\SignoutComponent.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Patient\\SignoutComponent.razor",
@@ -650,7 +666,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "AppointmentDetails.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\AppointmentDetails.razor",
               "RelativeDocumentMoniker": "Client\\Controls\\AppointmentDetails.razor",
@@ -662,7 +678,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "AppointmentController.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AppointmentController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\AppointmentController.cs",
@@ -674,7 +690,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "AppointmentDTOController.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AppointmentDTOController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\AppointmentDTOController.cs",
@@ -686,7 +702,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "ProfileComponent.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\ProfileComponent.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Patient\\ProfileComponent.razor",
@@ -698,7 +714,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "Doctors.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\Doctors.razor",
               "RelativeDocumentMoniker": "Client\\Controls\\Doctors.razor",
@@ -710,7 +726,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "Home.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Home.razor",
@@ -722,7 +738,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "App.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\App.razor",
               "RelativeDocumentMoniker": "Client\\App.razor",
@@ -734,7 +750,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "AppointmentDTORepository.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\AppointmentDTORepository.cs",
               "RelativeDocumentMoniker": "Server\\Repositories\\AppointmentDTORepository.cs",
