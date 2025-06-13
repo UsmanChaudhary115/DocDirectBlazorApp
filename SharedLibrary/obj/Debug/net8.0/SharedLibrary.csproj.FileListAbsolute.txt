@@ -1,12 +1,12 @@
+C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\bin\Debug\net8.0\SharedLibrary.deps.json
+C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\bin\Debug\net8.0\SharedLibrary.dll
+C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\bin\Debug\net8.0\SharedLibrary.pdb
+C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\obj\Debug\net8.0\SharedLibrary.csproj.AssemblyReference.cache
 C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\obj\Debug\net8.0\SharedLibrary.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\obj\Debug\net8.0\SharedLibrary.AssemblyInfoInputs.cache
 C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\obj\Debug\net8.0\SharedLibrary.AssemblyInfo.cs
 C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\obj\Debug\net8.0\SharedLibrary.csproj.CoreCompileInputs.cache
 C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\obj\Debug\net8.0\SharedLibrary.sourcelink.json
-C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\bin\Debug\net8.0\SharedLibrary.deps.json
-C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\bin\Debug\net8.0\SharedLibrary.dll
-C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\bin\Debug\net8.0\SharedLibrary.pdb
-C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\obj\Debug\net8.0\SharedLibrary.csproj.AssemblyReference.cache
 C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\obj\Debug\net8.0\SharedLibrary.dll
 C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\obj\Debug\net8.0\refint\SharedLibrary.dll
 C:\Users\Usman\Desktop\DocDirectBlazorApp\SharedLibrary\obj\Debug\net8.0\SharedLibrary.pdb

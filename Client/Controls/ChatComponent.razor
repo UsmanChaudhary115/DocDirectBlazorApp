@@ -1,13 +1,16 @@
 ﻿@using System.ComponentModel.DataAnnotations
+@using System.Text.Json
+@using Microsoft.AspNetCore.Components.Web
 @inject IJSRuntime JS
+@inject HttpClient Http
 
-<section id="chatSection" class="" data-aos="fade-up">
-
+<section id="chatSection" data-aos="fade-up">
     <div class="d-flex justify-content-center">
         <header class="chat-header p-3" style="min-width: 70%;">
             <h2 class="text-white fw-bolder">@otherPartnerName</h2>
         </header>
     </div>
+
     <div id="chatContainer" class="chat-container">
         @foreach (var msg in messages)
         {
@@ -18,7 +21,16 @@
                 </div>
             </div>
         }
+
+        @if (isLoading)
+        {
+            <div class="text-center mt-2">
+                <span class="spinner-border text-primary spinner-border-sm" role="status"></span>
+                <span class="ms-2">Gemini is thinking...</span>
+            </div>
+        }
     </div>
+
     <div class="chat-input-section bg-light p-3 shadow-sm rounded-bottom" style="max-width: 70%; margin: auto;">
         <div class="input-group">
             <input @bind="newMessage" @bind:event="oninput"
@@ -36,21 +48,168 @@
     </div>
 </section>
 
-
 <style>
     .chat-header {
         background: var(--accent-color);
-        border-radius: 10px 10px 0 0; 
+        border-radius: 10px 10px 0 0;
         font-size: 1.5rem;
-        text-align: start; 
+        text-align: start;
     }
 
     .chat-input-section input:focus {
         box-shadow: none;
-        border-color: #0d6efd;
+        border-color: var(--accent-color);
+    }
+
+    .chat-container {
+        max-height: 60vh;
+        overflow-y: auto;
+        padding: 1rem;
+        background: #f8f9fa;
+    }
+
+    .message-wrapper {
+        display: flex;
+        margin-bottom: 0.5rem;
+    }
+
+        .message-wrapper.sent {
+            justify-content: flex-end;
+        }
+
+        .message-wrapper.received {
+            justify-content: flex-start;
+        }
+
+    .message-bubble {
+        max-width: 60%;
+        background-color: #e2e3e5;
+        padding: 0.75rem;
+        border-radius: 1rem;
+        position: relative;
+    }
+
+    .message-wrapper.sent .message-bubble {
+        background-color: var(--accent-color);
+    }
+
+    .message-time {
+        font-size: 0.7rem;
+        color: #6c757d;
+        display: block;
+        text-align: right;
+        margin-top: 0.25rem;
+    }
+
+    .message-wrapper.sent .message-time {
+        font-size: 0.7rem;
+        color: white ;
+        display: block;
+        text-align: right;
+        margin-top: 0.25rem;
     }
 </style>
 
+@code {
+    private string newMessage;
+    private string currentUserId = "user123";
+    private string otherPartnerName = "DocDirectBot";
+    private List<ChatMessage> messages = new();
+    private bool isLoading;
+
+    public class ChatMessage
+    {
+        public string SenderId { get; set; }
+        public string Content { get; set; }
+        public DateTime Timestamp { get; set; }
+    }
+
+    public class GeminiResponse
+    {
+        public string Reply { get; set; }
+    }
+
+    private async Task SendMessage()
+    {
+        if (string.IsNullOrWhiteSpace(newMessage)) return;
+
+        var userMsg = new ChatMessage
+            {
+                SenderId = currentUserId,
+                Content = newMessage,
+                Timestamp = DateTime.Now
+            };
+
+        messages.Add(userMsg);
+        var userInput = newMessage;
+        newMessage = string.Empty;
+        await ScrollToBottom();
+
+        await GetGeminiReply(userInput);
+    }
+
+    private async Task GetGeminiReply(string prompt)
+    {
+        isLoading = true;
+        StateHasChanged();
+
+        try
+        {
+            string message = "You are a friendly chatbot for DocDirect, a system where patients can book doctor appointments, view appointment details, and get updates. Only answer questions about how DocDirect works. Keep replies short, simple, and patient-friendly.Respond to this user query within the scope of DocDirect only: Your job is to explain how the system works to end-users.Do not provide technical answers, code, or suggestions outside the existing system features. Stay within the system’s current functionality only. Respond to the following user query based strictly on this system dont use formatting: " + prompt;
+            var response = await Http.PostAsJsonAsync("/api/Gemini/ask", new { Prompt = message });
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadFromJsonAsync<GeminiResponse>();
+                var replyMsg = new ChatMessage
+                    {
+                        SenderId = "Gemini",
+                        Content = json?.Reply ?? "No response",
+                        Timestamp = DateTime.Now
+                    };
+                messages.Add(replyMsg);
+            }
+            else
+            {
+                messages.Add(new ChatMessage
+                    {
+                        SenderId = "System",
+                        Content = $"Error: {response.ReasonPhrase}",
+                        Timestamp = DateTime.Now
+                    });
+            }
+        }
+        catch (Exception ex)
+        {
+            messages.Add(new ChatMessage
+                {
+                    SenderId = "System",
+                    Content = $"Error: {ex.Message}",
+                    Timestamp = DateTime.Now
+                });
+        }
+
+        isLoading = false;
+        StateHasChanged();
+        await ScrollToBottom();
+    }
+
+    private async Task HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await SendMessage();
+        }
+    }
+
+    private async Task ScrollToBottom()
+    {
+        await JS.InvokeVoidAsync("scrollToBottomOfChat");
+    }
+}
+
+
+@* 
 @code {
     private string newMessage = "";
 
@@ -111,4 +270,4 @@
     {
         await JS.InvokeVoidAsync("scrollToBottomOfChat");
     }
-}
+} *@

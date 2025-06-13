@@ -1277,6 +1277,37 @@
         }
       }
     },
+    "/api/Gemini/ask": {
+      "post": {
+        "tags": [
+          "Gemini"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeminiRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeminiRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeminiRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Notifications/recent": {
       "get": {
         "tags": [
@@ -1551,6 +1582,16 @@
             "nullable": true
           },
           "instagramAccountLink": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeminiRequest": {
+        "type": "object",
+        "properties": {
+          "prompt": {
             "type": "string",
             "nullable": true
           }

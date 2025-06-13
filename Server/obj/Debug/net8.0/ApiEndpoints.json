@@ -723,6 +723,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GeminiController",
+    "Method": "AskGemini",
+    "RelativePath": "api/Gemini/ask",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "GeminiRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Server.Controllers.NotificationsController",
     "Method": "GetRecentNotifications",
     "RelativePath": "api/Notifications/recent",

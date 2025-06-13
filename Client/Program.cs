@@ -5,6 +5,7 @@ using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Client;
 using Blazored.LocalStorage;
+using SharedLibrary.Entities;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -15,7 +16,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 
 builder.Services.AddBlazoredLocalStorage();
 // Add authentication state provider 
-builder.Services.AddAuthorizationCore();
+builder.Services.AddAuthorizationCore(); 
 
 
 await builder.Build().RunAsync();

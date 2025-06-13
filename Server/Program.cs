@@ -22,6 +22,8 @@ builder.Services.AddScoped<IAppointmentDTORepository, AppointmentDTORepository>(
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddHttpClient<IGeminiService, GeminiService>();
+
 
 // Add Identity services for Patient user entity
 builder.Services.AddIdentity<Patient, IdentityRole>(options =>
