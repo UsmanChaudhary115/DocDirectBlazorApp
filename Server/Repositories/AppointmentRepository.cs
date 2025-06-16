@@ -51,7 +51,7 @@ namespace Server.Repositories
             {
                 throw new Exception("Appointment not found");
             }
-            _context.Appointments.Remove(appointment);
+            appointment.isDeleted = true; 
             await _context.SaveChangesAsync();
         }
 

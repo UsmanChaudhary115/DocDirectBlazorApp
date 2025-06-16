@@ -253,32 +253,6 @@
   },
   {
     "ContainingType": "Server.Controllers.AppointmentController",
-    "Method": "GetAppointmentsByDoctorId",
-    "RelativePath": "api/Appointment/doctor/{doctorId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "doctorId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Appointment, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Server.Controllers.AppointmentController",
     "Method": "GetAllAppointments",
     "RelativePath": "api/Appointment/GetAllAppointments",
     "HttpMethod": "GET",
@@ -314,6 +288,32 @@
     "ReturnTypes": [
       {
         "Type": "Shared.Entities.Appointment",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Server.Controllers.AppointmentController",
+    "Method": "GetAppointmentsByDoctorId",
+    "RelativePath": "api/Appointment/GetAppointmentsByDoctorId/{doctorId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Shared.Entities.Appointment, SharedLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -629,7 +629,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Shared.Entities.Doctor",
+        "Type": "Shared.Entities.DoctorViewModel",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -696,6 +696,22 @@
       {
         "Name": "doctor",
         "Type": "Shared.Entities.Doctor",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.DoctorsController",
+    "Method": "SignIn",
+    "RelativePath": "api/Doctors/signin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctor",
+        "Type": "Shared.Entities.DoctorSignInModel",
         "IsRequired": true
       }
     ],

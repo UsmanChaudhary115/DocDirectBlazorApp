@@ -1,0 +1,719 @@
+﻿@page "/doctor-profile"
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+@using System.ComponentModel.DataAnnotations
+@using Shared.Entities 
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject HttpClient httpClient
+@layout DoctorLayout
+<style>
+    :root {
+    --gradient-secondary: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .profile-container {
+    min-height: 100vh;
+    padding: 2rem 0;
+    }
+
+
+
+    .enhanced-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+    border: none;
+    transition: var(--transition);
+    overflow: hidden;
+    }
+
+    .enhanced-card:hover {
+    transform: translateY(-2px);
+    }
+
+    .card-header-custom {
+    border-bottom: 2px solid var(--accent-color);
+    padding: 1.5rem;
+    position: relative;
+    }
+
+    .card-header-custom::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    }
+
+    .section-title {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    }
+
+    .section-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--accent-color);
+    }
+
+    .section-icon2 {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: white
+    }
+
+    .custom-input {
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    background: #fafafa;
+    }
+
+    .custom-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem var(--accent-color);
+    background: white;
+    outline: none;
+    }
+
+    .form-label-custom {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    display: block;
+    }
+
+    .btn-primary-custom {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    }
+
+    .btn-primary-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+    }
+
+    .btn-primary-custom:hover::before {
+    left: 100%;
+    }
+
+    .btn-primary-custom:hover {
+    transform: translateY(-1px);
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn-primary-custom:focus {
+    transform: translateY(-1px);
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn-primary-custom:active {
+    transform: translateY(-1px);
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    }
+    .appointment-card {
+    background: var(--accent-color);
+    border-radius: var(--border-radius);
+    border: none;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    }
+
+    .appointment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--accent-color);
+    pointer-events: none;
+    }
+
+    .appointment-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    }
+
+    .appointment-card .card-body {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
+    }
+
+    .appointment-badge {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    }
+
+    .no-appointments {
+    text-align: center;
+    padding: 3rem;
+    color: #6c757d;
+    }
+
+    .no-appointments-icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    opacity: 0.5;
+    }
+
+    .divider-custom {
+    border: none;
+    height: 2px;
+    background: var(--accent-color);
+    margin: 2rem 0;
+    border-radius: 1px;
+    }
+
+    .stats-card {
+    background: var(--accent-color);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    }
+
+    .stats-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pulse 3s ease-in-out infinite;
+    }
+
+    .stats-card-disabled {
+    opacity: 0.6;
+    background-color: #f8f9fa;
+    border: 1px dashed #dee2e6;
+    }
+
+    .stats-card-disabled .stats-number {
+    color: #6c757d !important;
+    }
+
+    .stats-card-disabled .stats-label {
+    color: #6c757d;
+    }
+
+    .social-links a {
+    color: var(--accent-color);
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    }
+
+    .social-links a:hover {
+    color: #0056b3;
+    }
+
+    .stats-number {
+    font-size: 2rem;
+    font-weight: 700;
+    }
+
+    .stats-label {
+    font-size: 1rem;
+    opacity: 0.8;
+    }
+</style>
+<!-- Status Messages -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+    @if (!string.IsNullOrWhiteSpace(SuccessMessage))
+    {
+        <div class="toast align-items-center text-bg-success border-0 shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+            <div class="d-flex">
+                <div class="toast-body text-center w-100">
+                    <i class="bi bi-check-circle-fill me-2"></i><strong>@SuccessMessage</strong>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    }
+    @if (!string.IsNullOrWhiteSpace(ErrorMessage))
+    {
+        <div class="toast align-items-center text-bg-danger border-0 shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+            <div class="d-flex">
+                <div class="toast-body text-center w-100">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i><strong>@ErrorMessage</strong>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    }
+</div>
+<div class="profile-container">
+    <div class="container">
+        <DoctorProfileHeader></DoctorProfileHeader> 
+        <div class="row">
+            <!-- Profile Form -->
+            <div class="col-lg-8">
+                <div class="enhanced-card mb-4">
+                    <div class="card-header-custom">
+                        <h4 class="section-title">
+                            <svg class="section-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                            </svg>
+                            Professional Information
+                        </h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <EditForm Model="@profileInfo" OnValidSubmit="UpdateProfileInfo">
+                            <DataAnnotationsValidator />
+                            <ValidationSummary class="alert alert-danger-custom alert-custom" />
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                                        </svg>
+                                        Full Name
+                                    </label>
+                                    <InputText @bind-Value="profileInfo.Name" class="form-control custom-input" disabled="@(!isEditingBasicInfo)" placeholder="Enter your full name" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+                                        </svg>
+                                        Email Address
+                                    </label>
+                                    <InputText @bind-Value="profileInfo.Email" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" placeholder="Enter your email" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M12,4C16.42,4 20,7.58 20,12C20,16.42 16.42,20 12,20C7.58,20 4,16.42 4,12C4,7.58 7.58,4 12,4M12,6C8.69,6 6,8.69 6,12C6,15.31 8.69,18 12,18C15.31,18 18,15.31 18,12C18,8.69 15.31,6 12,6Z" />
+                                        </svg>
+                                        Specialization
+                                    </label>
+                                    <InputText @bind-Value="profileInfo.Specialization" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" placeholder="Enter your specialization" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
+                                        </svg>
+                                        Country
+                                    </label>
+                                    <InputText @bind-Value="profileInfo.Country" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" placeholder="Enter your country" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M18,5H6V19H18V5M12,7A2,2 0 0,1 14,9V15A2,2 0 0,1 12,17A2,2 0 0,1 10,15V9A2,2 0 0,1 12,7Z" />
+                                        </svg>
+                                        Education
+                                    </label>
+                                    <InputText @bind-Value="profileInfo.Education" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" placeholder="Enter your education" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
+                                        </svg>
+                                        Experience
+                                    </label>
+                                    <InputText @bind-Value="profileInfo.Experience" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" placeholder="Enter your experience" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
+                                        </svg>
+                                        Gender
+                                    </label>
+                                    <InputSelect @bind-Value="profileInfo.Gender" disabled="@(!isEditingBasicInfo)" class="form-control custom-input">
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </InputSelect>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
+                                        </svg>
+                                        Worked At
+                                    </label>
+                                    <InputText @bind-Value="profileInfo.WorkedAt" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" placeholder="Enter previous workplaces" />
+                                </div>
+                            </div> 
+                            <button type="submit"
+                            class="btn btn-primary-custom w-100 mb-3"
+                            aria-label="Update Basic Info"
+                            disabled="@(!isEditingBasicInfo)">
+                                Update Basic Info
+                            </button>   
+                            <button type="button" @onclick="isEditingBasicInfoButtonToggel" class="btn btn-primary-custom w-100" aria-label="Edit Basic Info">
+                                @(isEditingBasicInfo ? "Cancel Editing" : "Edit Basic Info")
+                            </button>
+                        </EditForm>
+                    </div>
+                </div>
+            </div> 
+            <!-- Stats Sidebar -->
+
+            <div class="col-lg-4">
+                <div class="stats-card mb-4">
+                    <div class="stats-number">@(doctorModel.IsApproved ? "Approved" : "Pending")</div>
+                    <div class="stats-label">Approval Status</div>
+                </div>
+                @if (doctorModel.IsApproved)
+                {
+                    <div class="stats-card mb-4">
+                        <div class="stats-number">@(doctorModel.Appointments?.Count ?? 0)</div>
+                        <div class="stats-label">Total Appointments</div>
+                    </div>
+                    <div class="stats-card mb-4">
+                        <div class="stats-number">@(PendingAssignments)</div> 
+                        <div class="stats-label">Pending Appointments</div>
+                    </div>
+                    <div class="stats-card mb-4">
+                        <div class="stats-number">@(CompletedAssignments)</div>
+                        <div class="stats-label">Completed Appointments</div>
+                    </div>
+                }
+            </div> 
+
+            <div id="socialMedia" class="col-lg-8">
+                <div class="enhanced-card mb-4">
+                    <div class="card-header-custom">
+                        <h4 class="section-title mb-3">
+                            <svg class="section-icon me-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M18 16.08C17.24 16.08 16.56 16.38 16.03 16.88L8.91 12.7C8.96 12.47 9 12.24 9 12C9 11.76 8.96 11.53 8.91 11.3L15.96 7.11C16.5 7.62 17.21 7.95 18 7.95C19.66 7.95 21 6.61 21 4.95C21 3.29 19.66 1.95 18 1.95C16.34 1.95 15 3.29 15 4.95C15 5.19 15.04 5.41 15.09 5.63L8.04 9.82C7.5 9.31 6.79 8.98 6 8.98C4.34 8.98 3 10.32 3 11.98C3 13.64 4.34 14.98 6 14.98C6.79 14.98 7.5 14.65 8.04 14.14L15.16 18.32C15.11 18.54 15.07 18.77 15.07 19C15.07 20.66 16.41 22 18.07 22C19.73 22 21.07 20.66 21.07 19C21.07 17.34 19.73 16 18.07 16Z" />
+                            </svg>
+                            Social Media Links
+                        </h4>
+                    </div> 
+                    <div class="card-body p-4">
+                        <EditForm Model="@socialMedia" OnValidSubmit="UpdateSocialMedia">
+                            <DataAnnotationsValidator />
+                            <ValidationSummary class="alert alert-danger-custom alert-custom" />
+
+                            <div class="social-links">
+                                <div class="mb-2">
+                                    <InputText @bind-Value="socialMedia.XAccountLink" disabled="@(!isEditingSocialInfo)" class="form-control custom-input" placeholder="X Profile URL" />
+                                </div>
+                                <div class="mb-2">
+                                    <InputText @bind-Value="socialMedia.LinkedinAccountLink" disabled="@(!isEditingSocialInfo)" class="form-control custom-input" placeholder="LinkedIn Profile URL" />
+                                </div>
+                                <div class="mb-2">
+                                    <InputText @bind-Value="socialMedia.FacebookAccountLink" disabled="@(!isEditingSocialInfo)" class="form-control custom-input" placeholder="Facebook Profile URL" />
+                                </div>
+                                <div class="mb-2">
+                                    <InputText @bind-Value="socialMedia.InstagramAccountLink" disabled="@(!isEditingSocialInfo)" class="form-control custom-input" placeholder="Instagram Profile URL" />
+                                </div>
+                            </div>
+                            <button type="submit"
+                            class="btn btn-primary-custom w-100 mb-3"
+                            aria-label="Update Basic Info"
+                            disabled="@(!isEditingSocialInfo)">
+                                Update Social Media Info
+                            </button>
+                            <button type="button" @onclick="isEditingSocialInfoButtonToggel" class="btn btn-primary-custom w-100" aria-label="Edit Basic Info">
+                                @(isEditingSocialInfo ? "Cancel Editing" : "Edit Social Media Info")
+                            </button>
+                        </EditForm>
+                    </div>
+                </div>
+            </div>
+
+            <div id="security" class="col-lg-8">
+                <div class="enhanced-card mb-4">
+                    <div class="card-header-custom">
+                        <h4 class="section-title mb-3">
+                            <svg class="section-icon me-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.11v5.71c0 4.38-3 8.41-7 9.58-4-1.17-7-5.2-7-9.58V6.29l7-3.11zM12 9a2 2 0 00-2 2v2a2 2 0 004 0v-2a2 2 0 00-2-2z" />
+                            </svg>
+                            Security Info
+                        </h4>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <EditForm Model="@securityModel" OnValidSubmit="UpdatePassword">
+                            <DataAnnotationsValidator />
+                            <ValidationSummary class="alert alert-danger-custom alert-custom" /> 
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">New Password</label>
+                                    <InputText @bind-Value="securityModel.NewPassword" disabled="@(!isEditingSecurityInfo)" class="form-control custom-input" type="password" placeholder="Enter new password" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">Confirm New Password</label>
+                                    <InputText @bind-Value="securityModel.ConfirmPassword" disabled="@(!isEditingSecurityInfo)" class="form-control custom-input" type="password" placeholder="Confirm new password" />
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <label class="form-label-custom">Current Password</label>
+                                    <InputText @bind-Value="securityModel.OldPassword" disabled="@(!isEditingSecurityInfo)" class="form-control custom-input" type="password" placeholder="Enter current password" />
+                                </div>
+                            </div>
+                            <button type="submit"
+                            class="btn btn-primary-custom w-100 mb-3"
+                            aria-label="Update Basic Info"
+                            disabled="@(!isEditingSecurityInfo)">
+                                Update Security Info
+                            </button>
+                            <button type="button" @onclick="isEditingSecurityInfoButtonToggel" class="btn btn-primary-custom w-100" aria-label="Edit Basic Info">
+                                @(isEditingSecurityInfo ? "Cancel Editing" : "Edit Security Info")
+                            </button>
+                        </EditForm>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <!-- Appointments Section -->
+        <div id="appointments" class="enhanced-card">
+            <div class="card-header-custom">
+                <h4 class="section-title">
+                    <svg class="section-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
+                    </svg>
+                    Your Appointments
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                @if (doctorModel.Appointments != null && doctorModel.Appointments.Any())
+                {
+                    <div class="row g-4">
+                        @foreach (var appointment in doctorModel.Appointments)
+                        {
+                            <div class="col-md-6">
+                                <div class="appointment-card h-100">
+                                    <div class="card-body">
+                                        <div class="appointment-badge">Upcoming</div>
+                                        <h5 class="text-white fw-bold mb-2">Patient: @(appointment.Patient?.Name ?? "N/A")</h5>
+                                        <p class="text-white mb-1">
+                                            <svg class="section-icon2 me-1" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;" aria-hidden="true">
+                                                <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
+                                            </svg>
+                                            <strong>@appointment.AppointmentDate.ToString("MMM dd, yyyy")</strong>
+                                        </p>
+                                        <p class="text-white mb-1">
+                                            <svg class="section-icon2 me-1" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;" aria-hidden="true">
+                                                <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                                            </svg>
+                                            <strong>@appointment.AppointmentDate.ToString("HH:mm")</strong>
+                                        </p>
+                                        <p class="text-white mb-0">
+                                            <small>@appointment.Description</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="no-appointments">
+                        <svg class="no-appointments-icon" viewBox="0 0 24 24" fill="#6c757d" aria-hidden="true">
+                            <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
+                        </svg>
+                        <h5 class="mb-2">No Appointments Scheduled</h5>
+                        <p class="mb-0">No upcoming appointments scheduled.</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private DoctorViewModel doctorModel = new DoctorViewModel();
+    private string? SuccessMessage;
+    private string? ErrorMessage;
+
+    string userId = string.Empty;
+    bool isEditingBasicInfo = false;
+    bool isEditingSocialInfo = false;
+    bool isEditingSecurityInfo = false;
+    int PendingAssignments = 0;
+    int CompletedAssignments = 0;
+
+    DoctorProfileInfoModel profileInfo = new();
+    DoctorSocialMediaModel socialMedia = new();
+    DoctorSecurityModel securityModel = new();
+
+    void isEditingBasicInfoButtonToggel()
+    {
+        isEditingBasicInfo = !isEditingBasicInfo;
+    }
+    void isEditingSocialInfoButtonToggel()
+    {
+        isEditingSocialInfo = !isEditingSocialInfo;
+    } 
+    void isEditingSecurityInfoButtonToggel()
+    {
+        isEditingSecurityInfo = !isEditingSecurityInfo;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!string.IsNullOrWhiteSpace(SuccessMessage) || !string.IsNullOrWhiteSpace(ErrorMessage))
+        {
+            await JS.InvokeVoidAsync("initializeToasts");
+            // Optionally clear the message after showing the toast
+            SuccessMessage = null;
+            ErrorMessage = null;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        int doctorId = await localStorage.GetItemAsync<int>("doctorID");
+        if (doctorId < 0)
+        {
+            // Not logged in — redirect to signin
+            await JS.InvokeVoidAsync("Swal.fire", new
+            {
+                title = "Access Denied",
+                text = "You must be logged in to access this page.",
+                icon = "warning",
+                confirmButtonText = "OK"
+            });
+            Nav.NavigateTo("/doctor-signin", forceLoad: true);
+        } 
+        doctorModel = await httpClient.GetFromJsonAsync<DoctorViewModel>($"api/Doctors/GetDoctorById/{doctorId}");
+        if (doctorModel == null)
+        {
+            Nav.NavigateTo("/doctor-signin", forceLoad: true);
+        }
+        else
+        {
+            profileInfo = new DoctorProfileInfoModel
+            {
+                Name = doctorModel.Name,
+                Specialization = doctorModel.Specialization,
+                Email = doctorModel.Email,
+                Country = doctorModel.Country,
+                Education = doctorModel.Education,
+                Experience = doctorModel.Experience,
+                Gender = doctorModel.Gender,
+                WorkedAt = doctorModel.WorkedAt
+            };
+            socialMedia = new DoctorSocialMediaModel
+            {
+                XAccountLink = doctorModel.XAccountLink,
+                LinkedinAccountLink = doctorModel.LinkedinAccountLink,
+                FacebookAccountLink = doctorModel.FacebookAccountLink,
+                InstagramAccountLink = doctorModel.InstagramAccountLink
+            };
+
+            CompletedAssignments = doctorModel.Appointments.Count(x => x.AppointmentDate < DateTime.Now);
+            PendingAssignments = doctorModel.Appointments.Count(x => x.AppointmentDate >= DateTime.Now);
+            // Force re-render to ensure data is displayed
+            StateHasChanged();
+        }
+    }
+
+
+    public class DoctorProfileInfoModel
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Specialization { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Country { get; set; } = string.Empty;
+        public string Education { get; set; } = string.Empty;
+        public string Experience { get; set; } = string.Empty;
+        public string Gender { get; set; } = string.Empty;
+        public string WorkedAt { get; set; } = string.Empty;
+    }
+
+    public class DoctorSocialMediaModel
+    {
+        public string? XAccountLink { get; set; } = "#";
+        public string? LinkedinAccountLink { get; set; } = "#";
+        public string? FacebookAccountLink { get; set; } = "#";
+        public string? InstagramAccountLink { get; set; } = "#";
+    }
+
+    public class DoctorSecurityModel
+    {
+        public string? NewPassword { get; set; }
+        public string? ConfirmPassword { get; set; }
+        public string? OldPassword { get; set; }
+    }
+
+    private async Task UpdateProfileInfo()
+    {
+        isEditingBasicInfoButtonToggel();
+        Console.WriteLine(profileInfo.Name);
+        Console.WriteLine(profileInfo.Specialization);
+        Console.WriteLine(profileInfo.Email);
+        Console.WriteLine(profileInfo.Education);
+        Console.WriteLine(profileInfo.Gender);
+        Console.WriteLine(profileInfo.Experience);
+        Console.WriteLine(profileInfo.Country);
+        Console.WriteLine(profileInfo.WorkedAt);
+        SuccessMessage = "Profile Info updated successfully!";
+        // Call API to update basic profile info
+    }
+
+    private async Task UpdateSocialMedia()
+    {
+        Console.Write(socialMedia.XAccountLink);
+        Console.Write(socialMedia.FacebookAccountLink);
+        Console.Write(socialMedia.LinkedinAccountLink);
+        Console.Write(socialMedia.InstagramAccountLink);
+        SuccessMessage = "Social links updated successfully!";
+        // Call API to update social links
+    }
+
+    private async Task UpdatePassword()
+    {
+        Console.WriteLine(securityModel.NewPassword);
+		Console.WriteLine(securityModel.ConfirmPassword);
+		Console.WriteLine(securityModel.OldPassword);
+		SuccessMessage = "Password updated successfully!";
+        // Validate password change and call API
+    }
+
+}

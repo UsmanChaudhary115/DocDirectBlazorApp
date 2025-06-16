@@ -11,7 +11,7 @@ namespace Server.Interfaces
         Task UpdateDoctorAsync(Doctor doctor);
         Task<IEnumerable<Doctor>> GetDoctorsBySpecializationAsync(string specialization);
         Task<IEnumerable<Doctor>> GetApprovedDoctors();
-
-		Task<IEnumerable<Doctor>> GetPendingDoctors();
+        Task<Doctor> GetDoctorByEmailAndPassword(string email, string password);
+        Task<IEnumerable<Doctor>> GetPendingDoctors();
 	}
 }

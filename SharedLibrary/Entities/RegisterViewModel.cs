@@ -4,7 +4,9 @@ namespace Shared.Entities
 {
     public class RegisterViewModel
     {
+        [Required]
         public string Name { get; set; }
+        [EmailAddress]
         public string Email { get; set; }
 
         [DataType(DataType.Password)]

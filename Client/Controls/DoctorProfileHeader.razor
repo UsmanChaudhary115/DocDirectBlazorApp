@@ -1,0 +1,47 @@
+﻿ 
+
+<style>
+    .profile-header {
+        background: var(--accent-color);
+        color: white;
+        padding: 3rem 0;
+        margin-bottom: 2rem;
+        border-radius: var(--border-radius);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,100 1000,0"/></svg>');
+            background-size: cover;
+        }
+
+        .profile-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+</style>
+
+<!-- Enhanced Header -->
+<div class="profile-header text-center">
+    <h1>Your Professional Profile</h1>
+    <p class="subtitle">Manage your professional information and appointments</p>
+</div>

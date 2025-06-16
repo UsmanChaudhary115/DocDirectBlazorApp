@@ -1,6 +1,7 @@
 ﻿using Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Server.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Server.Controllers
 {
@@ -11,12 +12,14 @@ namespace Server.Controllers
         private readonly IAppointmentRepository _appointmentRepository;
         private readonly IAppointmentDTORepository _appointmentDTORepository;
         private readonly IDoctorRepository _doctorRepository;
+        private readonly HospitalDbContext _context;
 
-        public AppointmentController(IAppointmentRepository appointmentRepository, IAppointmentDTORepository appointmentDTORepository, IDoctorRepository doctorRepository)
+        public AppointmentController(IAppointmentRepository appointmentRepository, IAppointmentDTORepository appointmentDTORepository, IDoctorRepository doctorRepository, HospitalDbContext context)
         {
             _appointmentRepository = appointmentRepository;
             _appointmentDTORepository = appointmentDTORepository;
             _doctorRepository = doctorRepository;
+            _context = context;
         }
 
         [HttpGet("GetAppointment/{id}")]
@@ -50,7 +53,7 @@ namespace Server.Controllers
             }
         }
 
-        [HttpGet("doctor/{doctorId}")]
+        [HttpGet("GetAppointmentsByDoctorId/{doctorId}")]
         public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointmentsByDoctorId(int doctorId)
         {
             try
@@ -110,10 +113,16 @@ namespace Server.Controllers
 
             try
             {
-                var existingAppointment = await _appointmentRepository.GetAppointmentByIdAsync(id);
+                var existingAppointment = await _context.Appointments
+                                    .AsNoTracking()
+                                    .FirstOrDefaultAsync(a => a.AppointmentId == id);
+
+                //var existingAppointment = await _appointmentRepository.GetAppointmentByIdAsync(id);
                 if (existingAppointment == null)
                     return NotFound();
 
+
+                appointment.isApproved = false;
                 await _appointmentRepository.UpdateAppointmentAsync(appointment);
                 
                 var dto = new AppointmentDTO

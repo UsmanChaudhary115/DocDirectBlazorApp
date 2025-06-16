@@ -1,6 +1,7 @@
 ﻿using Shared.Entities;
 using Microsoft.EntityFrameworkCore;
 using Server.Interfaces;
+using System.Globalization;
 
 namespace Server.Repositories
 {
@@ -10,6 +11,10 @@ namespace Server.Repositories
         public DoctorRepository(HospitalDbContext context)
         {
             _context = context;
+        }
+        public async Task<Doctor> GetDoctorByEmailAndPassword(string email, string password)
+        {
+            return await _context.Doctors.Include(d => d.Appointments).FirstOrDefaultAsync(d => d.Email == email && d.Password == password);
         }
         public async Task AddDoctorAsync(Doctor doctor)
         {

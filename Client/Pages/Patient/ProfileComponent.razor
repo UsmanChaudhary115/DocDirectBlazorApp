@@ -6,99 +6,440 @@
 @using Shared.Entities
 @layout PatientLayout
 
-<div class="container py-5">
-    <h2 class="text-center mb-5 display-4 fw-bold text-danger">Your Profile</h2>
-
-    @if (!string.IsNullOrEmpty(SuccessMessage))
-    {
-        <div class="alert alert-success shadow-sm rounded-3 mb-4" role="alert">
-            @SuccessMessage
-        </div>
-    }
-    @if (!string.IsNullOrEmpty(ErrorMessage))
-    {
-        <div class="alert alert-danger shadow-sm rounded-3 mb-4" role="alert">
-            @ErrorMessage
-        </div>
+<style>
+    :root { 
+        --gradient-secondary: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); 
+        --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.1);
+        --border-radius: 12px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    <div class="card shadow-sm border-0 mb-5">
-        <div class="card-body p-4">
-            <EditForm Model="@profileModel" OnValidSubmit="UpdateProfile">
-                <DataAnnotationsValidator />
-                <ValidationSummary class="text-danger mb-4" />
-                <!-- Profile Details Section -->
-                <section class="mb-4">
-                    <h5 class="fw-semibold text-danger mb-3">Profile Details</h5>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label fw-medium text-dark">Full Name</label>
-                            <InputText @bind-Value="profileModel.Name" class="form-control custom-input" />
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label fw-medium text-dark">Email</label>
-                            <InputText @bind-Value="profileModel.Email" class="form-control custom-input" />
-                        </div>
-                        <div class="col-12 mb-3">
-                            <label class="form-label fw-medium text-dark">Disease</label>
-                            <InputText @bind-Value="profileModel.Disease" class="form-control custom-input" />
-                        </div>
-                    </div>
-                </section>
+    .profile-container { 
+        min-height: 100vh;
+        padding: 2rem 0;
+    }
 
-                <hr class="border-light my-4" />
+    .profile-header {
+        background: var(--accent-color);
+        color: white;
+        padding: 3rem 0;
+        margin-bottom: 2rem;
+        border-radius: var(--border-radius);
+        position: relative;
+        overflow: hidden;
+    }
 
-                <!-- Change Password Section -->
-                <section>
-                    <h5 class="fw-semibold text-danger mb-3">Change Password</h5>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label fw-medium text-dark">New Password</label>
-                            <InputText @bind-Value="profileModel.NewPassword" class="form-control custom-input" type="password" placeholder="Enter new password" />
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label fw-medium text-dark">Confirm New Password</label>
-                            <InputText @bind-Value="profileModel.ConfirmPassword" class="form-control custom-input" type="password" placeholder="Confirm new password" />
-                        </div>
-                        <div class="col-12 mb-3">
-                            <label class="form-label fw-medium text-dark">Old Password</label>
-                            <InputText @bind-Value="profileModel.OldPassword" class="form-control custom-input" type="password" placeholder="Old password" />
-                        </div>
-                    </div>
-                </section>
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,100 1000,0"/></svg>');
+            background-size: cover;
+        }
 
-                <button type="submit" class="btn btn-danger w-100 mt-4 rounded-3">Update Profile</button>
-            </EditForm>
+        .profile-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0; 
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+    .enhanced-card {
+        background: white;
+        border-radius: var(--accent-color);
+        box-shadow: var(--shadow-card);
+        border: none;
+        transition: var(--transition);
+        overflow: hidden;
+    }
+
+        .enhanced-card:hover {
+            transform: translateY(-2px); 
+        }
+
+    .card-header-custom { 
+        border-bottom: 2px solid var(--accent-color);
+        padding: 1.5rem;
+        position: relative;
+    }
+
+        .card-header-custom::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+    .section-title {
+        color: var(--accent-color);
+        font-weight: 600;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .section-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: var(--accent-color);
+    }
+
+    .custom-input {
+        border: var(--accent-color);
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        transition: var(--transition);
+        background: #fafafa;
+    }
+
+        .custom-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem var(--accent-color);
+            background: white;
+            outline: none;
+        }
+
+    .form-label-custom {
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .btn-primary-custom {
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-primary-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary-custom:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-1px); 
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 15px var(--accent-color);
+        }
+
+    .alert-custom {
+        border: none;
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .alert-success-custom {
+        background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+        color: #155724;
+        border-left: 4px solid #28a745;
+    }
+
+    .alert-danger-custom {
+        background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+        color: #721c24;
+        border-left: 4px solid #dc3545;
+    }
+
+    .appointment-card {
+        background: var(--accent-color);
+        border-radius: var(--border-radius);
+        border: none;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .appointment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-color);
+            pointer-events: none;
+        }
+
+        .appointment-card:hover {
+            transform: translateY(-4px) scale(1.02); 
+        }
+
+        .appointment-card .card-body {
+            position: relative;
+            z-index: 1;
+            padding: 1.5rem;
+        }
+
+    .appointment-badge {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
+
+    .no-appointments {
+        text-align: center;
+        padding: 3rem;
+        color: #6c757d;
+    }
+
+    .no-appointments-icon {
+        width: 4rem;
+        height: 4rem;
+        margin: 0 auto 1rem;
+        opacity: 0.5;
+    }
+
+    .divider-custom {
+        border: none;
+        height: 2px;
+        background: var(--accent-color);
+        margin: 2rem 0;
+        border-radius: 1px;
+    }
+
+    .stats-card {
+        background: var(--accent-color);
+        color: white; 
+        padding: 1.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+    
+    
+</style>
+
+<div class="profile-container">
+    <div class="container">
+        <!-- Enhanced Header -->
+        <div class="profile-header text-center">
+            <h1> 
+                Your Health Profile
+            </h1>
+            <p class="subtitle">Manage your personal information and medical records</p>
         </div>
-    </div>
 
-    @if (profileModel.Appointments != null && profileModel.Appointments.Any())
-    {
-        <h3 class="mb-4 fw-bold text-danger">Your Appointments</h3>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            @foreach (var appointment in profileModel.Appointments)
-            {
-                <div class="col">
-                    <div class="card h-100 appointment-card text-light border-0 shadow-lg">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">@appointment.DoctorName</h5> 
-                            <p class="card-text"><strong>Date:</strong> @appointment.AppointmentDate.ToString("yyyy-MM-dd HH:mm")</p>
-                            <p class="card-text"><strong>Description:</strong> @appointment.Description</p>
-                        </div>
+        <!-- Status Messages -->
+        @if (!string.IsNullOrEmpty(SuccessMessage))
+        {
+            <div class="alert alert-success-custom alert-custom" role="alert">
+                <strong>Success!</strong> @SuccessMessage
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <div class="alert alert-danger-custom alert-custom" role="alert">
+                <strong>Error!</strong> @ErrorMessage
+            </div>
+        }
+
+        <div class="row">
+            <!-- Profile Form -->
+            <div class="col-lg-8">
+                <div class="enhanced-card mb-4">
+                    <div class="card-header-custom">
+                        <h4 class="section-title">
+                            <svg class="section-icon" viewBox="0 0 24 24">
+                                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                            </svg>
+                            Profile Information
+                        </h4> 
+                    </div>
+                    <div class="card-body p-4">
+                        <EditForm Model="@profileModel" OnValidSubmit="UpdateProfile">
+                            <DataAnnotationsValidator />
+                            <ValidationSummary class="alert alert-danger-custom alert-custom" />
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24">
+                                            <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                                        </svg>
+                                        Full Name
+                                    </label>
+                                    <InputText @bind-Value="profileModel.Name" class="form-control custom-input" placeholder="Enter your full name" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24">
+                                            <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+                                        </svg>
+                                        Email Address
+                                    </label>
+                                    <InputText @bind-Value="profileModel.Email" class="form-control custom-input" placeholder="Enter your email" />
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24">
+                                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M17,13H11V7H12.5V11.5H17V13Z" />
+                                        </svg>
+                                        Medical Condition
+                                    </label>
+                                    <InputText @bind-Value="profileModel.Disease" class="form-control custom-input" placeholder="Enter your current medical condition" />
+                                </div>
+                            </div>
+
+                            <hr class="divider-custom" />
+
+                            <!-- Password Section -->
+                            <h5 class="section-title mb-3">
+                                <svg class="section-icon" viewBox="0 0 24 24">
+                                    <path d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" />
+                                </svg>
+                                Security Settings
+                            </h5>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">New Password</label>
+                                    <InputText @bind-Value="profileModel.NewPassword" class="form-control custom-input" type="password" placeholder="Enter new password" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label-custom">Confirm New Password</label>
+                                    <InputText @bind-Value="profileModel.ConfirmPassword" class="form-control custom-input" type="password" placeholder="Confirm new password" />
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <label class="form-label-custom">Current Password</label>
+                                    <InputText @bind-Value="profileModel.OldPassword" class="form-control custom-input" type="password" placeholder="Enter current password" />
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary-custom w-100"> 
+                                Update Profile
+                            </button>
+                        </EditForm>
                     </div>
                 </div>
-            }
+            </div>
+
+            <!-- Stats Sidebar -->
+            <div class="col-lg-4">
+                <div class="stats-card mb-4">
+                    <div class="stats-number">@(profileModel.Appointments?.Count ?? 0)</div>
+                    <div class="stats-label">Total Appointments</div>
+                </div>
+            </div>
         </div>
-    }
-    else
-    {
-        <h3 class="mb-4 fw-bold text-danger">No Appointments Found</h3>
-    }
+
+        <!-- Appointments Section -->
+        <div class="enhanced-card">
+            <div class="card-header-custom">
+                <h4 class="section-title">
+                    <svg class="section-icon" viewBox="0 0 24 24">
+                        <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
+                    </svg>
+                    Your Appointments
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                @if (profileModel.Appointments != null && profileModel.Appointments.Any())
+                {
+                    <div class="row g-4">
+                        @foreach (var appointment in profileModel.Appointments)
+                        {
+                            <div class="col-md-6">
+                                <div class="appointment-card h-100">
+                                    <div class="card-body">
+                                        <div class="appointment-badge">Upcoming</div>
+                                        <h5 class="text-white fw-bold mb-2">Dr. @appointment.DoctorName</h5>
+                                        <p class="text-white mb-1">
+                                            <svg class="section-icon me-1" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;">
+                                                <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
+                                            </svg>
+                                            <strong>@appointment.AppointmentDate.ToString("MMM dd, yyyy")</strong>
+                                        </p>
+                                        <p class="text-white mb-1">
+                                            <svg class="section-icon me-1" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;">
+                                                <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                                            </svg>
+                                            <strong>@appointment.AppointmentDate.ToString("HH:mm")</strong>
+                                        </p>
+                                        <p class="text-white mb-0">
+                                            <small>@appointment.Description</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="no-appointments">
+                        <svg class="no-appointments-icon" viewBox="0 0 24 24" fill="#6c757d">
+                            <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
+                        </svg>
+                        <h5 class="mb-2">No Appointments Scheduled</h5>
+                        <p class="mb-0">Book your first appointment to get started with your healthcare journey.</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 </div>
 
-
 @code {
-    private string userId; 
+    private string userId;
     private ProfileViewModel profileModel = new ProfileViewModel();
     private string? SuccessMessage;
     private string? ErrorMessage;
@@ -187,6 +528,3 @@
         }
     }
 }
- 
-
- 

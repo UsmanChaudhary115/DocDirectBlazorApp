@@ -1,0 +1,85 @@
+﻿@page "/doctor-signout" 
+@inject NavigationManager Nav
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject IJSRuntime JS
+@layout DoctorLayout
+
+
+<div class="d-flex justify-content-center m-5">
+    <div class="container1 confirm-box">
+        <h2 class="text-white">Confirm Sign Out</h2>
+        <p class="message">Are you sure you want to sign out? You will need to log in again to access your account.</p>
+
+        <div class="text-center">
+            <div class="d-flex justify-content-around">
+                <button class="btn p-3 btn-light" @onclick="ShowSignOutMessage">Yes, Sign Out</button>
+                <button class="btn p-3 text-white btn-secondary" @onclick="Cancel">No, Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code { 
+    protected override async Task OnInitializedAsync()
+    {
+        int doctorId = await localStorage.GetItemAsync<int>("doctorID");
+        if (doctorId < 0)
+        {
+            // Not logged in — redirect to signin
+            await JS.InvokeVoidAsync("Swal.fire", new
+            {
+                title = "Access Denied",
+                text = "You must be logged in to access this page.",
+                icon = "warning",
+                confirmButtonText = "OK"
+            });
+            Nav.NavigateTo("/doctor-signin", forceLoad: true);
+        }
+    }
+    private async Task ShowSignOutMessage()
+    {  
+        await localStorage.RemoveItemAsync("doctorID");
+        await JS.InvokeVoidAsync("Swal.fire", new
+        {
+            title = "Logged Out",
+            text = "You have been signed out successfully.",
+            icon = "error",
+            timer = 2000,
+            showConfirmButton = false
+        });
+        Nav.NavigateTo("doctor-signin", forceLoad: true);
+    }
+
+    private void Cancel()
+    {
+        Nav.NavigateTo("doctor-profile");
+    }
+}
+<style>
+    .container1 {
+        background: var(--accent-color);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+        color: #fff; 
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    .message {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        color: #ddd;
+    }
+
+    .btn {
+        width: 200px; 
+    } 
+</style>

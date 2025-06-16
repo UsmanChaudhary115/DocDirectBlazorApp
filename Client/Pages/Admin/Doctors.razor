@@ -41,7 +41,8 @@ else
             <div class="doctor-card" @onclick="() => NavigateToDetails(doctor.DoctorId)" style="cursor: pointer;">
                 <h4>@doctor.Name</h4>
                 <p><strong>Specialization:</strong> @doctor.Specialization</p>
-                <p><strong>City:</strong> @doctor.WorkedAt</p>
+                <p><strong>Email:</strong> @doctor.Email</p>
+                <p><strong>Worked-At:</strong> @doctor.WorkedAt</p>
             </div>
         }
     </div>
@@ -71,7 +72,7 @@ else
                 <h4>@doctor.Name</h4>
                 <p><strong>Specialization:</strong> @doctor.Specialization</p>
                 <p><strong>Email:</strong> @doctor.Email</p>
-                <p><strong>City:</strong> @doctor.WorkedAt</p>
+                <p><strong>Worked-At:</strong> @doctor.WorkedAt</p>
                 <button class="btn btn-success" @onclick="() => ApproveDoctor(doctor.DoctorId)">✅ Approve</button>
             </div>
         }

@@ -6,8 +6,11 @@
 
 <section id="chatSection" data-aos="fade-up">
     <div class="d-flex justify-content-center">
-        <header class="chat-header p-3" style="min-width: 70%;">
-            <h2 class="text-white fw-bolder">@otherPartnerName</h2>
+        <header class="chat-header p-3 d-flex justify-content-between align-items-center" style="min-width: 70%;">
+            <h2 class="text-white fw-bolder mb-0">@otherPartnerName</h2>
+            <button @onclick="CloseChat" class="btn btn-outline-light btn-sm rounded-pill">
+                <i class="bi bi-x-lg"></i>
+            </button>
         </header>
     </div>
 
@@ -26,7 +29,7 @@
         {
             <div class="text-center mt-2">
                 <span class="spinner-border text-primary spinner-border-sm" role="status"></span>
-                <span class="ms-2">Gemini is thinking...</span>
+                <span class="ms-2">Bot is thinking...</span>
             </div>
         }
     </div>
@@ -103,7 +106,7 @@
 
     .message-wrapper.sent .message-time {
         font-size: 0.7rem;
-        color: white ;
+        color: white;
         display: block;
         text-align: right;
         margin-top: 0.25rem;
@@ -116,6 +119,9 @@
     private string otherPartnerName = "DocDirectBot";
     private List<ChatMessage> messages = new();
     private bool isLoading;
+
+    [Parameter]
+    public EventCallback OnClose { get; set; }
 
     public class ChatMessage
     {
@@ -155,7 +161,94 @@
 
         try
         {
-            string message = "You are a friendly chatbot for DocDirect, a system where patients can book doctor appointments, view appointment details, and get updates. Only answer questions about how DocDirect works. Keep replies short, simple, and patient-friendly.Respond to this user query within the scope of DocDirect only: Your job is to explain how the system works to end-users.Do not provide technical answers, code, or suggestions outside the existing system features. Stay within the system’s current functionality only. Respond to the following user query based strictly on this system dont use formatting: " + prompt;
+            string message = "Welcome to DocDirect:\n\n" +
+                "DocDirect is a trusted healthcare platform designed to make managing medical appointments simple, efficient, and reliable. It offers a one-stop solution for connecting patients with professional doctors, providing convenient access to quality care for routine check-ups or specialized consultations.\n\n" +
+                "Why Choose DocDirect?:\n\n" +
+                "    Streamlines healthcare with an easy-to-use appointment scheduling system.\n" +
+                "    Focuses on patient-centered care with features like appointment reminders.\n" +
+                "    Reduces wait times by enabling bookings with top doctors at convenient times.\n\n" +
+                "About Us:\n\n" +
+                "DocDirect is committed to making healthcare accessible through seamless online appointment booking, empowering patients to take control of their healthcare journey.\n\n" +
+                "Services:\n\n" +
+                "DocDirect provides a comprehensive healthcare platform with the following features:\n\n" +
+                "    Doctor Appointment Booking: Search and book appointments with doctors, specialists, or clinics near you.\n" +
+                "    Prescription Management: View, download, and track medication refills after consultations.\n" +
+                "    Virtual Consultations: Connect with doctors via secure video calls from the comfort of home.\n" +
+                "    Appointment Reminders & Notifications: Receive timely updates to stay organized with your appointments.\n" +
+                "    Medical History Management: Store and access medical records, prescriptions, and appointment history securely.\n" +
+                "    Health-Related Articles & Tips: Explore wellness content to stay informed and support healthier living.\n\n" +
+                "Departments:\n\n" +
+                "The platform supports specialized care in:\n\n" +
+                "    Cardiology (heart-related conditions).\n" +
+                "    Neurology (brain and nervous system disorders).\n" +
+                "    Hepatology (liver diseases, such as hepatitis, cirrhosis, and liver cancer).\n" +
+                "    Pediatrics (child healthcare).\n" +
+                "    Eye Care (vision and eye-related treatments).\n\n" +
+                "Doctors:\n\n" +
+                "DocDirect features a team of highly skilled doctors across various specialties. To view the full list of doctors and their specialties, visit the “Doctors” section on the website.\n\n" +
+                "User Feedback:\n\n" +
+                "Patients have shared positive experiences about DocDirect’s services, praising its ease of use, professional care, and quality facilities. For detailed feedback, check the “Testimonials” section on the website.\n\n" +
+                "Contact:\n\n" +
+                "For inquiries or feedback, reach out to DocDirect via:\n\n" +
+                "    Phone: +92 326 6180749\n" +
+                "    Email: usmanalim015@gmail.com\n" +
+                "    Location: KBW Hostel, Anarkali\n\n" +
+                "Additional Notes:\n\n" +
+                "    The “Our Services” section incorrectly lists non-healthcare services (Web Design, Web Development, Product Management, Marketing, Graphic Design). These should be disregarded, as DocDirect focuses exclusively on the healthcare services listed above.\n" +
+                "    A “Become a Doctor” link invites healthcare professionals to join the platform.\n" +
+                "    Useful links include Home, About Us, Services, Terms of Service, and Privacy Policy.\n\n" +
+                "DocDirect is a healthcare platform designed to simplify and enhance your medical experience, offering a convenient way to get started with managing your healthcare needs through an account creation process.\n\n" +
+                "Welcome Message:\n\n" +
+                "You are greeted with a warm “Welcome to Our Service!” message, encouraging you to sign up to begin using the platform and access its healthcare features.\n\n" +
+                "Account Creation:\n\n" +
+                "    The page features a “Create Your Account” section where new users can sign up by providing:\n" +
+                "        Full Name\n" +
+                "        Email Address\n" +
+                "        Password\n" +
+                "        Confirm Password\n" +
+                "    By signing up, users agree to the Terms of Service and Privacy Policy.\n" +
+                "    A “Sign Up” button submits the registration, and an “Already have an account” link is available for existing users to log in.\n\n" +
+                "DocDirect is a healthcare platform designed to simplify and enhance your medical experience, offering a seamless way to sign in and manage your healthcare needs.\n\n" +
+                "Welcome Message:\n\n" +
+                "You are greeted with a warm “Welcome Back to DocDirect!” message, inviting you to sign in to access your account and manage your appointments.\n\n" +
+                "Sign-In Process:\n\n" +
+                "    The page features a “Sign In to DocDirect” section where users can log in by entering:\n" +
+                "        Email Address\n" +
+                "        Password\n" +
+                "    A “Sign In” button submits the login credentials, and a “Create an Account” link is available for new users to register.\n\n" +
+                "A personalized “Welcome Usman!” message greets you, expressing excitement about your presence and encouraging you to explore the platform, find your doctor, schedule appointments, and access personalized care at your fingertips.\n\n" +
+                "Your Appointments:\n\n" +
+                "    The dashboard displays your upcoming appointments, helping you stay on top of your medical schedule.\n" +
+                "    Example appointments include consultations with doctors like Dr. Sarah Khan (approved status) and Dr. Hira Siddiqui (approved status), with options to view, cancel, or update them.\n" +
+                "    For more details on your appointments, check the “Your Appointments” section.\n\n" +
+                "Appointment Booking:\n\n" +
+                "    Users can schedule new appointments by filling out a form with:\n" +
+                "        Date and Time\n" +
+                "        Description\n" +
+                "        Doctor Selection\n" +
+                "    A “Make an Appointment” button allows you to submit your request.\n\n" +
+                "Doctors:\n\n" +
+                "    The dashboard showcases a team of highly skilled doctors across various specialties. To view the full list of doctors and their profiles, explore the “Doctors” section on the page.\n\n" +
+                "DocDirect allows you to easily book doctor appointments through a streamlined process on the dashboard. The platform ensures a personalized experience by guiding you step-by-step to schedule your medical consultations.\n\n" +
+                "Booking Process:\n\n" +
+                "    Select Date: Start by choosing a date for your appointment. You must select a valid date to proceed.\n" +
+                "    Available Doctors Dropdown: Once a valid date is selected, a dropdown menu will become available, listing only the doctors who are available on that specific date. The dropdown remains disabled until a valid date is chosen.\n" +
+                "    Description Box: After selecting a doctor from the dropdown, a description box will become enabled, allowing you to add details about your appointment (e.g., reason for visit or specific concerns).\n" +
+                "    Submit Appointment: Use the “Make an Appointment” button to finalize your booking once all fields are completed.\n\n" +
+                "Guidance:\n\n" +
+                "    Ensure you pick a valid future date to unlock the doctor selection.\n" +
+                "    Explore the “Doctors” section on the dashboard to learn more about the available specialists.\n" +
+                "    For assistance with booking or any issues, contact DocDirect via:\n" +
+                "        Phone: +92 326 6180749\n" +
+                "        Email: usmanalim015@gmail.com\n" +
+                "        Location: KBW Hostel, Anarkali\n" +
+                "user can view full detailes of assignment by clicking view button can update the assignment by clicking update and even delete or cancel\n" +
+                "DocDirect is a healthcare platform designed to simplify and manage your medical experience, ensuring easy access to your account and healthcare services.\n\n" +
+                "Sign-Out Confirmation:\n\n" +
+                "    The page displays a “Confirm Sign Out” prompt when you attempt to log out.\n" +
+                "    It asks, “Are you sure you want to sign out? You will need to log in again to access your account.”\n" +
+                "    You can choose to proceed with “Yes, Sign Out” or cancel with “No, Cancel” to return to your session.\n" +
+                " Only answer questions about how DocDirect works. Keep replies as short as possible to the point and very cold and basic, simple. you can't interact with system but only a informative system that can guide only. Respond to this user query within the scope of DocDirect only. Your job is to explain how the system works to end-users. Do not provide technical answers, code, or suggestions outside the existing system features. Stay within the system’s current functionality only. Respond to the following user query based strictly on this system. firstly read the user query and see if he is asking about doccdirect then ans about it otherwise just be random  Don't use formatting: " + prompt;
             var response = await Http.PostAsJsonAsync("/api/Gemini/ask", new { Prompt = message });
 
             if (response.IsSuccessStatusCode)
@@ -206,68 +299,9 @@
     {
         await JS.InvokeVoidAsync("scrollToBottomOfChat");
     }
+
+    private async Task CloseChat()
+    {
+        await OnClose.InvokeAsync();
+    }
 }
-
-
-@* 
-@code {
-    private string newMessage = "";
-
-    private async Task SendMessage()
-    {
-        if (!string.IsNullOrWhiteSpace(newMessage))
-        {
-            // Call your sending logic
-            //await SendChatMessageAsync(newMessage);
-            messages.Add(new Message { Id = messages.Count + 1, SenderId = currentUserId, ReceiverId = "doctor1", Content = newMessage, Timestamp = DateTime.UtcNow });
-            newMessage = "";
-        }
-    }
-
-    private async Task HandleKeyPress(KeyboardEventArgs e)
-    {
-        if (e.Key == "Enter")
-        {
-            await SendMessage();
-        }
-    }
-    string currentUserId = "patient1";
-    string otherPartnerName = "Dr. John Doe";
-
-    List<Message> messages = new List<Message>
-    {
-        new Message { Id = 1, SenderId = "patient1", ReceiverId = "doctor1", Content = "Hello doctor, I have a headache.", Timestamp = DateTime.UtcNow.AddMinutes(-30) },
-        new Message { Id = 2, SenderId = "doctor1", ReceiverId = "patient1", Content = "Hi! Since when have you had it?", Timestamp = DateTime.UtcNow.AddMinutes(-29) },
-        new Message { Id = 3, SenderId = "patient1", ReceiverId = "doctor1", Content = "It's been bothering me since last night.", Timestamp = DateTime.UtcNow.AddMinutes(-28) },
-        new Message { Id = 4, SenderId = "doctor1", ReceiverId = "patient1", Content = "Do you have any other symptoms like fever or nausea?", Timestamp = DateTime.UtcNow.AddMinutes(-26) },
-        new Message { Id = 5, SenderId = "patient1", ReceiverId = "doctor1", Content = "I felt a little nauseous in the morning.", Timestamp = DateTime.UtcNow.AddMinutes(-25) },
-        new Message { Id = 6, SenderId = "doctor1", ReceiverId = "patient1", Content = "Alright. Have you taken any medication so far?", Timestamp = DateTime.UtcNow.AddMinutes(-24) },
-        new Message { Id = 7, SenderId = "patient1", ReceiverId = "doctor1", Content = "I took a paracetamol but it didn’t help much.", Timestamp = DateTime.UtcNow.AddMinutes(-22) },
-        new Message { Id = 8, SenderId = "doctor1", ReceiverId = "patient1", Content = "Okay. I recommend staying hydrated and resting.", Timestamp = DateTime.UtcNow.AddMinutes(-20) },
-        new Message { Id = 9, SenderId = "doctor1", ReceiverId = "patient1", Content = "If it persists tomorrow, come in for a checkup.", Timestamp = DateTime.UtcNow.AddMinutes(-19) },
-        new Message { Id = 10, SenderId = "patient1", ReceiverId = "doctor1", Content = "Sure, thank you so much!", Timestamp = DateTime.UtcNow.AddMinutes(-18) }
-    };
-
-    public class Message
-    {
-        public int Id { get; set; }
-
-        [Required]
-        public string SenderId { get; set; }
-
-        [Required]
-        public string ReceiverId { get; set; }
-
-        [Required]
-        public string Content { get; set; }
-
-        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
-
-        public bool IsRead { get; set; } = false;
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await JS.InvokeVoidAsync("scrollToBottomOfChat");
-    }
-} *@

@@ -76,7 +76,7 @@ namespace DocDirectApp.Server.Controllers
                     Message = "Login successful.",
                     UserId = user.Id,
                     Email = user.Email,
-                    Name = user.Name // Assuming your Patient class has a Name property
+                    Name = user.Name 
                 });
             }
 

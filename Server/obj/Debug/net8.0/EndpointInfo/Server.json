@@ -444,7 +444,7 @@
         }
       }
     },
-    "/api/Appointment/doctor/{doctorId}": {
+    "/api/Appointment/GetAppointmentsByDoctorId/{doctorId}": {
       "get": {
         "tags": [
           "Appointment"
@@ -962,6 +962,37 @@
         }
       }
     },
+    "/api/Doctors/signin": {
+      "post": {
+        "tags": [
+          "Doctors"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorSignInModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorSignInModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorSignInModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Doctors/GetApprovedDoctors": {
       "get": {
         "tags": [
@@ -1098,17 +1129,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Doctor"
+                  "$ref": "#/components/schemas/DoctorViewModel"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Doctor"
+                  "$ref": "#/components/schemas/DoctorViewModel"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Doctor"
+                  "$ref": "#/components/schemas/DoctorViewModel"
                 }
               }
             }
@@ -1588,6 +1619,88 @@
         },
         "additionalProperties": false
       },
+      "DoctorSignInModel": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DoctorViewModel": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "specialization": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "education": {
+            "type": "string",
+            "nullable": true
+          },
+          "experience": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "workedAt": {
+            "type": "string",
+            "nullable": true
+          },
+          "isApproved": {
+            "type": "boolean"
+          },
+          "appointments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Appointment"
+            },
+            "nullable": true
+          },
+          "xAccountLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "linkedinAccountLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "facebookAccountLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "instagramAccountLink": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GeminiRequest": {
         "type": "object",
         "properties": {
@@ -1691,14 +1804,18 @@
         "additionalProperties": false
       },
       "RegisterViewModel": {
+        "required": [
+          "name"
+        ],
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "email": {
             "type": "string",
+            "format": "email",
             "nullable": true
           },
           "password": {

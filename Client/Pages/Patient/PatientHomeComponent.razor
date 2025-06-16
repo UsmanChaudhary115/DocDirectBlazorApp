@@ -7,21 +7,22 @@
 @using System.ComponentModel.DataAnnotations 
 @inject Blazored.LocalStorage.ILocalStorageService localStorage 
 
-<WelcomeCarousel WelcomeMessage="@WelcomeMessage"></WelcomeCarousel>
-@* <a href="#chatSection" @onclick="openChat" class=" text-primary position-fixed bottom-0 start-0 mb-5">
-    <i class="bi bi-chat-dots"></i></a> *@
+<WelcomeCarousel WelcomeMessage="@WelcomeMessage"></WelcomeCarousel> 
+
 <a href="#chatSection"
-   @onclick="openChat"
-   class="btn btn-outline-secondary d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm"
-   style="position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
+@onclick="openChat"
+class="btn btn-outline-secondary d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm"
+style="position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
     <i class="bi bi-chat-dots-fill fs-5"></i>
     <span>Start Chat</span>
 </a>
 
 @if(isChatOpen)
 {
-    <ChatComponent></ChatComponent>
+    <ChatComponent OnClose="closeChat"></ChatComponent>
 }
+
+
 <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
     @if (!string.IsNullOrWhiteSpace(SuccessMessage))
     {
@@ -47,7 +48,6 @@
         </div>
     }
 </div>
-
 
 <!-- Appointments -->
 <section class="py-5">
@@ -108,7 +108,7 @@
 
 @if(idToShow != null)
 {
-    <AppointmentDetails AppointmentId="@idToShow"></AppointmentDetails>
+    <AppointmentDetails AppointmentId="@idToShow" OnClose="CloseAppointmentDetailsMethod"></AppointmentDetails>
 }
 
 
@@ -248,6 +248,47 @@
     private int? idToShow { get; set; }
     private List<Doctor> doctors;
     List<AppointmentDTO> appointments;
+    private string searchQuery = "";
+    private AppointmentFormModel appointmentForm = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        userId = await localStorage.GetItemAsync<string>("userId");
+        if (string.IsNullOrEmpty(userId))
+        {
+            // Not logged in — redirect to signin
+            await JS.InvokeVoidAsync("Swal.fire", new
+            {
+                title = "Access Denied",
+                text = "You must be logged in to access this page.",
+                icon = "warning",
+                confirmButtonText = "OK"
+            });
+            Nav.NavigateTo("/signin", forceLoad: true); 
+
+        }
+        else
+        {
+            email = await localStorage.GetItemAsync<string>("email");
+            name = await localStorage.GetItemAsync<string>("name");
+            WelcomeMessage = $"Welcome {name}!"; 
+            appointments = await Http.GetFromJsonAsync<List<AppointmentDTO>>($"api/AppointmentDTO/GetAppointmentDTOsByPatientId/{userId}");
+            doctors = await Http.GetFromJsonAsync<List<Doctor>>("/api/Doctors/GetAllDoctors");
+            await JS.InvokeVoidAsync("initializeToasts");
+        }
+    }  
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!string.IsNullOrWhiteSpace(SuccessMessage) || !string.IsNullOrWhiteSpace(ErrorMessage))
+        {
+            await JS.InvokeVoidAsync("initializeToasts");
+            // Optionally clear the message after showing the toast
+            SuccessMessage = null;
+            ErrorMessage = null;
+        } 
+        idToShow = null;
+    }
 
     private async Task ViewAppointment(int id)
     {
@@ -258,11 +299,7 @@
     }
 
     private async Task CancelAppointment(int id)
-    {
-        // bool confirmed = await JS.InvokeAsync<bool>("confirm", "Are you sure you want to cancel this appointment?");
-        // if (!confirmed)
-        //     return;
-
+    { 
         var result = await JS.InvokeAsync<System.Text.Json.JsonElement>("Swal.fire", new
         {
             title = "Are you sure?",
@@ -318,10 +355,10 @@
                 await JS.InvokeVoidAsync("initializeToasts");
                 return;
             }
-
+            Console.WriteLine(id + " to be edited");
             appointmentForm = new AppointmentFormModel
             {
-                AppointmentId = appt.AppointmentId,
+                AppointmentId = id,
                 AppointmentDate = appt.AppointmentDate, 
                 Description = appt.Description,
                 DoctorId = appt.DoctorId
@@ -332,49 +369,6 @@
             await JS.InvokeVoidAsync("initializeToasts");
         }
     }
-
-    protected override async Task OnInitializedAsync()
-    {
-        userId = await localStorage.GetItemAsync<string>("userId");
-        if (string.IsNullOrEmpty(userId))
-        {
-            // Not logged in — redirect to signin
-            await JS.InvokeVoidAsync("Swal.fire", new
-            {
-                title = "Access Denied",
-                text = "You must be logged in to access this page.",
-                icon = "warning",
-                confirmButtonText = "OK"
-            });
-            Nav.NavigateTo("/signin", forceLoad: true); 
-
-        }
-        else
-        {
-            email = await localStorage.GetItemAsync<string>("email");
-            name = await localStorage.GetItemAsync<string>("name");
-            WelcomeMessage = $"Welcome {name}!"; 
-            appointments = await Http.GetFromJsonAsync<List<AppointmentDTO>>($"api/AppointmentDTO/GetAppointmentDTOsByPatientId/{userId}");
-            doctors = await Http.GetFromJsonAsync<List<Doctor>>("/api/Doctors/GetAllDoctors");
-            await JS.InvokeVoidAsync("initializeToasts");
-        }
-    }  
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (!string.IsNullOrWhiteSpace(SuccessMessage) || !string.IsNullOrWhiteSpace(ErrorMessage))
-        {
-            await JS.InvokeVoidAsync("initializeToasts");
-            // Optionally clear the message after showing the toast
-            SuccessMessage = null;
-            ErrorMessage = null;
-        } 
-        idToShow = null;
-    }
-
-    private string searchQuery = "";
-
-    private AppointmentFormModel appointmentForm = new();
 
     private List<Doctor> FilterDoctors() =>
         doctors.Where(d => d.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
@@ -390,14 +384,16 @@
             if(response.IsSuccessStatusCode)
             {
                 SuccessMessage = "Appointment created!";
+                var createdAppointment = await response.Content.ReadFromJsonAsync<Appointment>();
                 appointments.Add(new AppointmentDTO
-                    {
-                        AppointmentId = appointment.AppointmentId,
-                        AppointmentDate = appointment.AppointmentDate,
-                        DoctorName = doctors[appointmentForm.DoctorId - 1].Name, // Assuming DoctorId is 1-based index
-                        Description = appointmentForm.Description,
-                        isApproved = false // New appointments are pending by default
-                    });
+                {
+                    AppointmentId = createdAppointment.AppointmentId,
+                    AppointmentDate = appointment.AppointmentDate,
+                    DoctorId = appointmentForm.DoctorId,
+                    DoctorName = doctors[appointmentForm.DoctorId - 1].Name, // Assuming DoctorId is 1-based index
+                    Description = appointmentForm.Description,
+                    isApproved = false // New appointments are pending by default
+                });
             }
             else
             {
@@ -406,75 +402,68 @@
         }
         else
         {
-            // Updating existing appointment
+            // Updating existing appointment 
             var existing = appointments.FirstOrDefault(a => a.AppointmentId == appointmentForm.AppointmentId);
             if (existing != null)
             {
                 //Updating AppointmentDTO for UI
                 existing.AppointmentDate = appointmentForm.AppointmentDate;
-                existing.DoctorName = doctors[appointmentForm.DoctorId - 1].Name; 
+                existing.DoctorName = doctors[appointmentForm.DoctorId - 1].Name;
+                existing.DoctorId = appointmentForm.DoctorId;
                 existing.Description = appointmentForm.Description;
-                existing.isApproved = false; // mark as pending after update
-                SuccessMessage = "Appointment updated successfully!";
-                
+                existing.isApproved = false; // mark as pending after update 
+
                 //Creating Appointment Model for API call
                 var appointmentModel = new Appointment
                 {
                     AppointmentId = appointmentForm.AppointmentId,
-                        AppointmentDate = appointmentForm.AppointmentDate,
+                    AppointmentDate = appointmentForm.AppointmentDate,
 					PatientId = userId,
                     DoctorId = appointmentForm.DoctorId,
                     Description = existing.Description,
                     isApproved = false // mark as pending after update
                 };
-                await Http.PutAsJsonAsync($"api/Appointment/UpdateAppointment/{appointmentForm.AppointmentId}", appointmentModel);
+                var response = await Http.PutAsJsonAsync($"api/Appointment/UpdateAppointment/{appointmentModel.AppointmentId}", appointmentModel);
+                if (response.IsSuccessStatusCode)
+                {
+                    SuccessMessage = "Appointment updated successfully!";
+                }
+                else
+                { 
+                    ErrorMessage = "Failed to update appointment!"; 
+                }
             }
-			else
-			{
-				ErrorMessage = "Appointment not found!"; 
-			}
+            else
+            {
+                ErrorMessage = "Appointment not found!"; 
+            }
         }
-
-        await JS.InvokeVoidAsync("initializeToasts");
         appointmentForm = new(); // reset form
         idToEdit = null; // clear edit state
         Nav.NavigateTo("/patient-dashboard");
     }
 
-
-    public class AppointmentFormModel
-    {
-        public int AppointmentId { get; set; }  // NEW: To support editing
-        public DateTime AppointmentDate { get; set; }
-        public int DoctorId { get; set; }
-
-        [Required(ErrorMessage = "Description is required.")]
-        public string Description { get; set; } = string.Empty;
-    }
-     
     private bool IsDateSelected => appointmentForm.AppointmentDate != default;
 
     private List<Doctor> GetAvailableDoctors()
-{
-    if (!IsDateSelected) return new List<Doctor>();
+    {
+        if (!IsDateSelected) return new List<Doctor>();
 
-    var selectedDate = appointmentForm.AppointmentDate.Date;
+        var selectedDate = appointmentForm.AppointmentDate.Date;
 
-    // Get doctors already booked on this date
-    var bookedDoctors = appointments
-        .Where(a => a.AppointmentDate.Date == selectedDate)
-        .Select(a => a.DoctorName)
-        .ToList();
+        // Get doctors booked on this date, excluding the current appointment (if editing)
+        var bookedDoctorIds = appointments
+            .Where(a => a.AppointmentDate.Date == selectedDate && a.AppointmentId != appointmentForm.AppointmentId)
+            .Select(a => a.DoctorId)
+            .ToList();
 
-    // Get the name of the doctor currently selected in the form
-    var selectedDoctor = doctors.FirstOrDefault(d => d.DoctorId == appointmentForm.DoctorId);
-    var selectedDoctorName = selectedDoctor?.Name;
+        // Always include the doctor assigned to the current appointment (if editing)
+        var currentDoctorId = appointmentForm.DoctorId;
 
-    // Return doctors not booked OR the currently selected one
-    return doctors
-        .Where(d => !bookedDoctors.Contains(d.Name) || d.Name == selectedDoctorName)
-        .ToList();
-}
+        return doctors
+            .Where(d => !bookedDoctorIds.Contains(d.DoctorId) || d.DoctorId == currentDoctorId)
+            .ToList();
+    }
 
     private void OnDateChanged(ChangeEventArgs e)
     {
@@ -486,13 +475,34 @@
     }
 
     bool isChatOpen = false;
+
     void openChat()
     {
         isChatOpen = true;
     }
+
+    void closeChat()
+    {
+        isChatOpen = false;
+    }
+    
     private bool IsPast(DateTime date)
     {
         return date.Date < DateTime.Today;
     }
 
+    void CloseAppointmentDetailsMethod()
+    {
+        idToShow = null;
+    }
+    
+    public class AppointmentFormModel
+    {
+        public int AppointmentId { get; set; }  // NEW: To support editing
+        public DateTime AppointmentDate { get; set; }
+        public int DoctorId { get; set; }
+
+        [Required(ErrorMessage = "Description is required.")]
+        public string Description { get; set; } = string.Empty;
+    }
 }

@@ -2728,8 +2728,6 @@ C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\uje
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\927plkmk2o-tptq2av103.gz
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\fv852almvh-lfu7j35m59.gz
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\ga4tohpf6k-oyz0vx2fzb.gz
-C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\11jckmtcmx-ssp5pr1wia.gz
-C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\nb1upix0ss-si1k8ls03w.gz
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\staticwebassets.build.endpoints.json
@@ -2745,6 +2743,8 @@ C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\Client.dll
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\refint\Client.dll
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\Client.pdb
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\ref\Client.dll
-C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\kb90l4x90i-wqaffjylyt.gz
-C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\nrce2f7bjz-epnqhucd0p.gz
-C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\0kih5qk3hm-kuh045bd6o.gz
+C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\11jckmtcmx-yp6235xxgr.gz
+C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\nb1upix0ss-0miry1kqe1.gz
+C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\kb90l4x90i-h8u09op5dk.gz
+C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\nrce2f7bjz-bbai7gesw7.gz
+C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\0kih5qk3hm-6tfciepdrp.gz

@@ -3,125 +3,126 @@
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
 @inject HttpClient Http
-@layout PatientLayout
+@layout AuthLayout
+<style>
+    .container1 {
+    background: var(--accent-color);
+    padding: 0.3rem 0.3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    color: #fff;
+    min-height: 100vh;
+    }
 
-<EditForm Model="registerModel" OnValidSubmit="HandleRegister">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
 
-    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
-        <div class="row w-100 align-items-center">
-            <!-- Left side: Welcome Message -->
-            <div class="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0 px-4">
-                <div class="welcome-message-container text-dark">
-                    <h2 class="welcome-heading">Welcome to Our Service!</h2>
-                    <p class="welcome-description">Sign up to get started with your account.</p>
-                </div>
-            </div>
+    .form-label {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+    }
 
-            <!-- Right side: Signup Form -->
-            <div class="col-12 col-md-6 px-4">
-                <div class="container1">
-                    <h3 class="text-center mb-4 text-white">Create Your Account</h3>
+    .form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 0.4rem;
+    font-size: 0.85rem;
+    height: 2.2rem;
+    }
 
-                    <div class="info-message text-center">
-                        <p>By signing up, you agree to our <span>Terms of Service</span> and <span>Privacy Policy</span>.</p>
-                    </div>
+    .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.2);
+    }
 
+    .btn {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    height: 2.2rem;
+    }
+
+    .mb-3 {
+    margin-bottom: 0.6rem !important;
+    }
+
+    .intro-section {
+    padding: 1rem;
+    }
+
+    .row {
+    min-height: 100vh;
+    align-items: center;
+    }
+
+    .intro-section h2 {
+    font-size: 1.6rem;
+    }
+
+    .intro-section p {
+    font-size: 1rem;
+    }
+
+    .form-container {
+    padding: 1.2rem 2.5rem;
+    max-width: 80%;
+    }
+</style>
+<div class="row g-0">
+    <div class="col-12 col-md-6 d-none d-md-flex flex-column justify-content-center align-items-center text-center mb-4 mb-md-0">
+        <div class="text-dark">
+            <h2 class="welcome-heading">Welcome to Our Service!</h2>
+            <p class="welcome-description">Sign up to get started with your account.</p>
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="container1 d-flex justify-content-center align-items-center">
+            <div>
+                <h2 class="text-center text-white mb-2 fw-bolder">Create Account</h2>
+                <p class="mb-3" style="font-size: 0.85rem;">Take control of your health and wellness by creating an account with us</p>
+                <p class="mb-3" style="font-size: 0.85rem;">@Message</p>
+                <EditForm Model="registerModel" OnValidSubmit="HandleRegister">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Full Name</label>
-                        <InputText @bind-Value="registerModel.Name" class="form-control" placeholder="Enter full name" />
+                        <label for="name" class="form-label text-white fw-bold d-block text-start">Full Name</label> 
+                        <InputText id="name" @bind-Value="registerModel.Name" class="form-control" placeholder="Enter full name" />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Email address</label>
-                        <InputText @bind-Value="registerModel.Email" class="form-control" placeholder="Enter email" />
+                        <label for="email" class="form-label text-white fw-bold d-block text-start">Email</label>
+                        <InputText id="email" @bind-Value="registerModel.Email" class="form-control" placeholder="Enter email" />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Password</label>
-                        <InputText @bind-Value="registerModel.Password" class="form-control" placeholder="Create password" type="password" />
+                        <label for="password" class="form-label text-white fw-bold d-block text-start">Password</label>
+                        <InputText id="password" @bind-Value="registerModel.Password" class="form-control" placeholder="Create password" type="password" />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Confirm Password</label>
-                        <InputText @bind-Value="registerModel.ConfirmPassword" class="form-control" placeholder="Confirm password" type="password" />
+                        <label for="confirmPassword" class="form-label text-white fw-bold d-block text-start">Confirm Password</label>
+                        <InputText id="confirmPassword" @bind-Value="registerModel.ConfirmPassword" class="form-control" placeholder="Confirm password" type="password" />
+                    </div>
+                    <div class="d-grid mb-2">
+                        <button type="submit" class="btn btn-dark">Sign Up</button>
+                    </div>
+                    <div class="d-grid mb-2">
+                        <a href="/signin" class="btn btn-light text-dark">Already have an account? Sign In</a>
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-dark w-100">Sign Up</button>
-                    </div> 
-                    <div class="d-grid mt-3">
-                        <a href="/signin" class="btn btn-light text-dark">Already have an account</a>
+                        <a href="/" class="btn btn-dark">DocDirect</a>
                     </div>
-                </div>
+                </EditForm>
             </div>
         </div>
     </div>
-</EditForm>
-<style>
-    /* General styling for the page */
-    .container-fluid {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 5vh;
-        margin-bottom: 5vh;
-    }
-
-    /* Left side welcome message container */
-    .welcome-message-container {
-        text-align: center;
-    }
-
-    .welcome-heading {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 15px;
-    }
-
-    .welcome-description {
-        font-size: 1.1rem;
-    }
-
-    /* Right side Signup Form container */
-    .container1 {
-        background: var(--accent-color);
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        color: #fff;
-        animation: fadeIn 1s ease-out;
-    }
-
-    h3 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-    }
-
-    .info-message {
-        font-size: 1rem;
-        color: #ddd;
-        margin-bottom: 30px;
-    }
-
-    .btn { 
-        padding: 12px;
-        font-size: 1.1rem;
-        border-radius: 5px;
-        transition: all 0.3s ease-in-out;
-    }
-</style>
+</div>
 
 @code {
     private RegisterViewModel registerModel = new RegisterViewModel();
-
-    private bool isSubmitting = false;
+	private string Message { get; set; } 
 
     private async Task HandleRegister()
     {
-        if (isSubmitting)
-            return;
-
-        isSubmitting = true;
+        Message = "Loading..."; 
 
         try
         {
@@ -130,11 +131,7 @@
 
             if (response.IsSuccessStatusCode)
             {
-                await JS.InvokeVoidAsync("showRegisterMessage"); // show your SweetAlert or animation
-
-                // Wait or handle post-register actions
-                await Task.Delay(3000);
-
+                await JS.InvokeVoidAsync("showRegisterMessage");   
                 Navigation.NavigateTo("/signin");
             }
             else
@@ -143,16 +140,12 @@
                 var errorContent = await response.Content.ReadAsStringAsync();
 
                 // Show alert or display error message
-                await JS.InvokeVoidAsync("alert", $"Registration failed: {errorContent}");
+                Message = $"Registration failed: {errorContent}"; 
             }
         }
         catch (Exception ex)
         {
             await JS.InvokeVoidAsync("alert", $"An error occurred: {ex.Message}");
-        }
-        finally
-        {
-            isSubmitting = false;
-        }
+        } 
     }
 }
