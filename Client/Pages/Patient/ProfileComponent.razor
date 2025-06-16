@@ -8,265 +8,287 @@
 
 <style>
     :root { 
-        --gradient-secondary: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); 
-        --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.1);
-        --border-radius: 12px;
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-secondary: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); 
+    --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .profile-container { 
-        min-height: 100vh;
-        padding: 2rem 0;
+    min-height: 100vh;
+    padding: 2rem 0;
     }
 
     .profile-header {
-        background: var(--accent-color);
-        color: white;
-        padding: 3rem 0;
-        margin-bottom: 2rem;
-        border-radius: var(--border-radius);
-        position: relative;
-        overflow: hidden;
+    background: var(--accent-color);
+    color: white;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius);
+    position: relative;
+    overflow: hidden;
     }
 
-        .profile-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,100 1000,0"/></svg>');
-            background-size: cover;
-        }
+    .profile-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,100 1000,0"/></svg>');
+    background-size: cover;
+    }
 
-        .profile-header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: white;
-            margin: 0; 
-            position: relative;
-            z-index: 1;
-        }
+    .profile-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0; 
+    position: relative;
+    z-index: 1;
+    }
 
-        .profile-header .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-top: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
+    .profile-header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-top: 0.5rem;
+    position: relative;
+    z-index: 1;
+    }
 
     .enhanced-card {
-        background: white;
-        border-radius: var(--accent-color);
-        box-shadow: var(--shadow-card);
-        border: none;
-        transition: var(--transition);
-        overflow: hidden;
+    background: white;
+    border-radius: var(--accent-color);
+    box-shadow: var(--shadow-card);
+    border: none;
+    transition: var(--transition);
+    overflow: hidden;
     }
 
-        .enhanced-card:hover {
-            transform: translateY(-2px); 
-        }
+    .enhanced-card:hover {
+    transform: translateY(-2px); 
+    }
 
     .card-header-custom { 
-        border-bottom: 2px solid var(--accent-color);
-        padding: 1.5rem;
-        position: relative;
+    border-bottom: 2px solid var(--accent-color);
+    padding: 1.5rem;
+    position: relative;
     }
 
-        .card-header-custom::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent-color);
-        }
+    .card-header-custom::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    }
 
     .section-title {
-        color: var(--accent-color);
-        font-weight: 600;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     }
 
     .section-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--accent-color);
+    }
+
+    .section-icon2 {
         width: 1.5rem;
         height: 1.5rem;
-        fill: var(--accent-color);
+        fill: white;
     }
-
     .custom-input {
-        border: var(--accent-color);
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-        font-size: 0.95rem;
-        transition: var(--transition);
-        background: #fafafa;
+    border: var(--accent-color);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    background: #fafafa;
     }
 
-        .custom-input:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 0.2rem var(--accent-color);
-            background: white;
-            outline: none;
-        }
+    .custom-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem var(--accent-color);
+    background: white;
+    outline: none;
+    }
 
     .form-label-custom {
-        font-weight: 500;
-        color: #495057;
-        margin-bottom: 0.5rem;
-        display: block;
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    display: block;
     }
 
     .btn-primary-custom {
-        background: var(--accent-color);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 0.75rem 2rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        transition: var(--transition);
-        position: relative;
-        overflow: hidden;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
     }
 
-        .btn-primary-custom::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn-primary-custom:hover::before {
-            left: 100%;
-        }
+    .btn-primary-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+    }
 
-        .btn-primary-custom:hover {
-            transform: translateY(-1px); 
-            background: var(--accent-color);
-            color: white;
-            box-shadow: 0 4px 15px var(--accent-color);
-        }
+    .btn-primary-custom:hover::before {
+    left: 100%;
+    }
+
+    .btn-primary-custom:hover {
+    transform: translateY(-1px); 
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 15px var(--accent-color);
+    }
 
     .alert-custom {
-        border: none;
-        border-radius: 8px;
-        padding: 1rem 1.5rem;
-        margin-bottom: 1.5rem;
-        font-weight: 500;
-        position: relative;
-        overflow: hidden;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
     }
-
-    .alert-success-custom {
-        background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-        color: #155724;
-        border-left: 4px solid #28a745;
-    }
-
-    .alert-danger-custom {
-        background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
-        color: #721c24;
-        border-left: 4px solid #dc3545;
-    }
+     
 
     .appointment-card {
-        background: var(--accent-color);
-        border-radius: var(--border-radius);
-        border: none;
-        transition: var(--transition);
-        position: relative;
-        overflow: hidden;
+    background: var(--accent-color);
+    border-radius: var(--border-radius);
+    border: none;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
     }
 
-        .appointment-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--accent-color);
-            pointer-events: none;
-        }
+    .appointment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--accent-color);
+    pointer-events: none;
+    }
 
-        .appointment-card:hover {
-            transform: translateY(-4px) scale(1.02); 
-        }
+    .appointment-card:hover {
+    transform: translateY(-4px) scale(1.02); 
+    }
 
-        .appointment-card .card-body {
-            position: relative;
-            z-index: 1;
-            padding: 1.5rem;
-        }
+    .appointment-card .card-body {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
+    }
 
     .appointment-badge {
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        display: inline-block;
-        margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 0.5rem;
     }
 
     .no-appointments {
-        text-align: center;
-        padding: 3rem;
-        color: #6c757d;
+    text-align: center;
+    padding: 3rem;
+    color: #6c757d;
     }
 
     .no-appointments-icon {
-        width: 4rem;
-        height: 4rem;
-        margin: 0 auto 1rem;
-        opacity: 0.5;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    opacity: 0.5;
     }
 
     .divider-custom {
-        border: none;
-        height: 2px;
-        background: var(--accent-color);
-        margin: 2rem 0;
-        border-radius: 1px;
+    border: none;
+    height: 2px;
+    background: var(--accent-color);
+    margin: 2rem 0;
+    border-radius: 1px;
     }
 
     .stats-card {
-        background: var(--accent-color);
-        color: white; 
-        padding: 1.5rem;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
+    background: var(--accent-color);
+    color: white; 
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
     }
 
-        .stats-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 3s ease-in-out infinite;
-        }
+    .stats-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pulse 3s ease-in-out infinite;
+    }
 
-    
-    
+
+
 </style>
+<!-- Status Messages -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+
+    @if (!string.IsNullOrWhiteSpace(SuccessMessage))
+    {
+        <div class="toast align-items-center text-bg-success border-0 shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+            <div class="d-flex">
+                <div class="toast-body text-center w-100">
+                    <i class="bi bi-check-circle-fill me-2"></i><strong>@SuccessMessage</strong>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    }
+
+
+    @if (!string.IsNullOrWhiteSpace(ErrorMessage))
+    {
+        <div class="toast align-items-center text-bg-danger border-0 shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+            <div class="d-flex">
+                <div class="toast-body text-center w-100">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i><strong>@ErrorMessage</strong>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    }
+</div>
 
 <div class="profile-container">
     <div class="container">
@@ -276,22 +298,7 @@
                 Your Health Profile
             </h1>
             <p class="subtitle">Manage your personal information and medical records</p>
-        </div>
-
-        <!-- Status Messages -->
-        @if (!string.IsNullOrEmpty(SuccessMessage))
-        {
-            <div class="alert alert-success-custom alert-custom" role="alert">
-                <strong>Success!</strong> @SuccessMessage
-            </div>
-        }
-        @if (!string.IsNullOrEmpty(ErrorMessage))
-        {
-            <div class="alert alert-danger-custom alert-custom" role="alert">
-                <strong>Error!</strong> @ErrorMessage
-            </div>
-        }
-
+        </div> 
         <div class="row">
             <!-- Profile Form -->
             <div class="col-lg-8">
@@ -305,11 +312,10 @@
                         </h4> 
                     </div>
                     <div class="card-body p-4">
-                        <EditForm Model="@profileModel" OnValidSubmit="UpdateProfile">
-                            <DataAnnotationsValidator />
-                            <ValidationSummary class="alert alert-danger-custom alert-custom" />
-
-                            <div class="row">
+                        <div class="row">
+                            <EditForm Model="@profileModel" OnValidSubmit="UpdateProfileInfo">
+                                <DataAnnotationsValidator />
+                                <ValidationSummary class="alert alert-danger-custom alert-custom" />
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label-custom">
                                         <svg class="section-icon me-1" viewBox="0 0 24 24">
@@ -317,7 +323,7 @@
                                         </svg>
                                         Full Name
                                     </label>
-                                    <InputText @bind-Value="profileModel.Name" class="form-control custom-input" placeholder="Enter your full name" />
+                                    <InputText @bind-Value="profileModel.Name" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" placeholder="Enter your full name" />
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label-custom">
@@ -326,7 +332,7 @@
                                         </svg>
                                         Email Address
                                     </label>
-                                    <InputText @bind-Value="profileModel.Email" class="form-control custom-input" placeholder="Enter your email" />
+                                    <InputText @bind-Value="profileModel.Email" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" placeholder="Enter your email" />
                                 </div>
                                 <div class="col-12 mb-4">
                                     <label class="form-label-custom">
@@ -335,115 +341,149 @@
                                         </svg>
                                         Medical Condition
                                     </label>
-                                    <InputText @bind-Value="profileModel.Disease" class="form-control custom-input" placeholder="Enter your current medical condition" />
+                                    <InputText @bind-Value="profileModel.Disease" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" placeholder="Enter your current medical condition" />
                                 </div>
-                            </div>
-
+                                @if(isEditingBasicInfo)
+                                {
+                                    <div class="col-md-6 mb-3 w-100">
+                                        <label class="form-label-custom">
+                                            <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M12 17a1.5 1.5 0 0 0 0-3 1.5 1.5 0 0 0 0 3zm6-7h-1V7a5 5 0 0 0-10 0v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-8-3a3 3 0 0 1 6 0v3h-6V7z" />
+                                            </svg>
+                                            Password
+                                        </label>
+                                        <InputText @bind-Value="profileModel.Password" class="form-control custom-input" type="password" placeholder="Enter password" />
+                                    </div>
+                                }
+                                <button type="submit"
+                                class="btn btn-primary-custom w-100 mb-3"
+                                aria-label="Update Basic Info"
+                                disabled="@(!isEditingBasicInfo)">
+                                    Update Basic Info
+                                </button>   
+                                <button type="button" @onclick="isEditingBasicInfoButtonToggel" class="btn btn-primary-custom w-100" aria-label="Edit Basic Info">
+                                    @(isEditingBasicInfo ? "Cancel Editing" : "Edit Basic Info")
+                                </button>
+                            </EditForm> 
                             <hr class="divider-custom" />
 
                             <!-- Password Section -->
-                            <h5 class="section-title mb-3">
-                                <svg class="section-icon" viewBox="0 0 24 24">
-                                    <path d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" />
-                                </svg>
-                                Security Settings
-                            </h5>
+                            <EditForm Model="@securityModel" OnValidSubmit="UpdatePatientSecurityInfo">
+                                <DataAnnotationsValidator />
+                                <ValidationSummary class="alert alert-danger-custom alert-custom" />
+                                <h5 class="section-title mb-3">
+                                    <svg class="section-icon" viewBox="0 0 24 24">
+                                        <path d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" />
+                                    </svg>
+                                    Security Settings
+                                </h5>
 
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label-custom">New Password</label>
-                                    <InputText @bind-Value="profileModel.NewPassword" class="form-control custom-input" type="password" placeholder="Enter new password" />
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label-custom">Confirm New Password</label>
-                                    <InputText @bind-Value="profileModel.ConfirmPassword" class="form-control custom-input" type="password" placeholder="Confirm new password" />
-                                </div>
-                                <div class="col-12 mb-4">
-                                    <label class="form-label-custom">Current Password</label>
-                                    <InputText @bind-Value="profileModel.OldPassword" class="form-control custom-input" type="password" placeholder="Enter current password" />
-                                </div>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label-custom">New Password</label>
+                                        <InputText @bind-Value="securityModel.NewPassword" disabled="@(!isEditingSecurityInfo)" class="form-control custom-input" type="password" placeholder="Enter new password" />
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label-custom">Confirm New Password</label>
+                                        <InputText @bind-Value="securityModel.ConfirmPassword" disabled="@(!isEditingSecurityInfo)" class="form-control custom-input" type="password" placeholder="Confirm new password" />
+                                    </div>
+                                    <div class="col-12 mb-4">
+                                        <label class="form-label-custom">Current Password</label>
+                                        <InputText @bind-Value="securityModel.CurrentPassword" disabled="@(!isEditingSecurityInfo)" class="form-control custom-input" type="password" placeholder="Enter current password" />
+                                    </div>
+                                </div> 
+                                <button type="submit"
+                                        class="btn btn-primary-custom w-100 mb-3"
+                                        aria-label="Update Basic Info"
+                                        disabled="@(!isEditingSecurityInfo)">
+                                    Update Password
+                                </button>
+                                <button type="button" @onclick="isEditingSecurityInfoButtonToggel" class="btn btn-primary-custom w-100" aria-label="Edit Basic Info">
+                                    @(isEditingSecurityInfo ? "Cancel Update" : "Update Password")
+                                </button>
+                            </EditForm>
 
-                            <button type="submit" class="btn btn-primary-custom w-100"> 
-                                Update Profile
-                            </button>
-                        </EditForm>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
             <!-- Stats Sidebar -->
             <div class="col-lg-4">
                 <div class="stats-card mb-4">
-                    <div class="stats-number">@(profileModel.Appointments?.Count ?? 0)</div>
+                    <div class="stats-number">@(appointments?.Count ?? 0)</div>
                     <div class="stats-label">Total Appointments</div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Appointments Section -->
-        <div class="enhanced-card">
-            <div class="card-header-custom">
-                <h4 class="section-title">
-                    <svg class="section-icon" viewBox="0 0 24 24">
-                        <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
-                    </svg>
-                    Your Appointments
-                </h4>
-            </div>
-            <div class="card-body p-4">
-                @if (profileModel.Appointments != null && profileModel.Appointments.Any())
-                {
-                    <div class="row g-4">
-                        @foreach (var appointment in profileModel.Appointments)
-                        {
-                            <div class="col-md-6">
-                                <div class="appointment-card h-100">
-                                    <div class="card-body">
-                                        <div class="appointment-badge">Upcoming</div>
-                                        <h5 class="text-white fw-bold mb-2">Dr. @appointment.DoctorName</h5>
-                                        <p class="text-white mb-1">
-                                            <svg class="section-icon me-1" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;">
-                                                <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
-                                            </svg>
-                                            <strong>@appointment.AppointmentDate.ToString("MMM dd, yyyy")</strong>
-                                        </p>
-                                        <p class="text-white mb-1">
-                                            <svg class="section-icon me-1" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;">
-                                                <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
-                                            </svg>
-                                            <strong>@appointment.AppointmentDate.ToString("HH:mm")</strong>
-                                        </p>
-                                        <p class="text-white mb-0">
-                                            <small>@appointment.Description</small>
-                                        </p>
-                                    </div>
+    <!-- Appointments Section -->
+    <div class="enhanced-card">
+        <div class="card-header-custom">
+            <h4 class="section-title">
+                <svg class="section-icon" viewBox="0 0 24 24">
+                    <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
+                </svg>
+                Your Appointments
+            </h4>
+        </div>
+        <div class="card-body p-4">
+            @if (appointments != null && appointments.Any())
+            {
+                <div class="row g-4">
+                    @foreach (var appointment in appointments)
+                    {
+                        <div class="col-md-6">
+                            <div class="appointment-card h-100">
+                                <div class="card-body">
+                                    <div class="appointment-badge">Upcoming</div>
+                                    <h5 class="text-white fw-bold mb-2">Dr. @appointment.DoctorName</h5>
+                                    <p class="text-white mb-1">
+                                        <svg class="section-icon2 me-1" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;">
+                                            <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
+                                        </svg>
+                                        <strong>@appointment.AppointmentDate.ToString("MMM dd, yyyy")</strong>
+                                    </p>
+                                    <p class="text-white mb-1">
+                                        <svg class="section-icon2 me-1" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;">
+                                            <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                                        </svg>
+                                        <strong>@appointment.AppointmentDate.ToString("HH:mm")</strong>
+                                    </p>
+                                    <p class="text-white mb-0">
+                                        <span style="font-style: italic;">"@appointment.Description"</span>
+                                    </p>
                                 </div>
                             </div>
-                        }
-                    </div>
-                }
-                else
-                {
-                    <div class="no-appointments">
-                        <svg class="no-appointments-icon" viewBox="0 0 24 24" fill="#6c757d">
-                            <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
-                        </svg>
-                        <h5 class="mb-2">No Appointments Scheduled</h5>
-                        <p class="mb-0">Book your first appointment to get started with your healthcare journey.</p>
-                    </div>
-                }
-            </div>
+                        </div>
+                    }
+
+                </div>
+            }
+            else
+            {
+                <div class="no-appointments">
+                    <svg class="no-appointments-icon" viewBox="0 0 24 24" fill="#6c757d">
+                        <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
+                    </svg>
+                    <h5 class="mb-2">No Appointments Scheduled</h5>
+                    <p class="mb-0">Book your first appointment to get started with your healthcare journey.</p>
+                </div>
+            }
         </div>
     </div>
-</div>
+</div> 
 
 @code {
     private string userId;
-    private ProfileViewModel profileModel = new ProfileViewModel();
+    private PatientInfoModel profileModel = new PatientInfoModel();
+    private PatientSecurityModel securityModel = new PatientSecurityModel();
     private string? SuccessMessage;
     private string? ErrorMessage;
-
+    bool isEditingBasicInfo = false;
+    bool isEditingSecurityInfo = false;
+    List<AppointmentDTO> appointments = new List<AppointmentDTO>();
     protected override async Task OnInitializedAsync()
     {
         userId = await localStorage.GetItemAsync<string>("userId");
@@ -460,71 +500,70 @@
             Nav.NavigateTo("/signin", forceLoad: true);
 
         }
-        // Load profile data from API
         else
-        {
-            try
-            {
-                //profileModel = await Http.GetFromJsonAsync<ProfileViewModel>("api/profile") ?? new ProfileViewModel();
-                var dummyProfile = new ProfileViewModel
-                    {
-                        Name = "John Doe",
-                        Email = "john.doe@example.com",
-                        Disease = "Hypertension",
-                        OldPassword = null,
-                        NewPassword = null,
-                        ConfirmPassword = null,
-                        Appointments = await Http.GetFromJsonAsync<List<AppointmentDTO>>($"api/AppointmentDTO/GetAppointmentDTOsByPatientId/{userId}")
-                    };
-                profileModel = dummyProfile;
-            }
-            catch
-            {
-                ErrorMessage = "Failed to load profile data.";
-            }
+        { 
+            profileModel = await Http.GetFromJsonAsync<PatientInfoModel>($"/api/AuthApi/user-info/{userId}");
+            appointments = await Http.GetFromJsonAsync<List<AppointmentDTO>>($"api/AppointmentDTO/GetAppointmentDTOsByPatientId/{userId}"); 
+            await JS.InvokeVoidAsync("initializeToasts");
         }
     }
 
-    private async Task UpdateProfile()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        ErrorMessage = null;
-        SuccessMessage = null;
+        if (!string.IsNullOrWhiteSpace(SuccessMessage) || !string.IsNullOrWhiteSpace(ErrorMessage))
+        {
+            await JS.InvokeVoidAsync("initializeToasts");
+            // Optionally clear the message after showing the toast
+            SuccessMessage = null;
+            ErrorMessage = null;
+        }
+    }
 
-        // Basic password validation
-        if (!string.IsNullOrEmpty(profileModel.NewPassword) || !string.IsNullOrEmpty(profileModel.ConfirmPassword))
-        {
-            if (profileModel.NewPassword != profileModel.ConfirmPassword)
-            {
-                ErrorMessage = "New password and confirmation do not match.";
-                return;
-            }
-            if (string.IsNullOrEmpty(profileModel.OldPassword))
-            {
-                ErrorMessage = "Old password is required to change password.";
-                return;
-            }
-        }
+    void isEditingBasicInfoButtonToggel()
+    {
+        isEditingBasicInfo = !isEditingBasicInfo;
+    } 
+    void isEditingSecurityInfoButtonToggel()
+    {
+        isEditingSecurityInfo = !isEditingSecurityInfo;
+    }
 
-        try
+    private async Task UpdateProfileInfo()
+    {
+        isEditingBasicInfoButtonToggel();
+        profileModel.userId = userId;
+        var response = await Http.PutAsJsonAsync("api/AuthApi/update-profile", profileModel);
+
+        if (response.IsSuccessStatusCode)
         {
-            //var response = await Http.PutAsJsonAsync("api/profile/update", profileModel);
-            //if (response.IsSuccessStatusCode)
-            {
-                SuccessMessage = "Profile updated successfully!";
-                // Clear password fields after success
-                profileModel.OldPassword = null;
-                profileModel.NewPassword = null;
-                profileModel.ConfirmPassword = null;
-            }
-            // else
-            // {
-            //     var error = await response.Content.ReadAsStringAsync();
-            //     ErrorMessage = $"Update failed: {error}";
-            // }
+            SuccessMessage = "Profile info updated successfully";
         }
-        catch (Exception ex)
+        else
         {
-            ErrorMessage = $"An error occurred: {ex.Message}";
+            ErrorMessage = "Failed to update Profile info";
         }
+		await JS.InvokeVoidAsync("initializeToasts");
+        profileModel.Password = null;
+        Nav.NavigateTo("/profile");
+    }
+    private async Task UpdatePatientSecurityInfo()
+    {
+		isEditingSecurityInfoButtonToggel();
+        securityModel.userId = userId;
+        var response = await Http.PutAsJsonAsync("api/AuthApi/update-password", securityModel);
+
+        if (response.IsSuccessStatusCode)
+        {
+            SuccessMessage = "Password updated successfully";
+        }
+        else
+        {
+            ErrorMessage = "Failed to update Password";
+        }
+		await JS.InvokeVoidAsync("initializeToasts");
+		securityModel.CurrentPassword = null;
+		securityModel.NewPassword = null;
+		securityModel.ConfirmPassword = null;
+        Nav.NavigateTo("/profile");
     }
 }

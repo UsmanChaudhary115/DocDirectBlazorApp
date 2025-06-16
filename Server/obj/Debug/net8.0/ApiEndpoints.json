@@ -523,12 +523,50 @@
   },
   {
     "ContainingType": "DocDirectApp.Server.Controllers.AuthApiController",
+    "Method": "UpdatePassword",
+    "RelativePath": "api/AuthApi/update-password",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Shared.Entities.PatientSecurityModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DocDirectApp.Server.Controllers.AuthApiController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/AuthApi/update-profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Shared.Entities.PatientInfoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DocDirectApp.Server.Controllers.AuthApiController",
     "Method": "GetUserInfo",
-    "RelativePath": "api/AuthApi/user-info",
+    "RelativePath": "api/AuthApi/user-info/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

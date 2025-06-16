@@ -81,7 +81,37 @@ namespace DocDirectApp.Server.Controllers
             }
 
             return Unauthorized(new { Message = "Invalid email or password." });
+        } 
+        [HttpPut("update-profile")]
+        public async Task<IActionResult> UpdateProfile([FromBody] PatientInfoModel model)
+        { 
+            var user = await _userManager.FindByIdAsync(model.userId);
+            if (user == null)
+                return NotFound(new { Message = "User not authenticated." });
+
+            // Confirm password
+            var passwordValid = await _userManager.CheckPasswordAsync(user, model.Password);
+            if (!passwordValid)
+                return BadRequest(new { Message = "Password is incorrect." });
+
+            // Check for email conflict
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            if (existingUser != null && existingUser.Id != user.Id)
+                return BadRequest(new { Message = "Email is already taken by another user." });
+
+            user.Name = model.Name;
+            user.Email = model.Email;
+            user.UserName = model.Email;
+            user.Disease = model.Disease;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+                return Ok(new { Message = "Profile updated successfully." });
+
+            return BadRequest(new { Errors = result.Errors.Select(e => e.Description) });
         }
+
 
         // POST: api/AuthApi/signout
         [HttpPost("signout")]
@@ -89,27 +119,37 @@ namespace DocDirectApp.Server.Controllers
         {
             await _signInManager.SignOutAsync();
             return Ok(new { Message = "User signed out successfully." });
+        } 
+        [HttpPut("update-password")]
+        public async Task<IActionResult> UpdatePassword([FromBody] PatientSecurityModel model)
+        { 
+            var user = await _userManager.FindByIdAsync(model.userId);
+            if (user == null) return NotFound(new { Message = "User not authenticated." });
+
+            var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+
+            if (result.Succeeded)
+                return Ok(new { Message = "Password updated successfully." });
+
+            return BadRequest(new { Errors = result.Errors.Select(e => e.Description) });
         }
-        [Authorize] // Requires the user to be authenticated
-        [HttpGet("user-info")]
-        public async Task<IActionResult> GetUserInfo()
-        {
-            // Get the authenticated user's ID from claims
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(userId))
-                return Unauthorized(new { Message = "User not authenticated." });
-
+         
+        [HttpGet("user-info/{id}")]
+        public async Task<IActionResult> GetUserInfo(string id)
+        { 
             // Fetch the user from UserManager
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.FindByIdAsync(id);
             if (user == null)
-                return NotFound(new { Message = "User not found." });
+                return NotFound(new { Message = "User not authenticated." });
 
-            // Return only the necessary data
-            return Ok(new
+            var userModel = new PatientInfoModel
             {
-                UserId = user.Id,
-                Name = user.Name // Adjust based on your user model property
-            });
+                Name = user.Name,
+                Email = user.Email,
+                Disease = user.Disease
+            }; 
+            // Return only the necessary data
+            return Ok(userModel);
         }
 
     }
