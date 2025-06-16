@@ -7,11 +7,15 @@ namespace Server.Interfaces
         Task AddDoctorAsync(Doctor doctor);
         Task DeleteDoctorAsync(int id);
         Task<IEnumerable<Doctor>> GetAllDoctorsAsync();
-        Task<Doctor> GetDoctorByIdAsync(int id);
+        Task<Doctor?> GetDoctorByIdAsync(int id);
         Task UpdateDoctorAsync(Doctor doctor);
         Task<IEnumerable<Doctor>> GetDoctorsBySpecializationAsync(string specialization);
         Task<IEnumerable<Doctor>> GetApprovedDoctors();
-        Task<Doctor> GetDoctorByEmailAndPassword(string email, string password);
+        Task<int> GetDoctorByEmailAndPassword(string email, string password);
         Task<IEnumerable<Doctor>> GetPendingDoctors();
-	}
+        Task<bool> UpdateDoctorProfileInfo(DoctorProfileInfoModel doctor);
+        Task<bool> UpdateDoctorSocialInfo(DoctorSocialMediaModel doctor);
+        Task<bool> UpdateDoctorSecurityInfo(DoctorSecurityModel doctor);
+
+    }
 }

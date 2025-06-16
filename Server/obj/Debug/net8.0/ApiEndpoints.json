@@ -694,8 +694,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "doctor",
-        "Type": "Shared.Entities.Doctor",
+        "Name": "doctorModel",
+        "Type": "Shared.Entities.DoctorRegisterModel",
         "IsRequired": true
       }
     ],
@@ -733,6 +733,54 @@
       {
         "Name": "doctor",
         "Type": "Shared.Entities.Doctor",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.DoctorsController",
+    "Method": "UpdatePassword",
+    "RelativePath": "api/Doctors/UpdatePassword",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctor",
+        "Type": "Shared.Entities.DoctorSecurityModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.DoctorsController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/Doctors/UpdateProfile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctor",
+        "Type": "Shared.Entities.DoctorProfileInfoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.DoctorsController",
+    "Method": "UpdateSocial",
+    "RelativePath": "api/Doctors/UpdateSocial",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctor",
+        "Type": "Shared.Entities.DoctorSocialMediaModel",
         "IsRequired": true
       }
     ],

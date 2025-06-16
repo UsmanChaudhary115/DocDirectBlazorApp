@@ -121,23 +121,26 @@
     {
         Message = "Loading..."; 
         var response = await Http.PostAsJsonAsync("api/Doctors/signin", signInModel);
+
         if (response.IsSuccessStatusCode)
-        { 
-            var doctorId = await response.Content.ReadFromJsonAsync<int>(); 
-            if (doctorId > 0)
-            { 
-                await localStorage.SetItemAsync("doctorID", doctorId);
+        {
+            var doctorId = await response.Content.ReadFromJsonAsync<int?>();
+
+            if (doctorId.HasValue && doctorId > 0)
+            {
+                await localStorage.SetItemAsync("doctorID", doctorId.Value);
                 await JS.InvokeVoidAsync("showSignInMessage");
                 NavManager.NavigateTo("/doctor-profile");
             }
             else
-            { 
-                Message = "Unexpected error: doctor data not received.";
+            {
+                Message = "Unexpected error: Doctor ID not received or invalid.";
             }
         }
         else
         {
-            Message = $"Sign-in failed: Invalid Email or Password";
+            Message = "Sign-in failed: Invalid email or password.";
         }
+
     }
 }

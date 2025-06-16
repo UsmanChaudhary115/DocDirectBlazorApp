@@ -16,24 +16,56 @@ namespace Server.Controllers
         {
             _doctorsRepository = doctorsRepository; 
 			_notificationService = notificationService;
-		} 
-		[HttpPost("register")]
-		public async Task<IActionResult> RegisterDoctor([FromBody] Doctor doctor)
+		}
+
+        [HttpPut("UpdateProfile")]
+        public async Task<IActionResult> UpdateProfile([FromBody] DoctorProfileInfoModel doctor)
+        {
+            var result = await _doctorsRepository.UpdateDoctorProfileInfo(doctor);
+            if (!result)
+                return BadRequest("Invalid data or password mismatch.");
+
+            return Ok("Profile information updated successfully.");
+        }
+
+        [HttpPut("UpdateSocial")]
+        public async Task<IActionResult> UpdateSocial([FromBody] DoctorSocialMediaModel doctor)
+        {
+            var result = await _doctorsRepository.UpdateDoctorSocialInfo(doctor);
+            if (!result)
+                return BadRequest("Invalid data or password mismatch.");
+
+            return Ok("Social media links updated successfully.");
+        }
+
+        [HttpPut("UpdatePassword")]
+        public async Task<IActionResult> UpdatePassword([FromBody] DoctorSecurityModel doctor)
+        {
+            var result = await _doctorsRepository.UpdateDoctorSecurityInfo(doctor);
+            if (!result)
+                return BadRequest("Old password incorrect or update failed.");
+
+            return Ok("Password updated successfully.");
+        }
+
+        [HttpPost("register")]
+		public async Task<IActionResult> RegisterDoctor([FromBody] DoctorRegisterModel doctorModel)
 		{
-			Console.WriteLine($"Received doctor: {doctor?.Name}");
-
-			if (!ModelState.IsValid)
-			{
-				foreach (var state in ModelState)
-				{
-					foreach (var error in state.Value.Errors)
-					{
-						Console.WriteLine($"Validation error in {state.Key}: {error.ErrorMessage}");
-                    }
-                }
-
-				return BadRequest(ModelState);
-			}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (doctorModel == null)
+            {
+                return BadRequest("Invalid data.");
+            }
+            var doctor = new Doctor
+            {
+                Name = doctorModel.Name,
+                Specialization = doctorModel.Specialization,
+                Email = doctorModel.Email,
+                Password = doctorModel.Password
+            };
 
 			await _doctorsRepository.AddDoctorAsync(doctor); 
 
@@ -55,11 +87,11 @@ namespace Server.Controllers
             }
             var result = await _doctorsRepository.GetDoctorByEmailAndPassword(doctor.Email, doctor.Password);
 
-            if (result == null)
+            if (result == 0)
             {
                 return BadRequest("Invalid email or password.");
             }
-            return Ok(result.DoctorId);
+            return Ok(result);
         }
         [HttpGet("GetApprovedDoctors")]
 		public async Task<ActionResult<IEnumerable<Doctor>>> GetApprovedDoctors()

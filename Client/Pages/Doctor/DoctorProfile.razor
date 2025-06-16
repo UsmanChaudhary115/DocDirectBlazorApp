@@ -106,8 +106,7 @@
     transition: var(--transition);
     position: relative;
     overflow: hidden;
-    }
-
+    } 
     .btn-primary-custom::before {
     content: '';
     position: absolute;
@@ -262,6 +261,7 @@
 </style>
 <!-- Status Messages -->
 <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+
     @if (!string.IsNullOrWhiteSpace(SuccessMessage))
     {
         <div class="toast align-items-center text-bg-success border-0 shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
@@ -273,6 +273,8 @@
             </div>
         </div>
     }
+
+
     @if (!string.IsNullOrWhiteSpace(ErrorMessage))
     {
         <div class="toast align-items-center text-bg-danger border-0 shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
@@ -285,6 +287,7 @@
         </div>
     }
 </div>
+
 <div class="profile-container">
     <div class="container">
         <DoctorProfileHeader></DoctorProfileHeader> 
@@ -327,7 +330,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label-custom">
                                         <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M12,4C16.42,4 20,7.58 20,12C20,16.42 16.42,20 12,20C7.58,20 4,16.42 4,12C4,7.58 7.58,4 12,4M12,6C8.69,6 6,8.69 6,12C6,15.31 8.69,18 12,18C15.31,18 18,15.31 18,12C18,8.69 15.31,6 12,6Z" />
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" />
                                         </svg>
                                         Specialization
                                     </label>
@@ -336,7 +339,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label-custom">
                                         <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
+                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
                                         </svg>
                                         Country
                                     </label>
@@ -354,16 +357,17 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label-custom">
                                         <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
+                                            <path d="M10 2h4a2 2 0 0 1 2 2v2h4a2 2 0 0 1 2 2v4h-2v-2H4v2H2V8a2 2 0 0 1 2-2h4V4a2 2 0 0 1 2-2zm0 4V4h4v2h-4zm-6 6h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8z" />
                                         </svg>
                                         Experience
                                     </label>
+
                                     <InputText @bind-Value="profileInfo.Experience" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" placeholder="Enter your experience" />
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label-custom">
                                         <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
+                                            <path d="M12 2a5 5 0 1 0 5 5h2.586l-3.293 3.293 1.414 1.414L21 7.414V5h-2.586A7.002 7.002 0 0 0 12 2zm-3 5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3 5a5 5 0 0 0-4.9 4H7v2h3v3h2v-3h3v-2h-1.1a5 5 0 0 0-4.9-4z" />
                                         </svg>
                                         Gender
                                     </label>
@@ -377,12 +381,24 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label-custom">
                                         <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
+                                            <path d="M10 2h4a2 2 0 0 1 2 2v2h4a2 2 0 0 1 2 2v4h-2v-2H4v2H2V8a2 2 0 0 1 2-2h4V4a2 2 0 0 1 2-2zm0 4V4h4v2h-4zm-6 6h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8z" />
                                         </svg>
                                         Worked At
                                     </label>
                                     <InputText @bind-Value="profileInfo.WorkedAt" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" placeholder="Enter previous workplaces" />
                                 </div>
+                                @if(isEditingBasicInfo)
+                                {
+                                    <div class="col-md-6 mb-3 w-100">
+                                        <label class="form-label-custom">
+                                            <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M12 17a1.5 1.5 0 0 0 0-3 1.5 1.5 0 0 0 0 3zm6-7h-1V7a5 5 0 0 0-10 0v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-8-3a3 3 0 0 1 6 0v3h-6V7z" />
+                                            </svg>
+                                            Password
+                                        </label>
+                                        <InputText @bind-Value="profileInfo.Password" disabled="@(!isEditingBasicInfo)" class="form-control custom-input" type="password" placeholder="Enter password" />
+                                    </div>
+                                }
                             </div> 
                             <button type="submit"
                             class="btn btn-primary-custom w-100 mb-3"
@@ -411,8 +427,8 @@
                         <div class="stats-label">Total Appointments</div>
                     </div>
                     <div class="stats-card mb-4">
-                        <div class="stats-number">@(PendingAssignments)</div> 
-                        <div class="stats-label">Pending Appointments</div>
+                        <div class="stats-number">@(UpcomingAssignments)</div>
+                        <div class="stats-label">Upcoming Appointments</div>
                     </div>
                     <div class="stats-card mb-4">
                         <div class="stats-number">@(CompletedAssignments)</div>
@@ -438,17 +454,57 @@
 
                             <div class="social-links">
                                 <div class="mb-2">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.37 8.59 8.59 0 0 1-2.72 1.04A4.28 4.28 0 0 0 12 8.65a12.13 12.13 0 0 1-8.8-4.47A4.28 4.28 0 0 0 4.67 9a4.27 4.27 0 0 1-1.94-.54v.05a4.28 4.28 0 0 0 3.43 4.2 4.3 4.3 0 0 1-1.93.07 4.29 4.29 0 0 0 4 2.97 8.6 8.6 0 0 1-5.33 1.84A8.72 8.72 0 0 1 2 19.54a12.15 12.15 0 0 0 6.57 1.92c7.88 0 12.2-6.53 12.2-12.2 0-.19 0-.37-.01-.56A8.7 8.7 0 0 0 22.46 6Z" />
+                                        </svg>
+                                        X Profile
+                                    </label>
                                     <InputText @bind-Value="socialMedia.XAccountLink" disabled="@(!isEditingSocialInfo)" class="form-control custom-input" placeholder="X Profile URL" />
                                 </div>
+
                                 <div class="mb-2">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8 17V10H5V17H8M6.5 8.75A1.25 1.25 0 1 0 6.5 6.25A1.25 1.25 0 0 0 6.5 8.75M19 17V13.5C19 11.57 18.43 10 16.5 10C15.5 10 14.81 10.5 14.5 11H14.47V10H11.47V17H14.5V13.75C14.5 12.75 15 12.25 15.75 12.25C16.5 12.25 17 12.81 17 13.75V17H19Z" />
+                                        </svg>
+                                        LinkedIn
+                                    </label>
                                     <InputText @bind-Value="socialMedia.LinkedinAccountLink" disabled="@(!isEditingSocialInfo)" class="form-control custom-input" placeholder="LinkedIn Profile URL" />
                                 </div>
+
                                 <div class="mb-2">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M12 2.04C6.5 2.04 2 6.54 2 12.04C2 16.84 5.4 20.9 10 21.85V14.89H7V12.04H10V9.54C10 6.54 11.9 4.89 14.7 4.89C15.9 4.89 17.1 5.09 17.1 5.09V8.09H15.6C14.1 8.09 13.7 8.94 13.7 9.84V12.04H17L16.5 14.89H13.7V21.85C18.3 20.9 21.7 16.84 21.7 12.04C21.7 6.54 17.2 2.04 12 2.04Z" />
+                                        </svg>
+                                        Facebook
+                                    </label>
                                     <InputText @bind-Value="socialMedia.FacebookAccountLink" disabled="@(!isEditingSocialInfo)" class="form-control custom-input" placeholder="Facebook Profile URL" />
                                 </div>
+
                                 <div class="mb-2">
+                                    <label class="form-label-custom">
+                                        <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M7.75 2C5.68 2 4 3.68 4 5.75V18.25C4 20.32 5.68 22 7.75 22H16.25C18.32 22 20 20.32 20 18.25V5.75C20 3.68 18.32 2 16.25 2H7.75M8 4H16C17.1 4 18 4.9 18 6V18C18 19.1 17.1 20 16 20H8C6.9 20 6 19.1 6 18V6C6 4.9 6.9 4 8 4M12 6A6 6 0 0 0 6 12A6 6 0 0 0 12 18A6 6 0 0 0 18 12A6 6 0 0 0 12 6Z" />
+                                        </svg>
+                                        Instagram
+                                    </label>
                                     <InputText @bind-Value="socialMedia.InstagramAccountLink" disabled="@(!isEditingSocialInfo)" class="form-control custom-input" placeholder="Instagram Profile URL" />
                                 </div>
+
+                                @if(isEditingSocialInfo)
+                                {
+                                    <div class="col-md-6 mb-3 w-100">
+                                        <label class="form-label-custom">
+                                            <svg class="section-icon me-1" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M12 17a1.5 1.5 0 0 0 0-3 1.5 1.5 0 0 0 0 3zm6-7h-1V7a5 5 0 0 0-10 0v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-8-3a3 3 0 0 1 6 0v3h-6V7z" />
+                                            </svg>
+                                            Password
+                                        </label>
+                                        <InputText @bind-Value="socialMedia.Password" disabled="@(!isEditingSocialInfo)" class="form-control custom-input" type="password" placeholder="Enter password" />
+                                    </div>
+                                }
                             </div>
                             <button type="submit"
                             class="btn btn-primary-custom w-100 mb-3"
@@ -527,7 +583,18 @@
                             <div class="col-md-6">
                                 <div class="appointment-card h-100">
                                     <div class="card-body">
-                                        <div class="appointment-badge">Upcoming</div>
+                                        @if (appointment.AppointmentDate < DateTime.Now)
+                                        {
+                                            <div class="appointment-badge">Past</div>
+                                        }
+                                        else if (appointment.AppointmentDate > DateTime.Now)
+                                        {
+                                            <div class="appointment-badge">Upcoming</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="appointment-badge">Today</div>
+                                        }
                                         <h5 class="text-white fw-bold mb-2">Patient: @(appointment.Patient?.Name ?? "N/A")</h5>
                                         <p class="text-white mb-1">
                                             <svg class="section-icon2 me-1" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;" aria-hidden="true">
@@ -542,7 +609,7 @@
                                             <strong>@appointment.AppointmentDate.ToString("HH:mm")</strong>
                                         </p>
                                         <p class="text-white mb-0">
-                                            <small>@appointment.Description</small>
+                                            <span style="font-style: italic">"@appointment.Description"</span>
                                         </p>
                                     </div>
                                 </div>
@@ -570,12 +637,13 @@
     private DoctorViewModel doctorModel = new DoctorViewModel();
     private string? SuccessMessage;
     private string? ErrorMessage;
+    private int? doctorIdNullable;
 
     string userId = string.Empty;
     bool isEditingBasicInfo = false;
     bool isEditingSocialInfo = false;
     bool isEditingSecurityInfo = false;
-    int PendingAssignments = 0;
+    int UpcomingAssignments = 0;
     int CompletedAssignments = 0;
 
     DoctorProfileInfoModel profileInfo = new();
@@ -608,12 +676,13 @@
 
     protected override async Task OnInitializedAsync()
     {
-        int doctorId = await localStorage.GetItemAsync<int>("doctorID");
-        if (doctorId < 0)
+        doctorIdNullable = await localStorage.GetItemAsync<int?>("doctorID");
+
+        if (doctorIdNullable == null || doctorIdNullable <= 0)
         {
             Nav.NavigateTo("/doctor-signin", forceLoad: true);
-        } 
-        doctorModel = await httpClient.GetFromJsonAsync<DoctorViewModel>($"api/Doctors/GetDoctorById/{doctorId}");
+        }
+        doctorModel = await httpClient.GetFromJsonAsync<DoctorViewModel>($"api/Doctors/GetDoctorById/{doctorIdNullable}");
         if (doctorModel == null)
         {
             Nav.NavigateTo("/doctor-signin", forceLoad: true);
@@ -640,72 +709,72 @@
             };
 
             CompletedAssignments = doctorModel.Appointments.Count(x => x.AppointmentDate < DateTime.Now);
-            PendingAssignments = doctorModel.Appointments.Count(x => x.AppointmentDate >= DateTime.Now);
+            UpcomingAssignments = doctorModel.Appointments.Count(x => x.AppointmentDate >= DateTime.Now);
             // Force re-render to ensure data is displayed
             StateHasChanged();
         }
     }
 
 
-    public class DoctorProfileInfoModel
-    {
-        public string Name { get; set; } = string.Empty;
-        public string Specialization { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string Country { get; set; } = string.Empty;
-        public string Education { get; set; } = string.Empty;
-        public string Experience { get; set; } = string.Empty;
-        public string Gender { get; set; } = string.Empty;
-        public string WorkedAt { get; set; } = string.Empty;
-    }
 
-    public class DoctorSocialMediaModel
-    {
-        public string? XAccountLink { get; set; } = "#";
-        public string? LinkedinAccountLink { get; set; } = "#";
-        public string? FacebookAccountLink { get; set; } = "#";
-        public string? InstagramAccountLink { get; set; } = "#";
-    }
 
-    public class DoctorSecurityModel
-    {
-        public string? NewPassword { get; set; }
-        public string? ConfirmPassword { get; set; }
-        public string? OldPassword { get; set; }
-    }
 
     private async Task UpdateProfileInfo()
     {
         isEditingBasicInfoButtonToggel();
-        Console.WriteLine(profileInfo.Name);
-        Console.WriteLine(profileInfo.Specialization);
-        Console.WriteLine(profileInfo.Email);
-        Console.WriteLine(profileInfo.Education);
-        Console.WriteLine(profileInfo.Gender);
-        Console.WriteLine(profileInfo.Experience);
-        Console.WriteLine(profileInfo.Country);
-        Console.WriteLine(profileInfo.WorkedAt);
-        SuccessMessage = "Profile Info updated successfully!";
-        // Call API to update basic profile info
+        profileInfo.DoctorId = doctorIdNullable; 
+        var response = await httpClient.PutAsJsonAsync("api/Doctors/UpdateProfile", profileInfo);
+
+        if (response.IsSuccessStatusCode)
+        {
+            SuccessMessage = "Profile updated successfully!";
+            profileInfo.Password = "";
+        }
+        else
+        {
+            ErrorMessage = "Failed to update profile.";
+        }
+         
+        Nav.NavigateTo("/doctor-profile");
     }
 
     private async Task UpdateSocialMedia()
     {
-        Console.Write(socialMedia.XAccountLink);
-        Console.Write(socialMedia.FacebookAccountLink);
-        Console.Write(socialMedia.LinkedinAccountLink);
-        Console.Write(socialMedia.InstagramAccountLink);
-        SuccessMessage = "Social links updated successfully!";
-        // Call API to update social links
+        isEditingSocialInfoButtonToggel();
+        socialMedia.DoctorId = doctorIdNullable;
+        var response = await httpClient.PutAsJsonAsync("api/Doctors/UpdateSocial", socialMedia);
+
+        if (response.IsSuccessStatusCode)
+        {
+            SuccessMessage = "Social media info updated!";
+            socialMedia.Password = "";
+        }
+        else
+        {
+            ErrorMessage = "Failed to update social media info.";
+        }
+         
+        Nav.NavigateTo("/doctor-profile");
     }
 
     private async Task UpdatePassword()
     {
-        Console.WriteLine(securityModel.NewPassword);
-		Console.WriteLine(securityModel.ConfirmPassword);
-		Console.WriteLine(securityModel.OldPassword);
-		SuccessMessage = "Password updated successfully!";
-        // Validate password change and call API
+        isEditingSecurityInfoButtonToggel();
+		securityModel.DoctorId = doctorIdNullable;
+        var response = await httpClient.PutAsJsonAsync("api/Doctors/UpdatePassword", securityModel);
+
+        if (response.IsSuccessStatusCode)
+        {
+            SuccessMessage = "Password changed successfully!";
+            securityModel.NewPassword = "";
+            securityModel.ConfirmPassword = "";
+            securityModel.OldPassword = "";
+        }
+        else
+        {
+            ErrorMessage = "Password update failed. Check old password.";
+        } 
+        Nav.NavigateTo("/doctor-profile");
     }
 
 }

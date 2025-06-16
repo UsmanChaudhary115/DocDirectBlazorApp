@@ -75,7 +75,7 @@ namespace Server.Controllers
 
             try
             {
-                // Save Appointment
+                // Save Appointment 
                 await _appointmentRepository.AddAppointmentAsync(appointment); 
 
                 // Fetch Doctor Name

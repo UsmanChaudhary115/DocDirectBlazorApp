@@ -87,23 +87,23 @@
                     <ValidationSummary />
                     <div class="mb-3">
                         <label for="name" class="form-label text-white fw-bold d-block text-start">Name</label>
-                        <InputText id="name" class="form-control" @bind-Value="doctor.Name" placeholder="Enter full name" />
+                        <InputText id="name" class="form-control" @bind-Value="doctor.Name"  placeholder="Enter full name" />
                     </div>
                     <div class="mb-3">
                         <label for="specialization" class="form-label text-white fw-bold d-block text-start">Specialization</label>
-                        <InputText id="specialization" class="form-control" @bind-Value="doctor.Specialization" placeholder="e.g. Cardiologist" />
+                        <InputText id="specialization" class="form-control" @bind-Value="doctor.Specialization"  placeholder="e.g. Cardiologist" />
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label text-white fw-bold d-block text-start">Email</label>
-                        <InputText id="email" type="email" class="form-control" @bind-Value="doctor.Email" placeholder="Enter email" />
+                        <InputText id="email" type="email" class="form-control" @bind-Value="doctor.Email"   placeholder="Enter email" />
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label text-white fw-bold d-block text-start">Password</label>
-                        <InputText id="password" type="password" class="form-control" @bind-Value="doctor.Password" placeholder="Enter password" />
+                        <InputText id="password" type="password" class="form-control" @bind-Value="doctor.Password"  placeholder="Enter password" />
                     </div>
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label text-white fw-bold d-block text-start">Confirm Password</label>
-                        <InputText id="confirmPassword" type="password" class="form-control" @bind-Value="doctor.ConfirmPassword" placeholder="Confirm password" />
+                        <InputText id="confirmPassword" type="password" class="form-control" @bind-Value="doctor.ConfirmPassword"   placeholder="Confirm password" />
                     </div>
                     <div class="d-grid mb-2">
                         <button type="submit" class="btn btn-dark">Sign Up</button>
@@ -122,23 +122,27 @@
 @inject IJSRuntime JS
 @code {
     private DoctorRegisterModel doctor = new DoctorRegisterModel();
+    
     private string Message { get; set; }
     private async Task HandleValidSubmit()
-    {
-        Message = "Loadding...";
-        var response = await Http.PostAsJsonAsync("api/doctors/signup", doctor);
+    { 
+        Message = "Loading...";
+        Console.WriteLine(doctor.Name);
+        Console.WriteLine(doctor.Specialization);
+        Console.WriteLine(doctor.Email);
+        Console.WriteLine(doctor.Password); 
+        Console.WriteLine(doctor.ConfirmPassword);
+        var response = await Http.PostAsJsonAsync("api/Doctors/register", doctor);
         if (response.IsSuccessStatusCode)
         {
             await JS.InvokeVoidAsync("showRegisterMessage");
             NavManager.NavigateTo("/doctor-signin");
         }
         else
-        {
-            // Read error details from response
-            var errorContent = await response.Content.ReadAsStringAsync();
+        { 
 
             // Show alert or display error message
-            Message = $"Registration failed: {errorContent}";
+            Message = $"Registration failed: {response.ReasonPhrase}";
         }
     }
 

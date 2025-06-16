@@ -22,9 +22,9 @@ namespace Shared.Entities
         public string WorkedAt { get; set; } = string.Empty;
         public string Password { get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }
-        public string? XAccountLink { get; set; } = "#";
-        public string? LinkedinAccountLink { get; set; } = "#";
-        public string? FacebookAccountLink { get; set; } = "#";
-        public string? InstagramAccountLink { get; set; } = "#";
+        public string? XAccountLink { get; set; }
+        public string? LinkedinAccountLink { get; set; }
+        public string? FacebookAccountLink { get; set; }
+        public string? InstagramAccountLink { get; set; }
     }
 }
