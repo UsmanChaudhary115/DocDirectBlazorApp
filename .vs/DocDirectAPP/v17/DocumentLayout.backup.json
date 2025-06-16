@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\doctor\\doctorprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\doctor\\doctorprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\repositories\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\repositories\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\doctor\\doctorsignin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\doctor\\doctorsignin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\doctor\\doctorprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\doctor\\doctorprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,24 +46,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Client\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Client\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACMAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-16T10:25:15.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "DoctorRepository.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\DoctorRepository.cs",
               "RelativeDocumentMoniker": "Server\\Repositories\\DoctorRepository.cs",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Repositories\\DoctorRepository.cs",
               "RelativeToolTip": "Server\\Repositories\\DoctorRepository.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAzwA8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwA8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T19:36:32.743Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "DoctorLayout.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Layout\\DoctorLayout.razor",
               "RelativeDocumentMoniker": "Client\\Layout\\DoctorLayout.razor",
@@ -67,29 +88,24 @@
               "RelativeToolTip": "Client\\Layout\\DoctorLayout.razor",
               "ViewState": "AgIAABUAAAAAAAAAAAAAACUAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-15T19:21:38.57Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "WhenOpened": "2025-06-15T19:21:38.57Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "DoctorProfile.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Doctor\\DoctorProfile.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Doctor\\DoctorProfile.razor",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Doctor\\DoctorProfile.razor",
               "RelativeToolTip": "Client\\Pages\\Doctor\\DoctorProfile.razor",
-              "ViewState": "AgIAAKoBAAAAAAAAAAAAAKcBAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAE8CAAAAAAAAAAAAAGQCAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-15T18:17:23.499Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "DoctorSignin.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Doctor\\DoctorSignin.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Doctor\\DoctorSignin.razor",
@@ -97,12 +113,11 @@
               "RelativeToolTip": "Client\\Pages\\Doctor\\DoctorSignin.razor",
               "ViewState": "AgIAAHYAAAAAAAAAAAAAAIAAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-15T17:14:01.475Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T17:14:01.475Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "DoctorsController.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\DoctorsController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\DoctorsController.cs",
@@ -110,12 +125,11 @@
               "RelativeToolTip": "Server\\Controllers\\DoctorsController.cs",
               "ViewState": "AgIAAGYAAAAAAAAAAAAcwHsAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T14:21:36.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T14:21:36.171Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DoctorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\DoctorViewModel.cs",
               "RelativeDocumentMoniker": "SharedLibrary\\Entities\\DoctorViewModel.cs",
@@ -123,12 +137,11 @@
               "RelativeToolTip": "SharedLibrary\\Entities\\DoctorViewModel.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwBMAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T18:35:03.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T18:35:03.863Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "SignInComponent.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\SignInComponent.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\SignInComponent.razor",
@@ -136,12 +149,11 @@
               "RelativeToolTip": "Client\\Pages\\SignInComponent.razor",
               "ViewState": "AgIAAIkAAAAAAAAAAAAAAJYAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-15T19:15:16.271Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T19:15:16.271Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IDoctorRepository.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Interfaces\\IDoctorRepository.cs",
               "RelativeDocumentMoniker": "Server\\Interfaces\\IDoctorRepository.cs",
@@ -149,8 +161,7 @@
               "RelativeToolTip": "Server\\Interfaces\\IDoctorRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T17:40:49.442Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T17:40:49.442Z"
             }
           ]
         }

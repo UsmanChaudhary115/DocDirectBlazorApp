@@ -611,14 +611,6 @@
         int doctorId = await localStorage.GetItemAsync<int>("doctorID");
         if (doctorId < 0)
         {
-            // Not logged in — redirect to signin
-            await JS.InvokeVoidAsync("Swal.fire", new
-            {
-                title = "Access Denied",
-                text = "You must be logged in to access this page.",
-                icon = "warning",
-                confirmButtonText = "OK"
-            });
             Nav.NavigateTo("/doctor-signin", forceLoad: true);
         } 
         doctorModel = await httpClient.GetFromJsonAsync<DoctorViewModel>($"api/Doctors/GetDoctorById/{doctorId}");

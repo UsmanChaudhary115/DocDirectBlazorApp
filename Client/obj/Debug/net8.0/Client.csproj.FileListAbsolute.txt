@@ -2745,6 +2745,6 @@ C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\Client.pdb
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\ref\Client.dll
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\11jckmtcmx-yp6235xxgr.gz
 C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\nb1upix0ss-0miry1kqe1.gz
-C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\kb90l4x90i-h8u09op5dk.gz
-C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\nrce2f7bjz-bbai7gesw7.gz
-C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\0kih5qk3hm-6tfciepdrp.gz
+C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\kb90l4x90i-8qir9rej0j.gz
+C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\nrce2f7bjz-im61f7anpe.gz
+C:\Users\Usman\Desktop\DocDirectBlazorApp\Client\obj\Debug\net8.0\compressed\0kih5qk3hm-5ectmcizy3.gz
