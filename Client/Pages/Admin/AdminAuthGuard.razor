@@ -1,0 +1,32 @@
+﻿@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+@code {
+    private bool isAuthorized = false;
+    private bool checkedAuth = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var role = await JS.InvokeAsync<string>("localStorage.getItem", "userRole");
+
+        if (role == "admin")
+        {
+            isAuthorized = true;
+        }
+        else
+        {
+            Navigation.NavigateTo("/admin-login", forceLoad: true);
+        }
+
+        checkedAuth = true;
+    }
+}
+
+@if (checkedAuth && isAuthorized)
+{
+    @ChildContent
+}
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+}

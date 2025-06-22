@@ -3,6 +3,606 @@
 @layout AdminLayout
 @using Shared.Entities
 
+<div class="doctors-admin-container">
+    <!-- Header Section -->
+    <div class="doctors-header">
+        <h1 class="doctors-title">
+            <span class="header-icon">🩺</span> Doctor Management
+        </h1>
+        <p class="doctors-subtitle">Manage and approve healthcare providers</p>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text"
+                   @bind="SearchText"
+                   @bind:event="oninput"
+                   placeholder="Search doctors..."
+                   class="search-input" />
+        </div>
+
+        <div class="select-container">
+            <select @bind="SelectedSpecialization" class="specialization-dropdown">
+                <option value="All">All Specializations</option>
+                @foreach (var specialization in GetSpecializations())
+                {
+                    <option value="@specialization">@specialization</option>
+                }
+            </select>
+            <span class="dropdown-icon">▼</span>
+        </div>
+    </div>
+
+    <!-- Approved Doctors Section -->
+    <div class="section-container approved-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="section-icon">✅</span> Approved Doctors
+               
+            </h2>
+        </div>
+
+        @if (approvedDoctors == null)
+        {
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <p>Loading approved doctors...</p>
+            </div>
+        }
+        else if (!filteredApprovedDoctors.Any())
+        {
+            <div class="empty-state">
+                <div class="empty-icon">👨‍⚕️</div>
+                <p>No approved doctors found</p>
+                @if (!string.IsNullOrEmpty(SearchText) || SelectedSpecialization != "All")
+                {
+                    <button class="clear-filters" @onclick="ClearFilters">Clear filters</button>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="doctors-grid">
+                @foreach (var doctor in filteredApprovedDoctors)
+                {
+                    <div class="doctor-card" @onclick="() => NavigateToDetails(doctor.DoctorId)">
+                        <div class="doctor-avatar">
+                            @GetSpecializationIcon(doctor.Specialization)
+                        </div>
+                        <div class="doctor-info">
+                            <h3 class="doctor-name">@doctor.Name</h3>
+                            <p class="doctor-specialty">
+                                <span class="info-icon">🩺</span> @doctor.Specialization
+                            </p>
+                            <p class="doctor-location">
+                                <span class="info-icon">🏥</span> @doctor.WorkedAt
+                            </p>
+                        </div>
+                        <div class="view-button">
+                            View Profile →
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <!-- Pending Approvals Section -->
+    <div class="section-container pending-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="section-icon">⏳</span> Pending Approvals
+                
+            </h2>
+        </div>
+
+        @if (pendingDoctors == null)
+        {
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <p>Loading pending approvals...</p>
+            </div>
+        }
+        else if (!pendingDoctors.Any())
+        {
+            <div class="empty-state">
+                <div class="empty-icon">🕊️</div>
+                <p>No doctors pending approval</p>
+            </div>
+        }
+        else
+        {
+            <div class="pending-doctors-list">
+                @foreach (var doctor in pendingDoctors)
+                {
+                    <div class="pending-doctor-card">
+                        <div class="pending-doctor-avatar">
+                            @GetSpecializationIcon(doctor.Specialization)
+                        </div>
+                        <div class="pending-doctor-details">
+                            <h3 class="pending-doctor-name">@doctor.Name</h3>
+                            <div class="pending-doctor-info">
+                                <p><span class="info-label">Specialization:</span> @doctor.Specialization</p>
+                                <p><span class="info-label">Email:</span> @doctor.Email</p>
+                                <p><span class="info-label">Location:</span> @doctor.WorkedAt</p>
+                            </div>
+                        </div>
+                        <div class="approve-actions">
+                            <button class="approve-button" @onclick="() => ApproveDoctor(doctor.DoctorId)">
+                                <span class="button-icon">✓</span> Approve
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    /* Base Styles */
+    .doctors-admin-container {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #2d3748;
+    }
+
+    /* Header Styles */
+    .doctors-header {
+        margin-bottom: 2.5rem;
+        text-align: center;
+    }
+
+    .doctors-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #1a365d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .header-icon {
+        font-size: 2rem;
+        margin-right: 0.75rem;
+    }
+
+    .doctors-subtitle {
+        font-size: 1.1rem;
+        color: #718096;
+        margin-top: 0;
+    }
+
+    /* Filter Section */
+    .filter-section {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .search-container {
+        position: relative;
+        flex-grow: 1;
+        min-width: 250px;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #a0aec0;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 0.75rem 1rem 0.75rem 2.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.2s;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+        }
+
+    .select-container {
+        position: relative;
+        min-width: 250px;
+    }
+
+    .specialization-dropdown {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 1rem;
+        appearance: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .dropdown-icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #4a5568;
+    }
+
+    /* Section Containers */
+    .section-container {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+        overflow: hidden;
+    }
+
+    .section-header {
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid #edf2f7;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .section-icon {
+        margin-right: 0.75rem;
+        font-size: 1.25rem;
+    }
+
+    .badge {
+        background: #edf2f7;
+        color: #4a5568;
+        border-radius: 9999px;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.875rem;
+        margin-left: 0.75rem;
+    }
+
+    /* Approved Doctors Grid */
+    .doctors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .doctor-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease;
+        border: 1px solid #e2e8f0;
+        cursor: pointer;
+    }
+
+        .doctor-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: #bee3f8;
+        }
+
+    .doctor-avatar {
+        height: 120px;
+        background-color: #ebf8ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+    }
+
+    .doctor-info {
+        padding: 1.25rem;
+    }
+
+    .doctor-name {
+        margin: 0 0 0.75rem 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #2d3748;
+    }
+
+    .doctor-specialty, .doctor-location {
+        margin: 0.5rem 0;
+        display: flex;
+        align-items: center;
+        color: #4a5568;
+    }
+
+    .info-icon {
+        margin-right: 0.5rem;
+        opacity: 0.7;
+    }
+
+    .view-button {
+        padding: 0.75rem;
+        text-align: center;
+        background-color: #f7fafc;
+        color: #4299e1;
+        font-weight: 500;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    /* Pending Approvals List */
+    .pending-section .section-header {
+        background-color: rgba(254, 235, 200, 0.3);
+        border-left: 4px solid #ed8936;
+    }
+
+    .pending-doctors-list {
+        padding: 1rem;
+    }
+
+    .pending-doctor-card {
+        display: flex;
+        align-items: center;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        background-color: #fffaf0;
+        border-radius: 8px;
+        border-left: 4px solid #ed8936;
+    }
+
+    .pending-doctor-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #feebc8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-right: 1.25rem;
+        flex-shrink: 0;
+    }
+
+    .pending-doctor-details {
+        flex-grow: 1;
+    }
+
+    .pending-doctor-name {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .pending-doctor-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .info-label {
+        font-weight: 500;
+        color: #718096;
+    }
+
+    .approve-actions {
+        margin-left: 1rem;
+        flex-shrink: 0;
+    }
+
+    .approve-button {
+        padding: 0.5rem 1rem;
+        background-color: #48bb78;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+    }
+
+        .approve-button:hover {
+            background-color: #38a169;
+        }
+
+    .button-icon {
+        margin-right: 0.5rem;
+    }
+
+    /* Loading and Empty States */
+    .loading-state {
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #718096;
+    }
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #e2e8f0;
+        border-top: 4px solid #4299e1;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 1rem;
+    }
+
+    .empty-state {
+        padding: 3rem;
+        text-align: center;
+        color: #a0aec0;
+    }
+
+    .empty-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+
+    .clear-filters {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background: none;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        color: #4299e1;
+        cursor: pointer;
+    }
+
+        .clear-filters:hover {
+            background-color: #f7fafc;
+        }
+
+    @@keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Responsive Adjustments */
+    @@media (max-width: 768px) {
+        .filter-section {
+            flex-direction: column;
+        }
+
+        .pending-doctor-card {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .approve-actions {
+            margin-left: 0;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .approve-button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+
+@code {
+    private List<Doctor>? approvedDoctors;
+    private List<Doctor>? filteredApprovedDoctors;
+    private List<Doctor>? pendingDoctors;
+    [Inject] private NavigationManager Navigation { get; set; }
+
+    private string _searchText = string.Empty;
+    private string _selectedSpecialization = "All";
+
+    private string SearchText
+    {
+        get => _searchText;
+        set
+        {
+            _searchText = value;
+            FilterApprovedDoctors();
+        }
+    }
+
+    private string SelectedSpecialization
+    {
+        get => _selectedSpecialization;
+        set
+        {
+            _selectedSpecialization = value;
+            FilterApprovedDoctors();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDoctors();
+    }
+
+    private async Task LoadDoctors()
+    {
+        approvedDoctors = await Http.GetFromJsonAsync<List<Doctor>>("/api/Doctors/GetApprovedDoctors");
+        pendingDoctors = await Http.GetFromJsonAsync<List<Doctor>>("/api/Doctors/GetPendingDoctors");
+        FilterApprovedDoctors();
+    }
+
+    private void FilterApprovedDoctors()
+    {
+        if (approvedDoctors == null) return;
+
+        filteredApprovedDoctors = approvedDoctors
+            .Where(d =>
+                (string.IsNullOrWhiteSpace(SearchText) || d.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase)) &&
+                (SelectedSpecialization == "All" || d.Specialization == SelectedSpecialization))
+            .ToList();
+    }
+
+    private void ClearFilters()
+    {
+        SearchText = string.Empty;
+        SelectedSpecialization = "All";
+    }
+
+    private async Task ApproveDoctor(int doctorId)
+    {
+        var response = await Http.PutAsync($"api/doctors/approve/{doctorId}", null);
+        if (response.IsSuccessStatusCode)
+        {
+            await LoadDoctors(); // refresh lists after approval
+        }
+    }
+
+    private List<string> GetSpecializations()
+    {
+        return approvedDoctors?
+            .Select(d => d.Specialization)
+            .Distinct()
+            .OrderBy(s => s)
+            .ToList() ?? new List<string>();
+    }
+
+    private void NavigateToDetails(int doctorId)
+    {
+        Navigation.NavigateTo($"/doctor/{doctorId}");
+    }
+
+    private string GetSpecializationIcon(string specialization)
+    {
+        return specialization switch
+        {
+            "Cardiology" => "❤️",
+            "Neurology" => "🧠",
+            "Pediatrics" => "👶",
+            "Dermatology" => "🧴",
+            "Orthopedics" => "🦴",
+            "Ophthalmology" => "👁️",
+            _ => "👨‍⚕️"
+        };
+    }
+}
+
+@* @page "/admin-doctors"
+@inject HttpClient Http
+@layout AdminLayout
+@using Shared.Entities
+
 <h2 style="margin-left: 1rem; color: #1f2937; font-size: 2rem; font-weight: 600;">
     🩺 Doctors
 </h2>
@@ -41,8 +641,7 @@ else
             <div class="doctor-card" @onclick="() => NavigateToDetails(doctor.DoctorId)" style="cursor: pointer;">
                 <h4>@doctor.Name</h4>
                 <p><strong>Specialization:</strong> @doctor.Specialization</p>
-                <p><strong>Email:</strong> @doctor.Email</p>
-                <p><strong>Worked-At:</strong> @doctor.WorkedAt</p>
+                <p><strong>City:</strong> @doctor.WorkedAt</p>
             </div>
         }
     </div>
@@ -72,7 +671,7 @@ else
                 <h4>@doctor.Name</h4>
                 <p><strong>Specialization:</strong> @doctor.Specialization</p>
                 <p><strong>Email:</strong> @doctor.Email</p>
-                <p><strong>Worked-At:</strong> @doctor.WorkedAt</p>
+                <p><strong>City:</strong> @doctor.WorkedAt</p>
                 <button class="btn btn-success" @onclick="() => ApproveDoctor(doctor.DoctorId)">✅ Approve</button>
             </div>
         }
@@ -154,38 +753,6 @@ else
     }
 }
 
-
-
-
-@* @code {
-    private List<Doctor>? doctors;
-    private Dictionary<int, List<Appointment>?> visibleAppointments = new();
-
-    protected override async Task OnInitializedAsync()
-    {
-        try
-        {
-            doctors = await Http.GetFromJsonAsync<List<Doctor>>("api/doctors");
-    }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"❌ Error loading doctors: {ex.Message}");
-        }
-    }
-
-
-    private async Task ToggleAppointments(int doctorId)
-    {
-        if (!visibleAppointments.ContainsKey(doctorId))
-        {
-            visibleAppointments[doctorId] = null;
-            var appointments = await Http.GetFromJsonAsync<List<Appointment>>($"api/doctors/{doctorId}/appointments");
-            visibleAppointments[doctorId] = appointments;
-        }
-        else
-        {
-            visibleAppointments.Remove(doctorId);
-        }
-    }
-}
  *@
+
+

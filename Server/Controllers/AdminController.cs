@@ -89,6 +89,7 @@ namespace Server.Controllers
                 .ToListAsync();
             return Ok(recentAppointments);
         }
+
         [HttpPut("appointments/{appointmentId}")]
         public async Task<IActionResult> UpdateAppointment(int appointmentId, [FromBody] Appointment updatedAppointment)
         {
@@ -131,18 +132,61 @@ namespace Server.Controllers
 
             return Ok(appointments);
         }
-        [HttpPut("appointments/{appointmentId}/status")]
-        public async Task<IActionResult> UpdateAppointmentStatus(int appointmentId, [FromBody] AppointmentStatusUpdateDto dto)
+        //[HttpPut("appointments/{appointmentId}/status")]
+        //public async Task<IActionResult> UpdateAppointmentStatus(int appointmentId, [FromBody] AppointmentStatusUpdateDto dto)
+        //{
+        //    var existing = await _context.Appointments.FindAsync(appointmentId);
+        //    if (existing == null)
+        //        return NotFound();
+
+        //    existing.isApproved = dto.IsApproved;
+        //    existing.isDeleted = dto.IsDeleted;
+
+        //    await _context.SaveChangesAsync();
+        //    return Ok();
+        //}
+
+
+        [HttpPut("appointment-status/{id}")]
+        public async Task<ActionResult<Appointment>> UpdateAppointmentStatus(int id, [FromBody] AppointmentStatusUpdateDto dto)
         {
-            var existing = await _context.Appointments.FindAsync(appointmentId);
-            if (existing == null)
-                return NotFound();
+            // Start transaction to ensure both entities are updated atomically
+            using var transaction = await _context.Database.BeginTransactionAsync();
 
-            existing.isApproved = dto.IsApproved;
-            existing.isDeleted = dto.IsDeleted;
+            try
+            {
+                // Update Appointment entity
+                var appointment = await _context.Appointments
+                    .Include(a => a.Patient)
+                    .Include(a => a.Doctor)
+                    .FirstOrDefaultAsync(a => a.AppointmentId == id);
 
-            await _context.SaveChangesAsync();
-            return Ok();
+                if (appointment == null)
+                    return NotFound();
+
+                appointment.isApproved = dto.IsApproved;
+                appointment.isDeleted = dto.IsDeleted;
+
+                // Update AppointmentDTO entity
+                var appointmentDto = await _context.AppointmentDTOs
+                    .FirstOrDefaultAsync(d => d.AppointmentId == id);
+
+                if (appointmentDto != null)
+                {
+                    appointmentDto.isApproved = dto.IsApproved;
+                    // Note: Your AppointmentDTO doesn't have isDeleted, adjust if needed
+                }
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return Ok(appointment);
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
         }
 
         [HttpGet("today")]

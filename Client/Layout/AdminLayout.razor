@@ -30,7 +30,14 @@
                     <li><a href="/admin-doctors">Doctors</a></li>
                     <li><a href="/admin-patients">Patients</a></li>
                     <li><a href="/admin-appointments">Appointments</a></li>
-                    <li><a href="#">Settings</a></li>
+                   @*  <li><a href="#">Settings</a></li> *@
+                    <li
+                        <a
+                        @onclick="SignOut" >
+                           Sign Out
+                       </a>
+                   
+                    </li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -98,9 +105,18 @@
     </div>
 </footer>
 
-@inject IJSRuntime JS
+
 
 @code {
+    [Inject] IJSRuntime JS { get; set; }
+    [Inject] NavigationManager Navigation { get; set; }
+
+    private async Task SignOut()
+    {
+        await JS.InvokeVoidAsync("localStorage.removeItem", "authToken");
+        await JS.InvokeVoidAsync("localStorage.removeItem", "userRole");
+        Navigation.NavigateTo("/admin-login", forceLoad: true);
+    }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)

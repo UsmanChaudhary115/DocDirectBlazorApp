@@ -93,6 +93,27 @@ namespace Server.Controllers
             }
             return Ok(result);
         }
+
+        [HttpPut("approve/{id}")]
+        public async Task<IActionResult> ApproveDoctor(int id)
+        {
+            try
+            {
+                var doctor = await _doctorsRepository.GetDoctorByIdAsync(id);
+                if (doctor == null)
+                    return NotFound();
+
+                doctor.IsApproved = true;
+                await _doctorsRepository.UpdateDoctorAsync(doctor);
+
+                await _notificationService.AddNotificationAsync($"Doctor {doctor.Name} approved.");
+                return NoContent(); // 204
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
         [HttpGet("GetApprovedDoctors")]
 		public async Task<ActionResult<IEnumerable<Doctor>>> GetApprovedDoctors()
 		{

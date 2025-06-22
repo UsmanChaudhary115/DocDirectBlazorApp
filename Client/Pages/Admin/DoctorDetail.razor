@@ -5,62 +5,684 @@
 @inject IJSRuntime JS
 @layout AdminLayout
 
+<!-- Animated Background -->
+<div class="animated-bg"></div>
 
-<h2 class="title">👨‍⚕️ Doctor Details</h2>
-
-@if (doctor == null)
-{
-    <p>Loading doctor information...</p>
-}
-else
-{
-    <div class="doctor-details">
-        <h3>@doctor.Name</h3>
-        <p><strong>Email:</strong> @doctor.Email</p>
-        <p><strong>Gender:</strong> @doctor.Gender</p>
-        <p><strong>Specialization:</strong> @doctor.Specialization</p>
-        <p><strong>City:</strong> @doctor.WorkedAt</p>
-        <p><strong>Country:</strong> @doctor.Country</p>
-        <p><strong>Degree:</strong> @doctor.Education</p>
-    </div>
-
-    <h4 class="appointment-title">📅 Appointments</h4>
-
-    @if (appointments == null)
+<div class="doctor-profile-container">
+    @if (doctor == null)
     {
-        <p>Loading appointments...</p>
-    }
-    else if (appointments.Count == 0)
-    {
-        <p>No appointments found for this doctor.</p>
+        <div class="loading-container">
+            <div class="pulse-loader">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <p class="loading-text">Loading doctor profile...</p>
+        </div>
     }
     else
     {
-        <ul class="appointment-list">
-            @foreach (var appointment in appointments)
-            {
-                @if (appointment.AppointmentDate < DateTime.Today)
+        <!-- Doctor Header with Glass Card -->
+        <div class="glass-card doctor-header">
+            <div class="doctor-avatar">
+                @if (doctor.Gender == "Male")
                 {
-                    <span>📅 @appointment.AppointmentDate.ToShortDateString()</span>
-                    <span>📝 @appointment.Description</span>
+                    <span class="emoji-avatar">👨‍⚕️</span>
+                }
+                else if (doctor.Gender == "Female")
+                {
+                    <span class="emoji-avatar">👩‍⚕️</span>
                 }
                 else
                 {
-                <li>
-                    📅 <input type="date" @bind="appointment.AppointmentDate" />
-                    📝 <input type="text" @bind="appointment.Description" placeholder="Description" />
-
-                    👤 @appointment.Patient?.Name
-
-                    <button class="btn-save" @onclick="@(() => UpdateAppointment(appointment))">💾 Save</button>
-                    <button class="btn-delete" @onclick="@(() => DeleteAppointment(appointment.AppointmentId))">🗑️ Delete</button>
-                </li>
+                    <span class="emoji-avatar">🧑‍⚕️</span>
                 }
-            }
-        </ul>
+            </div>
+            <h1 class="doctor-name">@doctor.Name</h1>
+            <div class="specialization-badge">@doctor.Specialization</div>
 
+            <!-- Social/Contact Ribbon -->
+            <div class="contact-ribbon">
+                <a href="mailto:@doctor.Email" class="contact-item" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="#" class="contact-item" title="Call">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="#" class="contact-item" title="Message">
+                    <i class="fas fa-comment-dots"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Doctor Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card glow-card">
+                <div class="stat-icon">🏥</div>
+                <h4>Hospital</h4>
+                <p>@doctor.WorkedAt</p>
+            </div>
+
+            <div class="stat-card glow-card">
+                <div class="stat-icon">📍</div>
+                <h4>Location</h4>
+                <p>@doctor.WorkedAt, @doctor.Country</p>
+            </div>
+
+            <div class="stat-card glow-card">
+                <div class="stat-icon">🎓</div>
+                <h4>Education</h4>
+                <p>@doctor.Education</p>
+            </div>
+
+            <div class="stat-card glow-card">
+                <div class="stat-icon">⭐</div>
+                <h4>Experience</h4>
+                <p>12+ Years</p> <!-- Assuming experience -->
+            </div>
+        </div>
+
+        <!-- Appointments Section -->
+        <div class="glass-card appointments-section">
+            <div class="section-header">
+                <h2><i class="fas fa-calendar-alt"></i> Upcoming Appointments</h2>
+                <div class="appointment-count-badge">@appointments?.Count(a => a.AppointmentDate >= DateTime.Today)</div>
+            </div>
+
+            @if (appointments == null)
+            {
+                <div class="loading-appointments">
+                    <div class="dot-pulse"></div>
+                </div>
+            }
+            else if (appointments.Count == 0)
+            {
+                <div class="no-appointments">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png" width="120" />
+                    <p>No upcoming appointments scheduled</p>
+                </div>
+            }
+            else
+            {
+                <div class="timeline">
+                    @foreach (var appointment in appointments)
+                    {
+                        <div class="timeline-item @(appointment.AppointmentDate < DateTime.Today ? "past" : "")">
+                            <div class="timeline-marker">
+                                <div class="marker-dot"></div>
+                            </div>
+                            <div class="timeline-content">
+                                @if (appointment.AppointmentDate < DateTime.Today)
+                                {
+                                    <div class="past-appointment">
+                                        <span class="appointment-date">@appointment.AppointmentDate.ToString("dd MMM yyyy")</span>
+                                        <p class="appointment-desc">@appointment.Description</p>
+                                        <div class="patient-info">
+                                            <div class="patient-avatar">👤</div>
+                                            <span>@appointment.Patient?.Name</span>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="upcoming-appointment">
+                                        <input type="date" class="modern-date-input" @bind="appointment.AppointmentDate" />
+                                        <textarea class="modern-textarea" @bind="appointment.Description" placeholder="Appointment notes..."></textarea>
+                                        <div class="patient-info">
+                                            <div class="patient-avatar">👤</div>
+                                            <span>@appointment.Patient?.Name</span>
+                                        </div>
+                                        <div class="appointment-actions">
+                                            <button class="btn-save" @onclick="@(() => UpdateAppointment(appointment))">
+                                                <i class="fas fa-save"></i> Save
+                                            </button>
+                                            <button class="btn-delete" @onclick="@(() => DeleteAppointment(appointment.AppointmentId))">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
     }
-}
+</div>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+    /* Base Styles */
+    :root {
+        --primary: #6c5ce7;
+        --secondary: #a29bfe;
+        --accent: #fd79a8;
+        --dark: #2d3436;
+        --light: #f5f6fa;
+        --glass: rgba(255, 255, 255, 0.2);
+        --glass-border: rgba(255, 255, 255, 0.3);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        font-family: 'Poppins', sans-serif;
+        color: white;
+        min-height: 100vh;
+    }
+
+    /* Animated Background */
+    .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #3a7bd5 0%, #00d2ff 100%);
+        @* background: linear-gradient(-20deg, #e9f0f3 0%, #d1e6f0 100%); *@
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        z-index: -1;
+        opacity: 0.7;
+    }
+
+    @@keyframes gradientBG {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Main Container */
+    .doctor-profile-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Glass Card Effect */
+    .glass-card {
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+    /* Doctor Header */
+    .doctor-header {
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .doctor-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+        }
+
+    .doctor-avatar {
+        margin: 0 auto 1.5rem;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid white;
+    }
+
+    .emoji-avatar {
+        font-size: 4rem;
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    }
+
+    .doctor-name {
+        font-size: 2.5rem;
+        margin: 0.5rem 0;
+        background: linear-gradient(to right, white, #f3f4f6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+    }
+
+    .specialization-badge {
+        display: inline-block;
+        background: var(--accent);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        margin: 1rem 0;
+        box-shadow: 0 4px 15px rgba(253, 121, 168, 0.4);
+    }
+
+    .contact-ribbon {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .contact-item {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+        .contact-item:hover {
+            background: white;
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+    /* Stats Grid */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .stat-card {
+        padding: 1.5rem;
+        text-align: center;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .glow-card {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .glow-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            border-radius: 16px;
+            opacity: 0;
+            transition: 0.5s;
+            animation: glow 20s linear infinite;
+        }
+
+        .glow-card:hover::before {
+            opacity: 0.2;
+        }
+
+    @@keyframes glow {
+        0% {
+            background-position: 0 0;
+        }
+
+        50% {
+            background-position: 400% 0;
+        }
+
+        100% {
+            background-position: 0 0;
+        }
+    }
+
+    .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    }
+
+    .stat-card h4 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .stat-card p {
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    /* Appointments Section */
+    .section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+    .appointment-count-badge {
+        background: var(--accent);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    /* Timeline Style Appointments */
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+    }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+    }
+
+    .timeline-marker {
+        position: absolute;
+        left: -30px;
+        top: 0;
+    }
+
+    .marker-dot {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 3px solid white;
+    }
+
+    .timeline-content {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover .timeline-content {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(5px);
+    }
+
+    .past .timeline-content {
+        opacity: 0.7;
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .appointment-date {
+        font-weight: 600;
+        color: var(--secondary);
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .appointment-desc {
+        margin: 0.5rem 0;
+    }
+
+    .patient-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .patient-avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+    }
+
+    /* Form Elements */
+    .modern-date-input, .modern-textarea {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        padding: 0.75rem;
+        color: white;
+        font-family: inherit;
+        width: 100%;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+
+        .modern-date-input:focus, .modern-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(253, 121, 168, 0.3);
+        }
+
+    .modern-textarea {
+        min-height: 80px;
+        resize: vertical;
+    }
+
+    /* Buttons */
+    .btn-save, .btn-delete {
+        border: none;
+        border-radius: 8px;
+        padding: 0.6rem 1.2rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-save {
+        background: var(--primary);
+        color: white;
+    }
+
+        .btn-save:hover {
+            background: #5a4bd1;
+            transform: translateY(-2px);
+        }
+
+    .btn-delete {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+
+        .btn-delete:hover {
+            background: rgba(255, 99, 71, 0.8);
+            transform: translateY(-2px);
+        }
+
+    .appointment-actions {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+
+    /* Loading States */
+    .loading-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 300px;
+    }
+
+    .pulse-loader {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+        .pulse-loader div {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: white;
+            animation: pulse 1.4s infinite ease-in-out;
+        }
+
+            .pulse-loader div:nth-child(1) {
+                animation-delay: 0s;
+            }
+
+            .pulse-loader div:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .pulse-loader div:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+
+    @@keyframes pulse {
+        0%, 100% {
+            transform: scale(0.8);
+            opacity: 0.5;
+        }
+
+        50% {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+    }
+
+    .loading-text {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .dot-pulse {
+        position: relative;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: white;
+        color: white;
+        animation: dot-pulse 1.5s infinite linear;
+        margin: 2rem auto;
+    }
+
+    @@keyframes dot-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+        }
+
+        70% {
+            box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        }
+    }
+
+    .no-appointments {
+        text-align: center;
+        padding: 2rem;
+    }
+
+        .no-appointments p {
+            margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .doctor-profile-container {
+            padding: 1rem;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .doctor-name {
+            font-size: 2rem;
+        }
+
+        .timeline-content {
+            padding: 1rem;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-ribbon {
+            gap: 1rem;
+        }
+
+        .appointment-actions {
+            flex-direction: column;
+        }
+    }
+</style>
 
 @code {
     [Parameter]
@@ -74,17 +696,18 @@ else
         doctor = await Http.GetFromJsonAsync<Doctor>($"api/admin/doctors/{id}");
         appointments = await Http.GetFromJsonAsync<List<Appointment>>($"api/admin/doctors/{id}/appointments");
     }
+
     private async Task UpdateAppointment(Appointment appointment)
     {
         var response = await Http.PutAsJsonAsync($"api/admin/appointments/{appointment.AppointmentId}", appointment);
 
         if (response.IsSuccessStatusCode)
         {
-            await JS.InvokeVoidAsync("alert", "✅ Appointment updated successfully!");
+            await JS.InvokeVoidAsync("showToast", "success", "Appointment updated successfully!");
         }
         else
         {
-            await JS.InvokeVoidAsync("alert", "❌ Failed to update appointment.");
+            await JS.InvokeVoidAsync("showToast", "error", "Failed to update appointment.");
         }
     }
 
@@ -98,12 +721,13 @@ else
         if (response.IsSuccessStatusCode)
         {
             appointments = appointments.Where(a => a.AppointmentId != appointmentId).ToList();
-            await JS.InvokeVoidAsync("alert", "🗑️ Appointment deleted successfully.");
+            await JS.InvokeVoidAsync("showToast", "success", "Appointment deleted successfully.");
         }
         else
         {
-            await JS.InvokeVoidAsync("alert", "❌ Failed to delete appointment.");
+            await JS.InvokeVoidAsync("showToast", "error", "Failed to delete appointment.");
         }
     }
-
 }
+
+

@@ -1,6 +1,37 @@
 [
   {
     "ContainingType": "Server.Controllers.AdminController",
+    "Method": "UpdateAppointmentStatus",
+    "RelativePath": "api/Admin/appointment-status/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Shared.Entities.AppointmentStatusUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Shared.Entities.Appointment",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Server.Controllers.AdminController",
     "Method": "UpdateAppointment",
     "RelativePath": "api/Admin/appointments/{appointmentId}",
     "HttpMethod": "PUT",
@@ -31,27 +62,6 @@
       {
         "Name": "appointmentId",
         "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Server.Controllers.AdminController",
-    "Method": "UpdateAppointmentStatus",
-    "RelativePath": "api/Admin/appointments/{appointmentId}/status",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "appointmentId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "dto",
-        "Type": "Shared.Entities.AppointmentStatusUpdateDto",
         "IsRequired": true
       }
     ],
@@ -564,6 +574,22 @@
       {
         "Name": "id",
         "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Server.Controllers.DoctorsController",
+    "Method": "ApproveDoctor",
+    "RelativePath": "api/Doctors/approve/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

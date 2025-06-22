@@ -286,14 +286,14 @@
         }
       }
     },
-    "/api/Admin/appointments/{appointmentId}/status": {
+    "/api/Admin/appointment-status/{id}": {
       "put": {
         "tags": [
           "Admin"
         ],
         "parameters": [
           {
-            "name": "appointmentId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -323,7 +323,24 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Appointment"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Appointment"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Appointment"
+                }
+              }
+            }
           }
         }
       }
@@ -1151,6 +1168,29 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Doctors/approve/{id}": {
+      "put": {
+        "tags": [
+          "Doctors"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

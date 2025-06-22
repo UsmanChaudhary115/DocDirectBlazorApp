@@ -3,19 +3,379 @@
 @inject IJSRuntime JS
 @inject HttpClient Http
 @layout AdminLayout
+@inject NavigationManager NavManager
+
+<AdminAuthGuard>
+<div class="dashboard-container">
+    <!-- Header -->
+    <div class="dashboard-header">
+        <div>
+            <h1><i class="fas fa-hospital"></i> Hospital Admin Dashboard</h1>
+            <p class="welcome-text">Welcome back, Administrator</p>
+        </div>
+        <WeatherWidget />
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+        @if (stats != null)
+        {
+            <div class="stat-card doctor" @onclick="@(() => NavManager.NavigateTo("/admin-doctors"))">
+                <div class="card-icon"><i class="fas fa-user-md"></i></div>
+                <div class="card-content">
+                    <span class="card-title">Total Doctors</span>
+                    <span class="card-value">@stats.TotalDoctors</span>
+                    <span class="card-percentage positive">+3.5%</span>
+                </div>
+            </div>
+
+            <div class="stat-card appointment" @onclick="@(() => NavManager.NavigateTo("/admin-appointments"))">
+                <div class="card-icon"><i class="fas fa-calendar-check"></i></div>
+                <div class="card-content">
+                    <span class="card-title">Today's Appointments</span>
+                    <span class="card-value">@stats.AppointmentsToday</span>
+                    <span class="card-percentage positive">+12%</span>
+                </div>
+            </div>
+
+            <div class="stat-card patient" @onclick="@(() => NavManager.NavigateTo("/admin-patients"))">
+                <div class="card-icon"><i class="fas fa-procedures"></i></div>
+                <div class="card-content">
+                    <span class="card-title">Patients</span>
+                    <span class="card-value">@stats.RegisteredPatients</span>
+                    <span class="card-percentage positive">+8%</span>
+                </div>
+            </div>
+
+            <div class="stat-card cancel" @onclick="@(() => NavManager.NavigateTo("/admin-appointments"))">
+                <div class="card-icon"><i class="fas fa-calendar-times"></i></div>
+                <div class="card-content">
+                    <span class="card-title">Cancellations</span>
+                    <span class="card-value">@stats.CancelledAppointments</span>
+                    <span class="card-percentage negative">+4%</span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Loading dashboard...</p>
+            </div>
+        }
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-grid">
+        <!-- Recent Activity -->
+        <div class="activity-section">
+            <h2><i class="fas fa-bell"></i> Recent Activity</h2>
+            @if (notifications?.Count > 0)
+            {
+                <div class="activity-list">
+                    @foreach (var notification in notifications.Take(5))
+                    {
+                        <div class="notification-card">
+                            <div class="notification-icon">
+                                <i class="fas @GetNotificationIcon(notification.Message)"></i>
+                            </div>
+                            <div class="notification-content">
+                                <p>@notification.Message</p>
+                                <span>@notification.Timestamp.ToLocalTime().ToString("MMM dd, h:mm tt")</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="empty-state">
+                    <i class="fas fa-bell-slash"></i>
+                    <p>No recent activity</p>
+                </div>
+            }
+        </div>
+
+        <!-- Appointments -->
+        <div class="appointments-section">
+            <h2><i class="fas fa-calendar-day"></i> Today's Appointments</h2>
+                <TodayAppointmentsPreview />
+        </div>
+    </div>
+</div>
+</AdminAuthGuard>
+
+@code {
+    private DashboardStatsDto? stats;
+    private List<Notification> notifications = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        stats = await Http.GetFromJsonAsync<DashboardStatsDto>("/api/Admin/dashboard/stats");
+        notifications = await Http.GetFromJsonAsync<List<Notification>>("/api/Notifications/recent");
+    }
+
+    private string GetNotificationIcon(string message)
+    {
+        if (message.Contains("cancelled")) return "fa-calendar-times";
+        if (message.Contains("registered")) return "fa-user-plus";
+        return "fa-bell";
+    }
+}
+
+<style>
+    /* Base Styles */
+    :root {
+        --primary: #3a7bd5;
+        --primary-light: #e6f0ff;
+        --secondary: #00d2ff;
+        --success: #4cc9f0;
+        --danger: #f72585;
+        --warning: #f8961e;
+        --dark: #2b2d42;
+        --light: #f8f9fa;
+        --gray: #6c757d;
+    }
+
+    /* Layout */
+    .dashboard-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.8rem;
+        margin: 0;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .welcome-text {
+        color: var(--gray);
+        margin: 0.25rem 0 0 0;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .stat-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        display: flex;
+        gap: 1rem;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .doctor { border-left: 4px solid var(--primary); }
+    .appointment { border-left: 4px solid var(--success); }
+    .patient { border-left: 4px solid var(--warning); }
+    .cancel { border-left: 4px solid var(--danger); }
+
+    .card-icon {
+        font-size: 1.5rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .doctor .card-icon { background: rgba(58, 123, 213, 0.1); color: var(--primary); }
+    .appointment .card-icon { background: rgba(76, 201, 240, 0.1); color: var(--success); }
+    .patient .card-icon { background: rgba(248, 150, 30, 0.1); color: var(--warning); }
+    .cancel .card-icon { background: rgba(247, 37, 133, 0.1); color: var(--danger); }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-title {
+        font-size: 0.9rem;
+        color: var(--gray);
+    }
+
+    .card-value {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--dark);
+    }
+
+    .card-percentage {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .positive { color: #10b981; }
+    .negative { color: #ef4444; }
+
+    /* Content Grid */
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 1.5rem;
+    }
+
+    /* Sections */
+    .activity-section, .appointments-section {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .activity-section h2, .appointments-section h2 {
+        font-size: 1.3rem;
+        margin: 0 0 1.5rem 0;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    /* Activity List */
+    .activity-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .notification-card {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        background: var(--light);
+    }
+
+    .notification-icon {
+        font-size: 1.2rem;
+        color: var(--primary);
+    }
+
+    .notification-content p {
+        margin: 0;
+        font-weight: 500;
+    }
+
+    .notification-content span {
+        font-size: 0.8rem;
+        color: var(--gray);
+    }
+
+    /* Loading States */
+    .loading-spinner {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .spinner {
+        width: 3rem;
+        height: 3rem;
+        border: 4px solid var(--primary-light);
+        border-top-color: var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 1rem;
+    }
+
+    @@keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    /* Empty State */
+    .empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        color: var(--gray);
+    }
+
+    .empty-state i {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+
+    /* Responsive */
+    @@media (max-width: 992px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .dashboard-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+
+
+
+
+
+
+@* @page "/admin-dashboard"
+@using Shared.Entities
+@inject IJSRuntime JS
+@inject HttpClient Http
+@layout AdminLayout
 @using System.Globalization
 
 
 @inject NavigationManager NavManager
-
+<AdminAuthGuard>
 <WeatherWidget />
 @if (stats != null)
 {
     <div class="dash flex flex-wrap gap-4 mb-6">
-        <DashboardCard class="dashboard-card" title="Total Doctors" value="@stats.TotalDoctors.ToString()" percentage="+3.5%" @onclick="@(() => NavManager.NavigateTo("/doctors"))" />
-        <DashboardCard class="dashboard-card" title="Appointments Today" value="@stats.AppointmentsToday.ToString()" percentage="+12%" @onclick="@(() => NavManager.NavigateTo("/appointments"))" />
-        <DashboardCard class="dashboard-card" title="Patients Registered" value="@stats.RegisteredPatients.ToString()" percentage="+8%" @onclick="@(() => NavManager.NavigateTo("/patients"))" />
-        <DashboardCard class="dashboard-card" title="Cancelled Appointments" value="@stats.CancelledAppointments.ToString()" percentage="+4%" @onclick="@(() => NavManager.NavigateTo("/appointments"))" />
+            <DashboardCard class="dashboard-card" title="Total Doctors" value="@stats.TotalDoctors.ToString()" percentage="+3.5%" @onclick="@(() => NavManager.NavigateTo("/admin-doctors"))" />
+            <DashboardCard class="dashboard-card" title="Appointments Today" value="@stats.AppointmentsToday.ToString()" percentage="+12%" @onclick="@(() => NavManager.NavigateTo("/admin-appointments"))" />
+            <DashboardCard class="dashboard-card" title="Patients Registered" value="@stats.RegisteredPatients.ToString()" percentage="+8%" @onclick="@(() => NavManager.NavigateTo("/admin-patients"))" />
+            <DashboardCard class="dashboard-card" title="Cancelled Appointments" value="@stats.CancelledAppointments.ToString()" percentage="+4%" @onclick="@(() => NavManager.NavigateTo("/admin-appointments"))" />
     </div>
 }
 else
@@ -40,9 +400,9 @@ else
 <h3 class="text-xl font-semibold mt-6 mb-4">Top Doctors</h3>
 <StaffCard DoctorName="Dr. Adeel" Status="Online" AppointmentsToday="8" />
 <StaffCard DoctorName="Dr. Fatima" Status="Offline" AppointmentsToday="6" /> *@
-<h3 class="text-xl font-semibold mt-6 mb-4">Upcoming Appointments</h3>
+@* <h3 class="text-xl font-semibold mt-6 mb-4">Upcoming Appointments</h3>
 <TodayAppointmentsPreview/>
-
+</AdminAuthGuard>
 @code{
     private DashboardStatsDto? stats;
     private List<Notification> notifications = new();
@@ -52,4 +412,4 @@ else
         stats = await Http.GetFromJsonAsync<DashboardStatsDto>("/api/Admin/dashboard/stats");
         notifications = await Http.GetFromJsonAsync<List<Notification>>("/api/Notifications/recent");
     } 
-}
+} *@ 
