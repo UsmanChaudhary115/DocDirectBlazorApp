@@ -19,6 +19,7 @@
 - 🌐 Responsive Design (Desktop, Tablet, Mobile)
 - 🧠 Smart Search with Name & Specialty
 - 🔐 Secure Authentication & Authorization
+- 🖥  Chat Bot support
 
 ---
 
