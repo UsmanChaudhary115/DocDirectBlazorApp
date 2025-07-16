@@ -3,16 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\signincomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\signincomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\controllers\\authpatientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\controllers\\authpatientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\patient\\patienthomecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\patient\\patienthomecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\controls\\services.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\controls\\services.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\admin\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\admin\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\signincomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\signincomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\wwwroot\\css\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -29,10 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\client\\pages\\patient\\profilecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F9EB0882-B166-4421-A3DF-67189933F58C}|Client\\Client.csproj|solutionrelative:client\\pages\\patient\\profilecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\server\\controllers\\authpatientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65FDC569-6E0D-43B4-9C16-0DC296741ABE}|Server\\Server.csproj|solutionrelative:server\\controllers\\authpatientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C90F2A2E-17C3-4DAC-BA7A-55E79ECCE598}|SharedLibrary\\SharedLibrary.csproj|c:\\users\\usman\\desktop\\docdirectblazorapp\\sharedlibrary\\entities\\viewmodels\\patientsecuritymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,7 +82,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,32 +90,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DoctorsController.cs",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\DoctorsController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\DoctorsController.cs",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\DoctorsController.cs",
-              "RelativeToolTip": "Server\\Controllers\\DoctorsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHMAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "PatientsController.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\PatientsController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\PatientsController.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\PatientsController.cs",
+              "RelativeToolTip": "Server\\Controllers\\PatientsController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T06:22:17.916Z",
+              "WhenOpened": "2025-07-07T11:37:51.725Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Program.cs",
+              "RelativeDocumentMoniker": "Server\\Program.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Program.cs",
+              "RelativeToolTip": "Server\\Program.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T11:34:04.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Server.http",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Server.http",
+              "RelativeDocumentMoniker": "Server\\Server.http",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Server.http",
+              "RelativeToolTip": "Server\\Server.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-07-07T11:33:50.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PatientHomeComponent.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\PatientHomeComponent.razor",
+              "RelativeDocumentMoniker": "Client\\Pages\\Patient\\PatientHomeComponent.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\PatientHomeComponent.razor",
+              "RelativeToolTip": "Client\\Pages\\Patient\\PatientHomeComponent.razor",
+              "ViewState": "AgIAAPkAAAAAAAAAAAAAAP0AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-07T10:09:04.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "SignInComponent.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\SignInComponent.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\SignInComponent.razor",
               "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\SignInComponent.razor",
               "RelativeToolTip": "Client\\Pages\\SignInComponent.razor",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAG0AAABGAAAAAAAAAA==",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAAAJwAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T06:14:51.212Z"
+              "WhenOpened": "2025-06-17T06:14:51.212Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "Login.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Admin\\Login.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Admin\\Login.razor",
@@ -107,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\AdminController.cs",
@@ -119,7 +179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "main.css",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\wwwroot\\css\\main.css",
               "RelativeDocumentMoniker": "Client\\wwwroot\\css\\main.css",
@@ -131,7 +191,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "AuthPatientController.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AuthPatientController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\AuthPatientController.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AuthPatientController.cs",
+              "RelativeToolTip": "Server\\Controllers\\AuthPatientController.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAUwE8AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T20:54:13.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DoctorsController.cs",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\DoctorsController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\DoctorsController.cs",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\DoctorsController.cs",
+              "RelativeToolTip": "Server\\Controllers\\DoctorsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T06:22:17.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Services.razor",
+              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\Services.razor",
+              "RelativeDocumentMoniker": "Client\\Controls\\Services.razor",
+              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Controls\\Services.razor",
+              "RelativeToolTip": "Client\\Controls\\Services.razor",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-07T10:06:34.437Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "AppointmentController.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AppointmentController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\AppointmentController.cs",
@@ -143,7 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "DoctorProfile.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Doctor\\DoctorProfile.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Doctor\\DoctorProfile.razor",
@@ -155,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "ProfileComponent.razor",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Client\\Pages\\Patient\\ProfileComponent.razor",
               "RelativeDocumentMoniker": "Client\\Pages\\Patient\\ProfileComponent.razor",
@@ -167,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "ProfileViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\ViewModels\\ProfileViewModel.cs",
               "RelativeDocumentMoniker": "SharedLibrary\\Entities\\ViewModels\\ProfileViewModel.cs",
@@ -179,7 +276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "PatientInfoModel.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\ViewModels\\PatientInfoModel.cs",
               "RelativeDocumentMoniker": "SharedLibrary\\Entities\\ViewModels\\PatientInfoModel.cs",
@@ -191,19 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AuthPatientController.cs",
-              "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AuthPatientController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\AuthPatientController.cs",
-              "ToolTip": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\Server\\Controllers\\AuthPatientController.cs",
-              "RelativeToolTip": "Server\\Controllers\\AuthPatientController.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAUwFkAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T20:54:13.161Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "PatientSecurityModel.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\ViewModels\\PatientSecurityModel.cs",
               "RelativeDocumentMoniker": "SharedLibrary\\Entities\\ViewModels\\PatientSecurityModel.cs",
@@ -215,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "Patient.cs",
               "DocumentMoniker": "C:\\Users\\Usman\\Desktop\\DocDirectBlazorApp\\SharedLibrary\\Entities\\Patient.cs",
               "RelativeDocumentMoniker": "SharedLibrary\\Entities\\Patient.cs",
